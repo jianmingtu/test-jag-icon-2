@@ -24,7 +24,7 @@
         <jackson.datatype.jsr310.version>2.14.1</jackson.datatype.jsr310.version>
         <jackson.databind.version>2.14.3</jackson.databind.version>
         <splunk.javalogging.version>1.11.1</splunk.javalogging.version>
-        <logback.classic.version>1.2.11</logback.classic.version>
+        <logback.classic.version>1.2.13</logback.classic.version>
         <logback.core.version>1.2.11</logback.core.version>
         <spring.starter.web-services.version>2.7.4</spring.starter.web-services.version>
         <spring-context.support.version>5.3.23</spring-context.support.version>
