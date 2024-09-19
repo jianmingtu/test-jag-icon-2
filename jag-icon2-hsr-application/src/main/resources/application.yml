@@ -1,0 +1,20 @@
+security:
+  basic-auth:
+    password: ${BASIC_AUTH_PASS}
+    username: ${BASIC_AUTH_USER}
+  web-service:
+    password: ${WS_AUTH_PASS}
+    username: ${WS_AUTH_USER}
+icon:
+  host: ${ORDS_HOST}
+  username: ${ORDS_USERNAME}
+  password: ${ORDS_PASSWORD}
+  hsr-service-url: ${HSR_SERVICE_URL}
+  hsr-queue: ${HSR_QUEUE_NAME}
+  ping-queue: ${PING_QUEUE_NAME}
+
+spring:
+  rabbitmq:
+    host: ${RABBIT_MQ_HOST}
+    username: ${RABBIT_MQ_USERNAME}
+    password: ${RABBIT_MQ_PASSWORD}

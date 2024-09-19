@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="SessionParameter" targetNamespace="ICON2.Source.Common.ws.provider:SessionParameter" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Common.ws.provider:SessionParameter" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.Common.ws.provider:SessionParameter" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Common.ws.provider:SessionParameter">
+            <xsd:complexType name="getSessionParameters">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getSessionParametersResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getSessionParameters" type="tns:getSessionParameters"/>
+            <xsd:element name="getSessionParametersResponse" type="tns:getSessionParametersResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="SessionParameter_PortType_getSessionParameters">
+        <wsdl:part name="parameters" element="tns:getSessionParameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="SessionParameter_PortType_getSessionParametersResponse">
+        <wsdl:part name="parameters" element="tns:getSessionParametersResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="SessionParameter_PortType">
+        <wsdl:operation name="getSessionParameters">
+            <wsdl:input message="tns:SessionParameter_PortType_getSessionParameters">
+            </wsdl:input>
+            <wsdl:output message="tns:SessionParameter_PortType_getSessionParametersResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_Common_ws_provider_SessionParameter_Binder" type="tns:SessionParameter_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getSessionParameters">
+            <soap:operation soapAction="ICON2_Source_Common_ws_provider_SessionParameter_Binder_getSessionParameters" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="SessionParameter">
+        <wsdl:port name="ICON2_Source_Common_ws_provider_SessionParameter_Port" binding="tns:ICON2_Source_Common_ws_provider_SessionParameter_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.Common.ws.provider:SessionParameter/ICON2_Source_Common_ws_provider_SessionParameter_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

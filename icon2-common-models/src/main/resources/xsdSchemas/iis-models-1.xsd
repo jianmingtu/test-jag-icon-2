@@ -1,0 +1,227 @@
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+            targetNamespace="http://www.bceid.ca/webservices/IIS/V3/" xmlns:tns="http://www.bceid.ca/webservices/IIS/V3/" >
+    <xsd:element name="RegisterIndividual">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:RegisterIndividualRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RegisterIndividualRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="accountType" type="xsd:string"/>
+                    <xsd:element name="surname" type="xsd:string"/>
+                    <xsd:element name="firstGivenName" type="xsd:string"/>
+                    <xsd:element name="middleName1" type="xsd:string"/>
+                    <xsd:element name="middleName2" type="xsd:string"/>
+                    <xsd:element name="knownAs" type="xsd:string"/>
+                    <xsd:element name="birthDate" type="xsd:dateTime"/>
+                    <xsd:element name="telephone" type="xsd:string"/>
+                    <xsd:element name="email" type="xsd:string"/>
+                    <xsd:element name="postalAddress" type="tns:Address"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="RequestBase">
+        <xsd:sequence>
+            <xsd:element name="onlineServiceId" type="xsd:string"/>
+            <xsd:element name="requesterUserId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+            <xsd:element name="requesterUserGuid" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="BCeIDAccountTypeCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="Individual"/>
+            <xsd:enumeration value="VerifiedIndividual"/>
+            <xsd:enumeration value="Business"/>
+            <xsd:enumeration value="Internal"/>
+            <xsd:enumeration value="LDB"/>
+            <xsd:enumeration value="EDS"/>
+            <xsd:enumeration value="THS"/>
+            <xsd:enumeration value="CORNET"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="Address">
+        <xsd:sequence>
+            <xsd:element name="line1" type="xsd:string"/>
+            <xsd:element name="line2" type="xsd:string"/>
+            <xsd:element name="postalCode" type="xsd:string"/>
+            <xsd:element name="city" type="xsd:string"/>
+            <xsd:element name="province" type="xsd:string"/>
+            <xsd:element name="country" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="RegisterIndividualResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="RegisterIndividualResult"
+                             type="tns:RegisterIndividualResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RegisterIndividualResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="ResponseBase">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="code" type="tns:ResponseCode"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="failureCode" type="tns:FailureCode"/>
+            <xsd:element name="message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="ResponseCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Success"/>
+            <xsd:enumeration value="Failed"/>
+            <xsd:enumeration value="UnknownError"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FailureCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="NoResults"/>
+            <xsd:enumeration value="ExpectedResults"/>
+            <xsd:enumeration value="ArgumentException"/>
+            <xsd:enumeration value="AuthenticationException"/>
+            <xsd:enumeration value="ValidationException"/>
+            <xsd:enumeration value="AuthorizationException"/>
+            <xsd:enumeration value="Timeout"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="RemoveIndividual">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:RemoveIndividualRequest"/>
+                <xsd:element name="issuance" type="tns:IssuanceToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RemoveIndividualRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="IssuanceToken">
+        <xsd:sequence>
+            <xsd:element name="issuanceID" type="xsd:string"/>
+            <xsd:element name="enrollmentURL" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="expiry" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="RemoveIndividualResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="RemoveIndividualResult"
+                             type="tns:RemoveIndividualResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RemoveIndividualResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ChangeIndividual">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:ChangeIndividualRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ChangeIndividualRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ChangeIndividualResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="ChangeIndividualResult"
+                             type="tns:ChangeIndividualResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ChangeIndividualResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RepairIndividual">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:RepairIndividualRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RepairIndividualRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RepairIndividualResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="RepairIndividualResult"
+                             type="tns:RepairIndividualResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RepairIndividualResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="MergeIndividual">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:MergeIndividualRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="MergeIndividualRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="MergeFromIdRef" type="xsd:string"/>
+                    <xsd:element name="MergeIntoIdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="MergeIndividualResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="MergeIndividualResult"
+                             type="tns:MergeIndividualResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="MergeIndividualResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

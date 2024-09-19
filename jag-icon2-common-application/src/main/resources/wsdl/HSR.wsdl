@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="HSR" targetNamespace="ICON2.Source.HealthServiceRequest.ws.provider:HSR" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.HealthServiceRequest.ws.provider:HSR" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.HealthServiceRequest.ws.provider:HSR" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.HealthServiceRequest.ws.provider:HSR">
+            <xsd:complexType name="publishHSR">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="publishHSRResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHSRCount">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHSRCountResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHealthServiceRequestHistory">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHealthServiceRequestHistoryResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getHSRCount" type="tns:getHSRCount"/>
+            <xsd:element name="getHSRCountResponse" type="tns:getHSRCountResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="getHealthServiceRequestHistory" type="tns:getHealthServiceRequestHistory"/>
+            <xsd:element name="getHealthServiceRequestHistoryResponse" type="tns:getHealthServiceRequestHistoryResponse"/>
+            <xsd:element name="publishHSR" type="tns:publishHSR"/>
+            <xsd:element name="publishHSRResponse" type="tns:publishHSRResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="HSR_PortType_getHealthServiceRequestHistory">
+        <wsdl:part name="parameters" element="tns:getHealthServiceRequestHistory">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="HSR_PortType_getHSRCountResponse">
+        <wsdl:part name="parameters" element="tns:getHSRCountResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="HSR_PortType_getHealthServiceRequestHistoryResponse">
+        <wsdl:part name="parameters" element="tns:getHealthServiceRequestHistoryResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="HSR_PortType_publishHSRResponse">
+        <wsdl:part name="parameters" element="tns:publishHSRResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="HSR_PortType_publishHSR">
+        <wsdl:part name="parameters" element="tns:publishHSR">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="HSR_PortType_getHSRCount">
+        <wsdl:part name="parameters" element="tns:getHSRCount">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="HSR_PortType">
+        <wsdl:operation name="getHSRCount">
+            <wsdl:input message="tns:HSR_PortType_getHSRCount">
+            </wsdl:input>
+            <wsdl:output message="tns:HSR_PortType_getHSRCountResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestHistory">
+            <wsdl:input message="tns:HSR_PortType_getHealthServiceRequestHistory">
+            </wsdl:input>
+            <wsdl:output message="tns:HSR_PortType_getHealthServiceRequestHistoryResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="publishHSR">
+            <wsdl:input message="tns:HSR_PortType_publishHSR">
+            </wsdl:input>
+            <wsdl:output message="tns:HSR_PortType_publishHSRResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder" type="tns:HSR_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getHSRCount">
+            <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHSRCount" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestHistory">
+            <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHealthServiceRequestHistory" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="publishHSR">
+            <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_publishHSR" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HSR">
+        <wsdl:port name="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Port" binding="tns:ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.HealthServiceRequest.ws.provider:HSR/ICON2_Source_HealthServiceRequest_ws_provider_HSR_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

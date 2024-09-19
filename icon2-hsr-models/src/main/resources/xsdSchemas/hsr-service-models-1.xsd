@@ -1,0 +1,93 @@
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns:impl="http://ws.phis.health.com"
+        elementFormDefault="qualified"
+        targetNamespace="http://ws.phis.health.com">
+    <element name="submitHealthServiceRequest">
+        <complexType>
+            <sequence>
+                <element name="csNumber" type="xsd:string"/>
+                <element name="submissionDate" type="xsd:string"/>
+                <element name="centre" type="xsd:string"/>
+                <element name="details" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="submitHealthServiceRequestResponse">
+        <complexType>
+            <sequence>
+                <element name="submitHealthServiceRequestReturn" type="xsd:int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getHealthServiceRequestSummary">
+        <complexType>
+            <sequence>
+                <element name="csNumber" type="xsd:string"/>
+                <element name="numCharacters" type="xsd:int"/>
+                <element name="startRecord" type="xsd:int"/>
+                <element name="endRecord" type="xsd:int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getHealthServiceRequestSummaryResponse">
+        <complexType>
+            <sequence>
+                <element name="getHealthServiceRequestSummaryReturn" type="impl:HealthServiceRequestBundle"/>
+            </sequence>
+        </complexType>
+    </element>
+    <complexType name="HealthServiceRequest">
+        <sequence>
+            <element name="submittedDtm" nillable="true" type="xsd:string"/>
+            <element name="detailsTxt" nillable="true" type="xsd:string"/>
+            <element name="id" type="xsd:int"/>
+        </sequence>
+    </complexType>
+    <complexType name="ArrayOfHealthServiceRequest">
+        <sequence>
+            <element maxOccurs="unbounded" minOccurs="0" name="requests" type="impl:HealthServiceRequest"/>
+        </sequence>
+    </complexType>
+    <complexType name="HealthServiceRequestBundle">
+        <sequence>
+            <element name="totalRequestCount" type="xsd:int"/>
+            <element name="requests" nillable="true" type="impl:ArrayOfHealthServiceRequest"/>
+        </sequence>
+    </complexType>
+    <element name="getHealthServiceRequestDetails">
+        <complexType>
+            <sequence>
+                <element name="csNumber" type="xsd:string"/>
+                <element name="id" type="xsd:int"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="getHealthServiceRequestDetailsResponse">
+        <complexType>
+            <sequence>
+                <element name="getHealthServiceRequestDetailsReturn" type="impl:HealthServiceRequest"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="pingDB">
+        <complexType/>
+    </element>
+    <element name="pingDBResponse">
+        <complexType>
+            <sequence>
+                <element name="pingDBReturn" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+    <element name="pingWS">
+        <complexType/>
+    </element>
+    <element name="pingWSResponse">
+        <complexType>
+            <sequence>
+                <element name="pingWSReturn" type="xsd:string"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

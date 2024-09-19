@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="ICON2.Source.Version.ws.provider:PackageInfo" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="ICON2.Source.Version.ws.provider:PackageInfo">
+    <xsd:element name="getPackageInfo">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getPackageInfoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

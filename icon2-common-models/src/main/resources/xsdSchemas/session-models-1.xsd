@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="ICON2.Source.Common.ws.provider:SessionParameter"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Common.ws.provider:SessionParameter">
+
+    <xsd:element name="getSessionParameters">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getSessionParametersDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="SessionParameters" nillable="true" type="tns:sessionParameters"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="sessionParameters">
+        <xsd:sequence>
+            <xsd:element name="SessionParameter" nillable="true" type="tns:SessionParameter" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="SessionParameter">
+        <xsd:sequence>
+            <xsd:element name="parameterCd" nillable="true" type="xsd:string"/>
+            <xsd:element name="value" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getSessionParametersResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

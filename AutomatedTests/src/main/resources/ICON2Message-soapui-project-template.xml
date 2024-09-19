@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9db595ce-b207-4994-8b60-25aeab812dd8" activeEnvironment="Default" name="ICON2Message" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="563dbf62-7586-4ddb-bb9d-9d033d8c12e2" wsaVersion="NONE" name="ICON2_Source_Message_ws_provider_Message_Binder" type="wsdl" bindingName="{ICON2.Source.Message.ws.provider:Message}ICON2_Source_Message_ws_provider_Message_Binder" soapVersion="1_1" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/Message.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\Message.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\Message.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Message" targetNamespace="ICON2.Source.Message.ws.provider:Message" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Message.ws.provider:Message" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.Message.ws.provider:Message">
+      <xsd:complexType name="setMessageDetails">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setMessageDetailsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMessages">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMessagesResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMessageDetails">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMessageDetailsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getMessageDetails" type="tns:getMessageDetails"/>
+      <xsd:element name="getMessageDetailsResponse" type="tns:getMessageDetailsResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="setMessageDetails" type="tns:setMessageDetails"/>
+      <xsd:element name="setMessageDetailsResponse" type="tns:setMessageDetailsResponse"/>
+      <xsd:element name="getMessages" type="tns:getMessages"/>
+      <xsd:element name="getMessagesResponse" type="tns:getMessagesResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Message_PortType_getMessagesResponse">
+    <wsdl:part name="parameters" element="tns:getMessagesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Message_PortType_setMessageDetailsResponse">
+    <wsdl:part name="parameters" element="tns:setMessageDetailsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Message_PortType_getMessageDetailsResponse">
+    <wsdl:part name="parameters" element="tns:getMessageDetailsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Message_PortType_getMessages">
+    <wsdl:part name="parameters" element="tns:getMessages"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Message_PortType_getMessageDetails">
+    <wsdl:part name="parameters" element="tns:getMessageDetails"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Message_PortType_setMessageDetails">
+    <wsdl:part name="parameters" element="tns:setMessageDetails"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Message_PortType">
+    <wsdl:operation name="getMessageDetails">
+      <wsdl:input message="tns:Message_PortType_getMessageDetails"></wsdl:input>
+      <wsdl:output message="tns:Message_PortType_getMessageDetailsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setMessageDetails">
+      <wsdl:input message="tns:Message_PortType_setMessageDetails"></wsdl:input>
+      <wsdl:output message="tns:Message_PortType_setMessageDetailsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessages">
+      <wsdl:input message="tns:Message_PortType_getMessages"></wsdl:input>
+      <wsdl:output message="tns:Message_PortType_getMessagesResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_Message_ws_provider_Message_Binder" type="tns:Message_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getMessageDetails">
+      <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_getMessageDetails" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setMessageDetails">
+      <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_setMessageDetails" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessages">
+      <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_getMessages" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Message">
+    <wsdl:port name="ICON2_Source_Message_ws_provider_Message_Port" binding="tns:ICON2_Source_Message_ws_provider_Message_Binder">
+      <soap:address location="{API_HOST_1}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_1}</con:endpoint></con:endpoints><con:operation id="bb37f2af-6d20-437d-b0bb-d3fda5c35b4b" isOneWay="false" action="ICON2_Source_Message_ws_provider_Message_Binder_getMessageDetails" name="getMessageDetails" bindingOperationName="getMessageDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="4b55206c-1ac0-478d-80ef-8c8266dd7925" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getMessageDetails>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getMessageDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Message_ws_provider_Message_Binder_getMessageDetails"/></con:call></con:operation><con:operation id="44022dc2-d408-4a2e-9b1b-084d549e1a07" isOneWay="false" action="ICON2_Source_Message_ws_provider_Message_Binder_getMessages" name="getMessages" bindingOperationName="getMessages" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="d7bc714f-4491-4cd2-893d-269e17d5cdac" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getMessages>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getMessages>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Message_ws_provider_Message_Binder_getMessages"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="473ac8d2-350b-43eb-9703-9cbe9b176df4" isOneWay="false" action="ICON2_Source_Message_ws_provider_Message_Binder_setMessageDetails" name="setMessageDetails" bindingOperationName="setMessageDetails" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="64328961-23a2-41ea-8c39-737b80a6bf7d" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:setMessageDetails>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:setMessageDetails>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Message_ws_provider_Message_Binder_setMessageDetails"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="3a1a083b-b967-4a23-b6ca-fccb4086423f" name="ICON2MessageTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="abe5e43d-06ad-4fe9-9bca-b7e848fc4d89" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMessageDetails" searchProperties="true"><con:settings/><con:testStep type="request" name="getMessageDetails" id="4e87a20c-70a1-4319-a397-3e2cfa288834"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Message_ws_provider_Message_Binder</con:interface><con:operation>getMessageDetails</con:operation><con:request name="getMessageDetails" id="f5e69fd4-1ee0-40e1-a1be-018c9a865bfe"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getMessageDetails>
+            <XMLString>
+            <![CDATA[
+                    <Messages>
+                        <csNum>05919501</csNum>
+                        <MessageDetails>
+                            <id>402</id>
+                        </MessageDetails>
+                        <MessageDetails>
+                            <id>660</id>
+                        </MessageDetails>
+                    </Messages>
+                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+            <![CDATA[
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getMessageDetails>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3ea9af4b-5dba-48be-802c-62be2ef37a15"/><con:assertion type="Valid HTTP Status Codes" id="7f9e6e31-59aa-4092-8268-4be4f0969886" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="8f95f5b9-1731-42fb-abef-e5138dc7c3bf" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="84192a04-033a-4a0a-9ad7-a6d0b259bbaa" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f6786b94-384b-4e2f-a655-b89093f3e915" name="Contains"><con:configuration><token>TEST</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c1dde093-f2be-48cf-b20f-92f808bf67e8" name="Contains 1"><con:configuration><token>ERPT</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="822ce418-394e-4f5c-8f1a-551416d1e79e" name="Contains 3"><con:configuration><token>eReporting Message</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f2749cee-2c81-4be5-8553-bd022b2d926c" name="Contains 4"><con:configuration><token>402</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="6b95186d-a803-4385-b9c8-7f5edc8255fa" name="Contains 5"><con:configuration><token>05919501</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="93b8d4a4-0d8e-4d5b-a145-dd72cd3e1f11" name="Contains 6"><con:configuration><token>660</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="3ac28ac3-33b9-4ec3-84cb-e532a4e727e8" name="Contains 7"><con:configuration><token>2011.03.16 01:00 AM</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>id</con:name><con:value>402</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property><con:property><con:name>id2</con:name><con:value>660</con:value></con:property></con:properties></con:testCase><con:testCase id="279a9850-f084-4f8f-b781-180db3b8f415" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMessages" searchProperties="true"><con:settings/><con:testStep type="request" name="getMessages" id="62ac3539-6544-4b27-bc37-f77ca7dd0cb6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Message_ws_provider_Message_Binder</con:interface><con:operation>getMessageDetails</con:operation><con:request name="getMessages" id="e8c85cf0-99ac-4c3d-9b83-19d1e37e2cd9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getMessages>
+            <XMLString>
+                       
+                    &lt;Messages>
+                        &lt;csNum>05919501&lt;/csNum>
+                    &lt;/Messages>
+                                
+            </XMLString>
+            <UserTokenString><![CDATA[
+              
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                 
+            ]]]]>><![CDATA[</UserTokenString>
+        </icon:getMessages>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ef7bddd9-35a0-4474-93ee-d49808f883a0"/><con:assertion type="Valid HTTP Status Codes" id="b14283d2-e29b-4670-bdb0-282b56189a42" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="106948af-a535-4290-92bc-6ddf50a24e21" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 501, 502</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="4a1b410a-f327-4b0a-958e-ea97c4b96e58" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="2e5d40a9-11a8-44a4-bd9e-1a7a6a76b991" name="Contains"><con:configuration><token>05919501</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e7660a53-210f-4566-81e7-3cca9d4799be" name="Contains 1"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="de93e4d0-bc5e-4d8d-8a0c-20cb411ec384" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SetMessageDetails" searchProperties="true"><con:settings/><con:testStep type="request" name="setMessageDetails" id="6e9eafe1-b911-4784-93aa-7e3f1cdcad6d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Message_ws_provider_Message_Binder</con:interface><con:operation>getMessageDetails</con:operation><con:request name="setMessageDetails" id="9c448f83-640d-42bd-9951-a710aafc9d82"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8083/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Message.ws.provider:Message">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:setMessageDetails>
+            <XMLString>
+           <![CDATA[
+                    <Messages>
+                        <csNum>05919501</csNum>
+                        <MessageDetails>
+                            <id>660</id>
+                            <unread>N</unread>
+                        </MessageDetails>
+                    </Messages>
+                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+           <![CDATA[
+                    <UserToken>
+                        <csNum>05919501</csNum>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:setMessageDetails>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="ba1f3c98-624c-45a2-ae6e-28c96cc2b5b0"/><con:assertion type="Valid HTTP Status Codes" id="cec30933-13b7-4c1a-a93e-8e65e2e0278b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="e1de2ce5-c5c3-4e35-8054-34c24b9e34df" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="5b97d859-840c-42f1-9d69-2a3ec75ba072" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e612d3ea-8042-479d-8a04-a35b18f7f620" name="Contains"><con:configuration><token>05919501</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="697721bb-a57f-4db0-9ec7-fbd86f333c3d" name="Contains 2"><con:configuration><token>05919501</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="2bf57b38-c418-4f06-8a6f-e766183de7f7" name="Contains 3"><con:configuration><token>660</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e2cdb024-43ad-435a-908d-ba395f6b419f" name="Contains 4"><con:configuration><token>N</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>id</con:name><con:value>402</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

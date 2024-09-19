@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="ffc1a5a6-0cd3-4cef-a677-5e5fbc496448" activeEnvironment="Default" name="ICON2HSR" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f1f1381c-7542-4fcd-adf7-2777eb8d56c7" wsaVersion="NONE" name="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder" type="wsdl" bindingName="{ICON2.Source.HealthServiceRequest.ws.provider:HSR}ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder" soapVersion="1_1" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/HSR.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\HSR.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\HSR.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="HSR" targetNamespace="ICON2.Source.HealthServiceRequest.ws.provider:HSR" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.HealthServiceRequest.ws.provider:HSR" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.HealthServiceRequest.ws.provider:HSR">
+      <xsd:complexType name="publishHSR">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="publishHSRResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHSRCount">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHSRCountResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHealthServiceRequestHistory">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHealthServiceRequestHistoryResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getHSRCount" type="tns:getHSRCount"/>
+      <xsd:element name="getHSRCountResponse" type="tns:getHSRCountResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="getHealthServiceRequestHistory" type="tns:getHealthServiceRequestHistory"/>
+      <xsd:element name="getHealthServiceRequestHistoryResponse" type="tns:getHealthServiceRequestHistoryResponse"/>
+      <xsd:element name="publishHSR" type="tns:publishHSR"/>
+      <xsd:element name="publishHSRResponse" type="tns:publishHSRResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="HSR_PortType_getHealthServiceRequestHistory">
+    <wsdl:part name="parameters" element="tns:getHealthServiceRequestHistory"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HSR_PortType_getHSRCountResponse">
+    <wsdl:part name="parameters" element="tns:getHSRCountResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HSR_PortType_getHealthServiceRequestHistoryResponse">
+    <wsdl:part name="parameters" element="tns:getHealthServiceRequestHistoryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HSR_PortType_publishHSRResponse">
+    <wsdl:part name="parameters" element="tns:publishHSRResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HSR_PortType_publishHSR">
+    <wsdl:part name="parameters" element="tns:publishHSR"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="HSR_PortType_getHSRCount">
+    <wsdl:part name="parameters" element="tns:getHSRCount"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="HSR_PortType">
+    <wsdl:operation name="getHSRCount">
+      <wsdl:input message="tns:HSR_PortType_getHSRCount"></wsdl:input>
+      <wsdl:output message="tns:HSR_PortType_getHSRCountResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getHealthServiceRequestHistory">
+      <wsdl:input message="tns:HSR_PortType_getHealthServiceRequestHistory"></wsdl:input>
+      <wsdl:output message="tns:HSR_PortType_getHealthServiceRequestHistoryResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="publishHSR">
+      <wsdl:input message="tns:HSR_PortType_publishHSR"></wsdl:input>
+      <wsdl:output message="tns:HSR_PortType_publishHSRResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder" type="tns:HSR_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHSRCount">
+      <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHSRCount" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getHealthServiceRequestHistory">
+      <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHealthServiceRequestHistory" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="publishHSR">
+      <soap:operation soapAction="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_publishHSR" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="HSR">
+    <wsdl:port name="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Port" binding="tns:ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder">
+      <soap:address location="{API_HOST_1}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_1}</con:endpoint></con:endpoints><con:operation id="bb4f2638-aceb-4ba0-85e8-fc2fdc617367" isOneWay="false" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHealthServiceRequestHistory" name="getHealthServiceRequestHistory" bindingOperationName="getHealthServiceRequestHistory" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="19c5b75f-bbfd-43fc-9ee3-0d52f988713f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getHealthServiceRequestHistory>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getHealthServiceRequestHistory>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHealthServiceRequestHistory"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="44e47e63-f06f-4fc5-b9d6-34c7a7b7c0c8" isOneWay="false" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHSRCount" name="getHSRCount" bindingOperationName="getHSRCount" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3f76ba3e-3200-4185-bb60-10bdd17eb3ba" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getHSRCount>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getHSRCount>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_getHSRCount"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="73cde43b-9f89-4425-acc7-c6b15fe13cfa" isOneWay="false" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_publishHSR" name="publishHSR" bindingOperationName="publishHSR" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1b3b47ae-3c4f-437f-80bf-4f03db55c07c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:publishHSR>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:publishHSR>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder_publishHSR"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="c9ab3dd0-5087-4778-87ef-c931e051f043" name="ICON2HSRTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="ae545339-c75a-4388-a306-e907c514c427" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="PublishHSR" searchProperties="true"><con:settings/><con:testStep type="request" name="publishHSR" id="4c822f5a-41b2-403a-8a70-693887667fb5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder</con:interface><con:operation>getHealthServiceRequestHistory</con:operation><con:request name="publishHSR" id="98785e16-b56f-48cf-bb61-f16bf63b4759"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:publishHSR>
+            <XMLString>
+                <![CDATA[
+                    <HealthService>
+                        <csNum>05919501</csNum>
+                        <HealthServiceRequest>
+                            <hsrId></hsrId>
+                            <pacID></pacID>
+                            <location>83.0001</location>
+                            <requestDate></requestDate>
+                            <healthRequest>A-Test!</healthRequest>
+                        </HealthServiceRequest>
+                        <HealthServiceRequest>
+                            <hsrId></hsrId>
+                            <pacID></pacID>
+                            <location>30.0001</location>
+                            <requestDate></requestDate>
+                            <healthRequest>B-Test!</healthRequest>
+                        </HealthServiceRequest>
+                    </HealthService>
+                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+                <![CDATA[
+                    <UserToken>
+                        <csNum>05919501</csNum>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:publishHSR>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="dcbe573f-0bfa-43e9-a5fa-804afcf7981a"/><con:assertion type="Valid HTTP Status Codes" id="d6bb9c78-f785-4f88-885c-c87d935a9c94" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="4d8bd19f-c0c9-47f6-b9dd-65d5d40956df" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="4e0eb752-1df0-492e-a7cf-5baec747636c" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>location</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>healthRequest</con:name><con:value>A-Test!</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="35f36339-6b90-4a17-bde4-e2793373d159" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetHealthServiceRequestHistory" searchProperties="true"><con:settings/><con:testStep type="request" name="getHealthServiceRequestHistory" id="edf4b604-a1bc-43e8-9550-a2769d037558"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder</con:interface><con:operation>getHealthServiceRequestHistory</con:operation><con:request name="getHealthServiceRequestHistory" id="be7120d0-846e-4ef8-8ab9-f2de34ae9bd3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getHealthServiceRequestHistory>
+            <XMLString>
+                <![CDATA[
+                    <HealthService>
+                        <csNum>05919501</csNum>
+                        <Row>
+                            <start>0</start>
+                            <end>1</end>
+                        </Row>
+                    </HealthService>
+                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+                <![CDATA[
+                    <UserToken>
+                        <CSNumber>05919501</CSNumber>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getHealthServiceRequestHistory>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="85b54042-0afa-4633-9244-d07ff58178cd"/><con:assertion type="Valid HTTP Status Codes" id="a649250a-59e1-4616-bcbc-f511165f1a8d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="08a63530-92d7-4761-8c3c-11a917dd48c8" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 402, 500, 501, 502</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="e175d878-294e-4256-8a18-0076e199f41e" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="48fbf7e7-2634-4893-afd9-7d03423bae31" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetHSRCount" searchProperties="true"><con:settings/><con:testStep type="request" name="getHSRCount" id="e65f2b7b-5941-4f61-a50d-ff071b23dcbe"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_HealthServiceRequest_ws_provider_HSR_Binder</con:interface><con:operation>getHealthServiceRequestHistory</con:operation><con:request name="getHSRCount" id="135aadeb-d774-4b38-be7a-ad9f70c5a8d8"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.HealthServiceRequest.ws.provider:HSR">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getHSRCount>
+            <XMLString>
+                
+                    &lt;HealthServiceCount>
+                        &lt;csNum>05919501&lt;/csNum>
+                    &lt;/HealthServiceCount>
+                
+            </XMLString>
+            <UserTokenString><![CDATA[
+                
+                    <UserToken>
+                        <CSNumber>05919501</CSNumber>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                
+            ]]]]>><![CDATA[</UserTokenString>
+        </icon:getHSRCount>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5c40f1ac-566c-4f21-8670-d368cf1505c2"/><con:assertion type="Valid HTTP Status Codes" id="d93f5582-6c0b-42a8-a2bb-5a1e78c18b19" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="5d21d4ac-39b5-4a57-9e05-354f4f983203" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501, 502</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="e7961278-4243-40d1-a29b-beb38846244a" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="a7d23889-dbf7-4bbc-9aa2-e7370fdbac93" name="Contains"><con:configuration><token>3239</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f294b01f-7747-4d58-8a13-fe259451cd6d" name="Contains 1"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="b6dbb828-1bf2-4a56-8d5e-f4ff40435302" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="AutomationTest" searchProperties="true"><con:settings/><con:properties/></con:testCase><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>location</con:name><con:value>83.0001</con:value></con:property><con:property><con:name>healthRequest</con:name><con:value>A-Test!</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/><con:sensitiveInformation/></con:soapui-project>

@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="b52ddbe8-5364-4655-a2f9-333be2922ea8" activeEnvironment="Default" name="ICON2Auth" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="f0fd5a5c-6993-4ea3-8d18-deeed910ac68" wsaVersion="NONE" name="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder" type="wsdl" bindingName="{ICON2.Source.Authorization.ws.provider:AuthAuth}ICON2_Source_Authorization_ws_provider_AuthAuth_Binder" soapVersion="1_2" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/AuthAuth.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\AuthAuth.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\AuthAuth.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="AuthAuth" targetNamespace="ICON2.Source.Authorization.ws.provider:AuthAuth" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Authorization.ws.provider:AuthAuth" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.Authorization.ws.provider:AuthAuth">
+      <xsd:complexType name="getUserInfo">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getUserInfoResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getDeviceInfo">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getDeviceInfoResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHasFunctionalAbility">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getHasFunctionalAbilityResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getPreAuthorizeClient">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getPreAuthorizeClientResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getHasFunctionalAbility" type="tns:getHasFunctionalAbility"/>
+      <xsd:element name="getHasFunctionalAbilityResponse" type="tns:getHasFunctionalAbilityResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="getDeviceInfo" type="tns:getDeviceInfo"/>
+      <xsd:element name="getDeviceInfoResponse" type="tns:getDeviceInfoResponse"/>
+      <xsd:element name="getPreAuthorizeClient" type="tns:getPreAuthorizeClient"/>
+      <xsd:element name="getPreAuthorizeClientResponse" type="tns:getPreAuthorizeClientResponse"/>
+      <xsd:element name="getUserInfo" type="tns:getUserInfo"/>
+      <xsd:element name="getUserInfoResponse" type="tns:getUserInfoResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="AuthAuth_PortType_getUserInfo">
+    <wsdl:part name="parameters" element="tns:getUserInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getPreAuthorizeClientResponse">
+    <wsdl:part name="parameters" element="tns:getPreAuthorizeClientResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getUserInfoResponse">
+    <wsdl:part name="parameters" element="tns:getUserInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getPreAuthorizeClient">
+    <wsdl:part name="parameters" element="tns:getPreAuthorizeClient"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getDeviceInfoResponse">
+    <wsdl:part name="parameters" element="tns:getDeviceInfoResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getHasFunctionalAbilityResponse">
+    <wsdl:part name="parameters" element="tns:getHasFunctionalAbilityResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getDeviceInfo">
+    <wsdl:part name="parameters" element="tns:getDeviceInfo"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthAuth_PortType_getHasFunctionalAbility">
+    <wsdl:part name="parameters" element="tns:getHasFunctionalAbility"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="AuthAuth_PortType">
+    <wsdl:operation name="getHasFunctionalAbility">
+      <wsdl:input message="tns:AuthAuth_PortType_getHasFunctionalAbility"></wsdl:input>
+      <wsdl:output message="tns:AuthAuth_PortType_getHasFunctionalAbilityResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceInfo">
+      <wsdl:input message="tns:AuthAuth_PortType_getDeviceInfo"></wsdl:input>
+      <wsdl:output message="tns:AuthAuth_PortType_getDeviceInfoResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPreAuthorizeClient">
+      <wsdl:input message="tns:AuthAuth_PortType_getPreAuthorizeClient"></wsdl:input>
+      <wsdl:output message="tns:AuthAuth_PortType_getPreAuthorizeClientResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <wsdl:input message="tns:AuthAuth_PortType_getUserInfo"></wsdl:input>
+      <wsdl:output message="tns:AuthAuth_PortType_getUserInfoResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder" type="tns:AuthAuth_PortType">
+    <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getHasFunctionalAbility">
+      <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getHasFunctionalAbility" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap12:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDeviceInfo">
+      <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getDeviceInfo" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap12:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getPreAuthorizeClient">
+      <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getPreAuthorizeClient" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap12:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserInfo">
+      <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getUserInfo" style="document"/>
+      <wsdl:input>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap12:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="AuthAuth">
+    <wsdl:port name="ICON2_Source_Authorization_ws_provider_AuthAuth_Port" binding="tns:ICON2_Source_Authorization_ws_provider_AuthAuth_Binder">
+      <soap12:address location="{API_HOST_2}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_2}</con:endpoint></con:endpoints><con:operation id="aae7ad4b-191e-4133-8bbc-761d5bdd9a3f" isOneWay="false" action="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getDeviceInfo" name="getDeviceInfo" bindingOperationName="getDeviceInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a9631731-0603-4042-a225-9e6b4a6da1fc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_2}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <icon:getDeviceInfo>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getDeviceInfo>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2.Source.Authorization.ws.provider:AuthAuth/AuthAuth_PortType/getDeviceInfoRequest"/></con:call></con:operation><con:operation id="c3a738fb-dab3-4a98-9a93-d6525e2d0c28" isOneWay="false" action="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getHasFunctionalAbility" name="getHasFunctionalAbility" bindingOperationName="getHasFunctionalAbility" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e21a0a35-2c4b-40f2-beec-0ac48045254b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_2}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <icon:getHasFunctionalAbility>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getHasFunctionalAbility>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2.Source.Authorization.ws.provider:AuthAuth/AuthAuth_PortType/getHasFunctionalAbilityRequest"/></con:call></con:operation><con:operation id="46422721-4872-4cea-8238-5eb3cfdcc14b" isOneWay="false" action="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getPreAuthorizeClient" name="getPreAuthorizeClient" bindingOperationName="getPreAuthorizeClient" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cd54afbe-fd3c-4a62-a299-444da653ddcc" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_2}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <icon:getPreAuthorizeClient>\r
+         <XMLString>?</XMLString>\r
+      </icon:getPreAuthorizeClient>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2.Source.Authorization.ws.provider:AuthAuth/AuthAuth_PortType/getPreAuthorizeClientRequest"/></con:call></con:operation><con:operation id="4ed5a19e-fb4c-4480-a20b-365eaf44630d" isOneWay="false" action="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getUserInfo" name="getUserInfo" bindingOperationName="getUserInfo" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b9e342a7-4a3b-4d01-bb76-99b926347ec5" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_2}</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">\r
+   <soap:Header/>\r
+   <soap:Body>\r
+      <icon:getUserInfo>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getUserInfo>\r
+   </soap:Body>\r
+</soap:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2.Source.Authorization.ws.provider:AuthAuth/AuthAuth_PortType/getUserInfoRequest"/></con:call></con:operation></con:interface><con:testSuite id="e6198680-fb3b-4963-a886-2c0039be38c5" name="ICON2AuthTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="0e01d191-fbe3-46f3-b486-ceb20859ff3a" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetDeviceInfo" searchProperties="true"><con:settings/><con:testStep type="request" name="getDeviceInfo" id="36f20091-38f6-4b73-ab6e-7dfcb7e986fb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Authorization_ws_provider_AuthAuth_Binder</con:interface><con:operation>getDeviceInfo</con:operation><con:request name="getDeviceInfo" id="75106291-7d9c-4864-b0ba-c81308d0eda2"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/common-1-2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">
+   <soap:Header/>
+   <soap:Body>
+      <icon:getDeviceInfo>
+         <XMLString>
+		<![CDATA[
+	        <DeviceInfo>
+		      <certificateName>00001-A</certificateName>
+	        </DeviceInfo>
+		]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>?</UserTokenString>
+      </icon:getDeviceInfo>
+   </soap:Body>
+</soap:Envelope>
+]]></con:request><con:assertion type="SOAP Response" id="0e86419b-bd70-406f-ae9c-7d71e2c491ed"/><con:assertion type="Invalid HTTP Status Codes" id="45b906d0-d6fb-4530-bcff-2288209976cd" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 403, 500, 503</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="11aea385-c0d5-42d2-a2b7-e785c7593006" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="5daf43ef-2370-4349-8193-9a61558aa217" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="229306c8-72e0-46bc-b8aa-6e9465b64910" name="Contains"><con:configuration><token>This is where the system message is displayed</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="bae7c41f-c37d-47e8-8ffe-fd246c8b0619" name="Contains 1"><con:configuration><token>4</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="769316ab-a132-4a6d-ba12-b9a6a7fbf882" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetUserInfo" searchProperties="true"><con:settings/><con:testStep type="request" name="getUserInfo" id="e87b3798-b064-40a1-affd-20790abcbb39"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Authorization_ws_provider_AuthAuth_Binder</con:interface><con:operation>getDeviceInfo</con:operation><con:request name="getUserInfo" id="9ca66a00-e008-4ae8-8020-f6f22820fa03"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/common-1-2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">
+   <soap:Header/>
+   <soap:Body>
+      <icon:getUserInfo>
+         <XMLString>
+		<![CDATA[
+<UserInfo>
+  <csNum>05868757</csNum>
+</UserInfo>
+ 		]]]]>><![CDATA[
+        </XMLString>
+         <UserTokenString>?</UserTokenString>
+      </icon:getUserInfo>
+   </soap:Body>
+</soap:Envelope>
+]]></con:request><con:assertion type="SOAP Response" id="83d23f8d-c748-4fd4-be01-2281e833e508"/><con:assertion type="Response SLA Assertion" id="88b3902a-efa0-439a-8b46-ee7ef02b11a6" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="88df0960-5e37-4de7-a9d9-8514842f9409" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 503</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fb767bd8-c308-4255-9dcb-407894ad983a" name="Contains"><con:configuration><token>MyLegal</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="5db45757-e58e-4f1a-b1e0-f2d25863f54d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetPreAuthorizeClient" searchProperties="true"><con:settings/><con:testStep type="request" name="getPreAuthorizeClient" id="3e0a6116-6626-4c6c-8784-aa35536abde3"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Authorization_ws_provider_AuthAuth_Binder</con:interface><con:operation>getDeviceInfo</con:operation><con:request name="getPreAuthorizeClient" id="b48adfc8-5720-4700-9a78-e906900af24c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/common-1-2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">
+   <soap:Header/>
+   <soap:Body>
+      <icon:getHasFunctionalAbility>
+         <XMLString>
+		<![CDATA[
+                    <HasFunctionalAbility>
+                        <csNum>05919501</csNum>
+                        <FunctionalAbility>
+                            <serviceCd>HOME</serviceCd>
+                            <functionCd>DTS</functionCd>
+                        </FunctionalAbility>                        
+                    </HasFunctionalAbility>
+ 		]]]]>><![CDATA[         
+         </XMLString>
+         <UserTokenString>
+ 		<![CDATA[
+                    <UserToken>
+                        <RemoteClientBrowserType></RemoteClientBrowserType>
+                        <RemoteClientHostName></RemoteClientHostName>
+                        <RemoteClientIPAddress></RemoteClientIPAddress>
+                        <UserIdentifier></UserIdentifier>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                        <CSNumber>05919501</CSNumber>
+                        <SiteMinderSessionID></SiteMinderSessionID>
+                        <SiteMinderTransactionID></SiteMinderTransactionID>
+                    </UserToken>
+ 		]]]]>><![CDATA[        
+         </UserTokenString>
+      </icon:getHasFunctionalAbility>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="1015138d-2bd1-439a-998d-444785172da6"/><con:assertion type="Invalid HTTP Status Codes" id="8546173f-ceb9-4005-8e9d-9f3dfd48129f" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 403, 500, 503</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="9440ded9-4e24-4ead-aea0-28aba78c37c3" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="e22f8199-5133-4720-845b-073dc4ddbab8" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="7c9c3851-e32c-4fe3-9722-3100b9389434" name="Contains"><con:configuration><token>05919501</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="fbacde27-e792-4e87-a8ad-e5e583d58ac4" name="Contains 1"><con:configuration><token>HOME</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="d36214f4-505b-4824-8913-978c1024404f" name="Contains 2"><con:configuration><token>DTS</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="3a65041e-3807-457b-b70f-f5c8ff029e1b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetHasFunctionalAbility" searchProperties="true"><con:settings/><con:testStep type="request" name="getHasFunctionalAbility" id="f74702bc-3c94-48b2-b5cf-e02f0ea5bb37"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Authorization_ws_provider_AuthAuth_Binder</con:interface><con:operation>getDeviceInfo</con:operation><con:request name="getHasFunctionalAbility" id="2728c5b1-626a-4e07-aa41-abf3ac7a13e5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8085/common-1-2</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:icon="ICON2.Source.Authorization.ws.provider:AuthAuth">
+   <soap:Header/>
+   <soap:Body>
+      <icon:getHasFunctionalAbility>
+         <XMLString>
+		<![CDATA[
+                    <HasFunctionalAbility>
+                        <csNum>05919501</csNum>
+                        <FunctionalAbility>
+                            <serviceCd>HOME</serviceCd>
+                            <functionCd>DTS</functionCd>
+                        </FunctionalAbility>                        
+                    </HasFunctionalAbility>
+ 		]]]]>><![CDATA[         
+         </XMLString>
+         <UserTokenString>
+ 		<![CDATA[
+                    <UserToken>
+                        <RemoteClientBrowserType></RemoteClientBrowserType>
+                        <RemoteClientHostName></RemoteClientHostName>
+                        <RemoteClientIPAddress></RemoteClientIPAddress>
+                        <UserIdentifier></UserIdentifier>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                        <CSNumber>05919501</CSNumber>
+                        <SiteMinderSessionID></SiteMinderSessionID>
+                        <SiteMinderTransactionID></SiteMinderTransactionID>
+                    </UserToken>
+ 		]]]]>><![CDATA[        
+         </UserTokenString>
+      </icon:getHasFunctionalAbility>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" id="20fe805b-1df1-43a3-afbe-886facc47288"/><con:assertion type="Response SLA Assertion" id="23c99abc-2b45-42af-a4b3-656c8e76c60d" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="1ff6cf4f-a4b3-4d60-a717-7c370f3acaf4" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 503</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="108d8156-1733-4d72-a8f5-75b44ee900da" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8436c29b-e5a0-4e6f-a945-ff6204898d94" name="Contains"><con:configuration><token>HOME</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="19a1cb25-62e1-48c5-8e35-15c7c1bb057f" name="Contains 1"><con:configuration><token>DTS</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

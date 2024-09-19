@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>jag-icon2</artifactId>
+        <groupId>ca.bc.gov.open</groupId>
+        <version>1.0.0</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>icon2-code-coverage</artifactId>
+
+    <properties>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+        <!--        These are being detected as duplicates but they are all needed for code coverage to be generated correctly -->
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>jag-icon2-biometrics-application</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>jag-icon2-common-application</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>jag-icon2-auth-application</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>icon2-common-models</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>icon2-hsr-models</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>jag-icon2-myfiles-application</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ca.bc.gov.open</groupId>
+            <artifactId>jag-icon2-hsr-application</artifactId>
+            <version>1.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+    </dependencies>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>ca.bc.gov.open</groupId>
+                <artifactId>icon2-starters-bom</artifactId>
+                <version>0.2.2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>0.8.10</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/configuration/WSDLFilter*</exclude>
+                        <exclude>**/configuration/HttpServletRequestWrapper.class</exclude>
+                        <exclude>**/IconTwoCommonApplication.class</exclude>
+                        <exclude>**/IconTwoBiometricsApplication.class</exclude>
+                        <exclude>**/IconTwoMyFilesApplication.class</exclude>
+                        <exclude>**/IconConsumerApplication.class</exclude>
+                        <exclude>**/ObjectFactory.class</exclude>
+                        <exclude>**/Adapter1.class</exclude>
+                    </excludes>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>report-aggregate</id>
+                        <phase>verify</phase>
+                        <goals>
+                            <goal>report-aggregate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>

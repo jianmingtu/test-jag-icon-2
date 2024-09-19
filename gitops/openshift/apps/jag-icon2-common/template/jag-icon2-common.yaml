@@ -1,0 +1,172 @@
+apiVersion: template.openshift.io/v1
+kind: Template
+metadata:
+  name: ${APP_NAME}
+  description: Deployment template for the jag-icon2-common
+
+labels:
+  app: ${APP_NAME}
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.kubernetes.io/part-of: ${APP_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+
+parameters:
+
+  - name: APP_NAME
+    description: The application name that each component is part of
+    required: false
+    value: jag-icon2
+
+  - name: COMPONENT_NAME
+    description: The application name that each component is part of
+    required: false
+    value: jag-icon2-common
+
+  - name: OC_NAMESPACE
+    description: The OpenShift namespace prefix
+    required: false
+    # Below value must be changed as per gold cluster oc nameplate
+    value: af9914
+
+  - name: OC_ENV
+    description: The OpenShift environment, ie dev, test or prod
+    required: true
+
+  - name: RUNTIME
+    description: The application name that each component is part of
+    required: false
+    value: java
+
+  - name: DNS
+    description: The application name that each component is part of
+    required: false
+    # Below value must be changed as per gold cluster certificate/DNS
+    value: apps.gold.devops.gov.bc.ca
+
+  - name: AUTH_HEADER
+    description: The http Authorization header required for performing livenessProbe & readinessProbe in deployment config during container start.
+    required: true
+    value: ''
+
+objects:
+
+  ### jag-icon2-common Deployment Config ###
+  - apiVersion: apps.openshift.io/v1
+    kind: DeploymentConfig
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+
+    spec:
+      completionDeadlineSeconds: 1200
+      replicas: 1
+      selector:
+        name: ${COMPONENT_NAME}
+      strategy:
+        type: Rolling
+        maxSurge: 50%
+        maxUnavailable: 0
+      template:
+        metadata:
+          labels:
+            name: ${COMPONENT_NAME}
+        spec:
+          containers:
+            # Below Immage url must be changed as per gold cluster image stream
+            - image: >-
+                image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/${COMPONENT_NAME}:${OC_ENV}
+              name: ${COMPONENT_NAME}
+              imagePullPolicy: Always
+              ports:
+                - containerPort: 8080
+              envFrom:
+                - secretRef:
+                    name: jag-icon2-common-application-secrets
+                - secretRef:
+                    name: jag-icon2-splunk-config
+              resources:
+                limits:
+                  cpu: 100m
+                  memory: 200Mi
+                requests:
+                  cpu: 40m
+                  memory: 100Mi
+              livenessProbe:
+                httpGet:
+                  path: "/actuator/health"
+                  port: 8080
+                  scheme: HTTP
+                  httpHeaders:
+                    - name: Authorization
+                      value: ${AUTH_HEADER}
+                initialDelaySeconds: 100
+                timeoutSeconds: 30
+                periodSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+              readinessProbe:
+                httpGet:
+                  path: "/actuator/health"
+                  port: 8080
+                  scheme: HTTP
+                  httpHeaders:
+                    - name: Authorization
+                      value: ${AUTH_HEADER}
+                initialDelaySeconds: 100
+                timeoutSeconds: 30
+                periodSeconds: 10
+                successThreshold: 1
+                failureThreshold: 3
+      triggers:
+        - type: ConfigChange
+        - type: ImageChange
+          imageChangeParams:
+            automatic: true
+            containerNames:
+              - ${COMPONENT_NAME}
+            from:
+              kind: ImageStreamTag
+              namespace: ${OC_NAMESPACE}-tools
+              name: ${COMPONENT_NAME}:${OC_ENV}
+    status: {}
+
+  ### jag-icon2-common Service ###
+  - apiVersion: v1
+    kind: Service
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    spec:
+      ports:
+        - name: http
+          protocol: TCP
+          port: 80
+          targetPort: 8080
+      selector:
+        name: ${COMPONENT_NAME}
+      sessionAffinity: None
+      type: ClusterIP
+
+  ### jag-icon2-common route ###
+  - apiVersion: route.openshift.io/v1
+    kind: Route
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    annotations:
+      # if we do not use sticky-session, disable_cookies needs to be true
+      haproxy.router.openshift.io/disable_cookies: "true"
+      # balance algorithm
+      haproxy.router.openshift.io/balance: roundrobin
+    spec:
+      host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
+      to:
+        kind: Service
+        name: ${COMPONENT_NAME}
+        weight: 100
+      port:
+        targetPort: http
+      tls:
+        termination: edge
+        insecureEdgeTerminationPolicy: None
+      wildcardPolicy: None

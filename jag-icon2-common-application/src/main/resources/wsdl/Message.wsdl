@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Message" targetNamespace="ICON2.Source.Message.ws.provider:Message" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Message.ws.provider:Message" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.Message.ws.provider:Message" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Message.ws.provider:Message">
+            <xsd:complexType name="setMessageDetails">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setMessageDetailsResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getMessages">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getMessagesResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getMessageDetails">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getMessageDetailsResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getMessageDetails" type="tns:getMessageDetails"/>
+            <xsd:element name="getMessageDetailsResponse" type="tns:getMessageDetailsResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="setMessageDetails" type="tns:setMessageDetails"/>
+            <xsd:element name="setMessageDetailsResponse" type="tns:setMessageDetailsResponse"/>
+            <xsd:element name="getMessages" type="tns:getMessages"/>
+            <xsd:element name="getMessagesResponse" type="tns:getMessagesResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Message_PortType_getMessagesResponse">
+        <wsdl:part name="parameters" element="tns:getMessagesResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Message_PortType_setMessageDetailsResponse">
+        <wsdl:part name="parameters" element="tns:setMessageDetailsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Message_PortType_getMessageDetailsResponse">
+        <wsdl:part name="parameters" element="tns:getMessageDetailsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Message_PortType_getMessages">
+        <wsdl:part name="parameters" element="tns:getMessages">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Message_PortType_getMessageDetails">
+        <wsdl:part name="parameters" element="tns:getMessageDetails">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Message_PortType_setMessageDetails">
+        <wsdl:part name="parameters" element="tns:setMessageDetails">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="Message_PortType">
+        <wsdl:operation name="getMessageDetails">
+            <wsdl:input message="tns:Message_PortType_getMessageDetails">
+            </wsdl:input>
+            <wsdl:output message="tns:Message_PortType_getMessageDetailsResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageDetails">
+            <wsdl:input message="tns:Message_PortType_setMessageDetails">
+            </wsdl:input>
+            <wsdl:output message="tns:Message_PortType_setMessageDetailsResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMessages">
+            <wsdl:input message="tns:Message_PortType_getMessages">
+            </wsdl:input>
+            <wsdl:output message="tns:Message_PortType_getMessagesResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_Message_ws_provider_Message_Binder" type="tns:Message_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getMessageDetails">
+            <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_getMessageDetails" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageDetails">
+            <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_setMessageDetails" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMessages">
+            <soap:operation soapAction="ICON2_Source_Message_ws_provider_Message_Binder_getMessages" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Message">
+        <wsdl:port name="ICON2_Source_Message_ws_provider_Message_Port" binding="tns:ICON2_Source_Message_ws_provider_Message_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.Message.ws.provider:Message/ICON2_Source_Message_ws_provider_Message_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

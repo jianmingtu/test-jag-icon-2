@@ -1,0 +1,278 @@
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://www.bceid.ca/webservices/IPS/V3/"
+          xmlns:tns="http://www.bceid.ca/webservices/IPS/V3/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="Marco">
+        <xsd:complexType/>
+    </xsd:element>
+    <xsd:element name="MarcoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="MarcoResult" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CreateIdRef">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:CreateIdRefRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="CreateIdRefRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="RequestBase">
+        <xsd:sequence>
+            <xsd:element name="onlineServiceId" type="xsd:string"/>
+            <xsd:element name="requesterUserId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+            <xsd:element name="requesterUserGuid" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="BCeIDAccountTypeCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="Individual"/>
+            <xsd:enumeration value="VerifiedIndividual"/>
+            <xsd:enumeration value="Business"/>
+            <xsd:enumeration value="Internal"/>
+            <xsd:enumeration value="LDB"/>
+            <xsd:enumeration value="EDS"/>
+            <xsd:enumeration value="THS"/>
+            <xsd:enumeration value="CORNET"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="CreateIdRefResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="CreateIdRefResult" type="tns:CreateIdRefResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="CreateIdRefResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="ResponseBase">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="Code" type="tns:ResponseCode"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="FailureCode" type="tns:FailureCode"/>
+            <xsd:element name="Message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="ResponseCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Success"/>
+            <xsd:enumeration value="Failed"/>
+            <xsd:enumeration value="UnknownError"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FailureCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="NoResults"/>
+            <xsd:enumeration value="ExpectedResults"/>
+            <xsd:enumeration value="ArgumentException"/>
+            <xsd:enumeration value="AuthenticationException"/>
+            <xsd:enumeration value="ValidationException"/>
+            <xsd:enumeration value="AuthorizationException"/>
+            <xsd:enumeration value="Timeout"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="GetIdRef">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:GetIdRefRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="GetIdRefRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="GetIdRefResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="GetIdRefResult" type="tns:GetIdRefResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="GetIdRefResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="GetDID">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:GetDIDRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="GetDIDRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="GetDIDResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="GetDIDResult" type="tns:GetDIDResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="GetDIDResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="Link">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:LinkRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="LinkRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="LinkResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="LinkResult" type="tns:LinkResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="LinkResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="Unlink">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:UnlinkRequest"/>
+                <xsd:element name="issuance" type="tns:IssuanceToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="UnlinkRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="IssuanceToken">
+        <xsd:sequence>
+            <xsd:element name="issuanceID" type="xsd:string"/>
+            <xsd:element name="enrollmentURL" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="expiry" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="UnlinkResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="UnlinkResult" type="tns:UnlinkResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="UnlinkResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="Replace">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:ReplaceRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ReplaceRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="DID" type="xsd:string"/>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ReplaceResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="ReplaceResult" type="tns:ReplaceResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ReplaceResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="Destroy">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="request" type="tns:DestroyRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DestroyRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element name="IdRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="DestroyResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="DestroyResult" type="tns:DestroyResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DestroyResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

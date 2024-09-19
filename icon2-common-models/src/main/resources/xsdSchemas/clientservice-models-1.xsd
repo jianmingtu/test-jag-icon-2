@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" xmlns:impl="http://ws.phis.health.com"
+        targetNamespace="http://ws.phis.health.com">
+    <xsd:element name="synchronizeClient">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="csNumber" type="xsd:string"/>
+                <xsd:element name="surname" type="xsd:string"/>
+                <xsd:element name="givenName1" type="xsd:string"/>
+                <xsd:element name="givenName2" type="xsd:string"/>
+                <xsd:element name="birthDate" type="xsd:string"/>
+                <xsd:element name="gender" type="xsd:string"/>
+                <xsd:element name="photoGuid" type="xsd:string"/>
+                <xsd:element name="probableDischargeDate" type="xsd:string"/>
+                <xsd:element name="outLocation" type="xsd:string"/>
+                <xsd:element name="outReason" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element >
+    <xsd:element name="synchronizeClientResponse">
+        <xsd:complexType/>
+    </xsd:element >
+    <xsd:element name="debug">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="csNumber" type="xsd:string"/>
+                <xsd:element name="surname" type="xsd:string"/>
+                <xsd:element name="givenName1" type="xsd:string"/>
+                <xsd:element name="givenName2" type="xsd:string"/>
+                <xsd:element name="birthDate" type="xsd:string"/>
+                <xsd:element name="gender" type="xsd:string"/>
+                <xsd:element name="photoGuid" type="xsd:string"/>
+                <xsd:element name="probableDischargeDate" type="xsd:string"/>
+                <xsd:element name="outLocation" type="xsd:string"/>
+                <xsd:element name="outReason" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element >
+    <xsd:element name="debugResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="debugReturn" type="impl:ClientServiceDebug"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element >
+    <xsd:complexType name="ClientInfo">
+        <xsd:sequence>
+            <xsd:element name="gender" nillable="true" type="xsd:string"/>
+            <xsd:element name="csNumber" nillable="true" type="xsd:string"/>
+            <xsd:element name="surname" nillable="true" type="xsd:string"/>
+            <xsd:element name="probableDischargeDate" nillable="true" type="xsd:string"/>
+            <xsd:element name="givenName2" nillable="true" type="xsd:string"/>
+            <xsd:element name="outLocation" nillable="true" type="xsd:string"/>
+            <xsd:element name="photoGuid" nillable="true" type="xsd:string"/>
+            <xsd:element name="outReason" nillable="true" type="xsd:string"/>
+            <xsd:element name="birthDate" nillable="true" type="xsd:string"/>
+            <xsd:element name="givenName1" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ClientServiceDebug">
+        <xsd:sequence>
+            <xsd:element name="inputValues" nillable="true" type="impl:ClientInfo"/>
+            <xsd:element name="pacValues" nillable="true" type="impl:ClientInfo"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

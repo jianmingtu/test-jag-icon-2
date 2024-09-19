@@ -1,0 +1,8 @@
+<jaxb:bindings xmlns:jaxb="https://jakarta.ee/xml/ns/jaxb" xmlns:xsd="http://www.w3.org/2001/XMLSchema" jaxb:version="3.0">
+        <jaxb:globalBindings>
+            <jaxb:serializable uid="1" />
+            <jaxb:javaType name="java.time.Instant" xmlType="xsd:dateTime"
+                   parseMethod="ca.bc.gov.open.icon.models.serializers.InstantSoapConverter.parseISO"
+                 printMethod="ca.bc.gov.open.icon.models.serializers.InstantSoapConverter.printISO" />
+        </jaxb:globalBindings>
+</jaxb:bindings>

@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="ICON2.Source.Authorization.ws.provider:AuthAuth"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Authorization.ws.provider:AuthAuth">
+
+    <xsd:element name="getUserInfo">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getUserInfoDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="UserInfo" nillable="true" type="tns:userInfo"/>
+                <xsd:element name="UserToken" nillable="true" type="tns:userToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="userInfo">
+        <xsd:sequence>
+            <xsd:element name="csNum" type="xsd:string"/>
+            <xsd:element name="lastName" type="xsd:string"/>
+            <xsd:element name="firstName" type="xsd:string"/>
+            <xsd:element name="latestPhoto" type="xsd:string"/>
+            <xsd:element name="locationCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="businessRole" nillable="true" type="xsd:string"/>
+            <xsd:element name="SessionInfo" nillable="true" type="tns:sessionInfo"/>
+            <xsd:element name="ServiceInfo" nillable="true" type="tns:serviceInfo" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="sessionInfo">
+        <xsd:sequence>
+            <xsd:element name="idleTimeout" nillable="true" type="xsd:string"/>
+            <xsd:element name="sessionLimit" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="serviceInfo">
+        <xsd:sequence>
+            <xsd:element name="name" nillable="true" type="xsd:string"/>
+            <xsd:element name="description" nillable="true" type="xsd:string"/>
+            <xsd:element name="urn" nillable="true" type="xsd:string"/>
+            <xsd:element name="SessionInfo" nillable="true" type="tns:sessionInfo"/>
+            <xsd:element name="FunctionalAbility" nillable="true" type="tns:functionalAbility" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getUserInfoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="Error">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getDeviceInfo">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getDeviceInfoDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="DeviceInfo" nillable="true" type="tns:deviceInfo"/>
+                <xsd:element name="UserToken" nillable="true" type="tns:userToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="deviceInfo">
+        <xsd:sequence>
+            <xsd:element name="deviceNo" nillable="true" type="xsd:string"/>
+            <xsd:element name="locationCd" nillable="true" type="xsd:string"/>
+            <xsd:element name="businessRole" nillable="true" type="xsd:string"/>
+            <xsd:element name="isEnabled" nillable="true" type="xsd:string"/>
+            <xsd:element name="systemMessage" nillable="true" type="xsd:string"/>
+            <xsd:element name="pollActiveInterval" nillable="true" type="xsd:string"/>
+            <xsd:element name="pollSleepInterval" nillable="true" type="xsd:string"/>
+            <xsd:element name="certificateName" nillable="true" type="xsd:string"/>
+            <xsd:element name="ServiceCodes" nillable="true" type="tns:serviceCodes" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="serviceCodes">
+        <xsd:sequence>
+            <xsd:element name="serviceCd" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getDeviceInfoResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="getHasFunctionalAbility">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getHasFunctionalAbilityDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="HasFunctionalAbility" nillable="true" type="tns:hasFunctionalAbility"/>
+                <xsd:element name="UserToken" nillable="true" type="tns:userToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="hasFunctionalAbility">
+        <xsd:sequence>
+            <xsd:element name="csNum" type="xsd:string"/>
+            <xsd:element name="FunctionalAbility" nillable="true" type="tns:functionalAbility"/>
+            <xsd:element name="enabled" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="functionalAbility">
+        <xsd:sequence>
+            <xsd:element name="serviceCd" nillable="true" type="xsd:string"/>
+            <xsd:element name="functionCd" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="userToken">
+        <xsd:sequence>
+            <xsd:element name="RemoteClientBrowserType" nillable="true" type="xsd:string"/>
+            <xsd:element name="RemoteClientHostName" nillable="true" type="xsd:string"/>
+            <xsd:element name="RemoteClientIPAddress" nillable="true" type="xsd:string"/>
+            <xsd:element name="UserIdentifier" nillable="true" type="xsd:string"/>
+            <xsd:element name="AuthoritativePartyIdentifier" nillable="true" type="xsd:string"/>
+            <xsd:element name="BiometricsSignature" nillable="true" type="xsd:string"/>
+            <xsd:element name="CSNumber" nillable="true" type="xsd:string"/>
+            <xsd:element name="SiteMinderSessionID" nillable="true" type="xsd:string"/>
+            <xsd:element name="SiteMinderTransactionID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getHasFunctionalAbilityResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getPreAuthorizeClient">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getPreAuthorizeClientDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="PreAuthorizeClient" nillable="true" type="tns:preAuthorizeClient"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="preAuthorizeClient">
+        <xsd:sequence>
+            <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+            <xsd:element name="isAllowed" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="getPreAuthorizeClientResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

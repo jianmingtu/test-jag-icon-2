@@ -1,0 +1,399 @@
+<xsd:schema elementFormDefault="qualified" targetNamespace="http://www.bceid.ca/webservices/BCS/V3/"
+            xmlns:tns="http://www.bceid.ca/webservices/BCS/V3/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="StartEnrollment">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:StartEnrollmentRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="StartEnrollmentRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="IDRef" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="RequestBase">
+        <xsd:sequence>
+            <xsd:element  name="onlineServiceId" type="xsd:string"/>
+            <xsd:element  name="requesterUserId" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+            <xsd:element  name="requesterUserGuid" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="BCeIDAccountTypeCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="Individual"/>
+            <xsd:enumeration value="VerifiedIndividual"/>
+            <xsd:enumeration value="Business"/>
+            <xsd:enumeration value="Internal"/>
+            <xsd:enumeration value="LDB"/>
+            <xsd:enumeration value="EDS"/>
+            <xsd:enumeration value="THS"/>
+            <xsd:enumeration value="CORNET"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="StartEnrollmentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="StartEnrollmentResult"
+                             type="tns:StartEnrollmentResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="StartEnrollmentResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element  name="issuance" type="tns:IssuanceToken"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="ResponseBase">
+        <xsd:sequence>
+            <xsd:element maxOccurs="1" minOccurs="1" name="code" type="tns:ResponseCode"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="failureCode" type="tns:FailureCode"/>
+            <xsd:element  name="message" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="ResponseCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Success"/>
+            <xsd:enumeration value="Failed"/>
+            <xsd:enumeration value="UnknownError"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="FailureCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Void"/>
+            <xsd:enumeration value="NoResults"/>
+            <xsd:enumeration value="ExpectedResults"/>
+            <xsd:enumeration value="ArgumentException"/>
+            <xsd:enumeration value="AuthenticationException"/>
+            <xsd:enumeration value="ValidationException"/>
+            <xsd:enumeration value="AuthorizationException"/>
+            <xsd:enumeration value="Timeout"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:complexType name="IssuanceToken">
+        <xsd:sequence>
+            <xsd:element  name="issuanceID" type="xsd:string"/>
+            <xsd:element  name="enrollmentURL" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="expiry" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="StartSearch">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:StartSearchRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="StartSearchRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="accountType" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="activeOnly" type="tns:ActiveCodeRequest"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="ActiveCodeRequest">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="N"/>
+            <xsd:enumeration value="Y"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="StartSearchResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="StartSearchResult" type="tns:StartSearchResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="StartSearchResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element  name="search" type="tns:SearchToken"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="SearchToken">
+        <xsd:sequence>
+            <xsd:element  name="searchID" type="xsd:string"/>
+            <xsd:element  name="searchURL" type="xsd:string"/>
+            <xsd:element maxOccurs="1" minOccurs="1" name="expiry" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="FinishEnrollment">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:FinishEnrollmentRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="FinishEnrollmentRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="issuanceID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="FinishEnrollmentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="FinishEnrollmentResult"
+                             type="tns:FinishEnrollmentResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="FinishEnrollmentResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RebindCredential">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:RebindCredentialRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RebindCredentialRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="IDRefTo" type="xsd:string"/>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RebindCredentialResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="RebindCredentialResult"
+                             type="tns:RebindCredentialResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RebindCredentialResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="DestroyCredential">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:DestroyCredentialRequest"/>
+                <xsd:element  name="issuance" type="tns:IssuanceToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DestroyCredentialRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="DestroyCredentialResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="DestroyCredentialResult"
+                             type="tns:DestroyCredentialResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DestroyCredentialResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ReactivateCredential">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:ReactivateCredentialRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ReactivateCredentialRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ReactivateCredentialResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="ReactivateCredentialResult"
+                             type="tns:ReactivateCredentialResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="ReactivateCredentialResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="DeactivateCredential">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:DeactivateCredentialRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DeactivateCredentialRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="DeactivateCredentialResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="DeactivateCredentialResult"
+                             type="tns:DeactivateCredentialResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="DeactivateCredentialResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="FinishSearch">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:FinishSearchRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="FinishSearchRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase">
+                <xsd:sequence>
+                    <xsd:element  name="searchID" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="FinishSearchResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="FinishSearchResult" type="tns:FinishSearchResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="FinishSearchResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="status" type="tns:SearchStatusCode"/>
+                    <xsd:element  name="DID" type="xsd:string"/>
+                    <xsd:element  name="credentialReference" type="xsd:string"/>
+                    <xsd:element maxOccurs="1" minOccurs="1" name="active" type="tns:ActiveCodeResponse"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:simpleType name="SearchStatusCode">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="NotCompleted"/>
+            <xsd:enumeration value="Found"/>
+            <xsd:enumeration value="NotFound"/>
+            <xsd:enumeration value="Error"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="ActiveCodeResponse">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="N"/>
+            <xsd:enumeration value="Y"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:element name="CheckEnrollmentStatus">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:FinishSearchRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CheckEnrollmentStatusResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="CheckEnrollmentStatusResult"
+                             type="tns:FinishSearchResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="Revoke">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:RevokeRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RevokeRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RevokeResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="RevokeResult" type="tns:RevokeResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RevokeResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="Renew">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="request" type="tns:RenewRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RenewRequest">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:RequestBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="RenewResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element  name="RenewResult" type="tns:RenewResponse"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:complexType name="RenewResponse">
+        <xsd:complexContent mixed="false">
+            <xsd:extension base="tns:ResponseBase"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

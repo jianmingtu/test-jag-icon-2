@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<jxb:bindings version="3.0"
+              xmlns:jxb="https://jakarta.ee/xml/ns/jaxb"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:namespace="http://jaxb.dev.java.net/plugin/code-injector"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/jaxb http://java.sun.com/xml/ns/jaxb/bindingschema_2_0.xsd
+    http://jaxb2-commons.dev.java.net/namespace-prefix https://raw.githubusercontent.com/Siggen/jaxb2-namespace-prefix/master/src/main/resources/prefix-namespace-schema.xsd
+https://jakarta.ee/xml/ns/jaxb ">
+
+    <jxb:bindings schemaLocation="../xsdSchemas/myfiles-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.myfiles"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/biometrics-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.biometrics"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/audit-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.audit"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/tombstone-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.tombstone"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/hsr-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.hsr"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/auth-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.auth"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/iis-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.iis"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/ips-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.ips"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/bcs-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.bcs"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/error-handling-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.error"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/session-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.session"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/e-reporting-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.ereporting"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/message-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.message"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/trustaccount-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.trustaccount"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/packageinfo-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.packageinfo"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/visitschedule-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.visitschedule"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/myinfo-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.myinfo"/>
+        </jxb:schemaBindings>
+        <jxb:bindings>
+            <namespace:prefix name="ser-root"/>
+            <!-- Additional @XmlNs prefix declarations to take effect for this schema/package -->
+            <namespace:prefix name="xsi" namespaceURI="http://www.w3.org/2001/XMLSchema-instance"/>
+        </jxb:bindings>
+    </jxb:bindings>
+
+    <jxb:bindings schemaLocation="../xsdSchemas/clientservice-models-1.xsd">
+        <jxb:schemaBindings>
+            <jxb:package name="ca.bc.gov.open.icon.clientservice"/>
+        </jxb:schemaBindings>
+    </jxb:bindings>
+
+
+</jxb:bindings>

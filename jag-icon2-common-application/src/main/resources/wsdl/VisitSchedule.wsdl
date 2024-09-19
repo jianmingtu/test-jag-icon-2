@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="VisitSchedule" targetNamespace="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule">
+            <xsd:complexType name="getVisitSchedule">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getVisitScheduleResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getVisitSchedule" type="tns:getVisitSchedule"/>
+            <xsd:element name="getVisitScheduleResponse" type="tns:getVisitScheduleResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="VisitSchedule_PortType_getVisitSchedule">
+        <wsdl:part name="parameters" element="tns:getVisitSchedule">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="VisitSchedule_PortType_getVisitScheduleResponse">
+        <wsdl:part name="parameters" element="tns:getVisitScheduleResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="VisitSchedule_PortType">
+        <wsdl:operation name="getVisitSchedule">
+            <wsdl:input message="tns:VisitSchedule_PortType_getVisitSchedule">
+            </wsdl:input>
+            <wsdl:output message="tns:VisitSchedule_PortType_getVisitScheduleResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_VisitSchedule_ws_provider_VisitSchedule_Binder" type="tns:VisitSchedule_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getVisitSchedule">
+            <soap:operation soapAction="ICON2_Source_VisitSchedule_ws_provider_VisitSchedule_Binder_getVisitSchedule" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="VisitSchedule">
+        <wsdl:port name="ICON2_Source_VisitSchedule_ws_provider_VisitSchedule_Port" binding="tns:ICON2_Source_VisitSchedule_ws_provider_VisitSchedule_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.VisitSchedule.ws.provider:VisitSchedule/ICON2_Source_VisitSchedule_ws_provider_VisitSchedule_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

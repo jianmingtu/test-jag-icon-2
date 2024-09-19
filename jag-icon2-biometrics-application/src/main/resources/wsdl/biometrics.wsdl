@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Biometrics" targetNamespace="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics">
+            <xsd:complexType name="removeTemplate">
+                <xsd:sequence>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="removeTemplateResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="finishEnrollment">
+                <xsd:sequence>
+                    <xsd:element name="issuanceId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="finishEnrollmentResponse">
+                <xsd:sequence>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="deactivate">
+                <xsd:sequence>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="deactivateResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="startSearch">
+                <xsd:sequence>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="activeOnly" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="startSearchResponse">
+                <xsd:sequence>
+                    <xsd:element name="search" nillable="true" type="tns:Search"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Search">
+                <xsd:sequence>
+                    <xsd:element name="id" nillable="true" type="xsd:string"/>
+                    <xsd:element name="url" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiryDate" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="reactivate">
+                <xsd:sequence>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="reactivateResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="finishSearch">
+                <xsd:sequence>
+                    <xsd:element name="searchId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="finishSearchResponse">
+                <xsd:sequence>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="clientId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="activeFlag" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="removeIdentity">
+                <xsd:sequence>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="removeIdentityResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="remove">
+                <xsd:sequence>
+                    <xsd:element name="registrar" nillable="true" type="xsd:string"/>
+                    <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="removeResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="startEnrollment">
+                <xsd:sequence>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="startEnrollmentResponse">
+                <xsd:sequence>
+                    <xsd:element name="issuance" nillable="true" type="tns:Issuance"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Issuance">
+                <xsd:sequence>
+                    <xsd:element name="id" nillable="true" type="xsd:string"/>
+                    <xsd:element name="url" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiryDate" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="move">
+                <xsd:sequence>
+                    <xsd:element name="csNumTo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="credentialRefFrom" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNumFrom" nillable="true" type="xsd:string"/>
+                    <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                    <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="moveResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getDID">
+                <xsd:sequence>
+                    <xsd:element name="idRef" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                    <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getDIDResponse">
+                <xsd:sequence>
+                    <xsd:element name="clientDID" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="reactivate" type="tns:reactivate"/>
+            <xsd:element name="reactivateResponse" type="tns:reactivateResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="removeIdentity" type="tns:removeIdentity"/>
+            <xsd:element name="removeIdentityResponse" type="tns:removeIdentityResponse"/>
+            <xsd:element name="getDID" type="tns:getDID"/>
+            <xsd:element name="getDIDResponse" type="tns:getDIDResponse"/>
+            <xsd:element name="startSearch" type="tns:startSearch"/>
+            <xsd:element name="startSearchResponse" type="tns:startSearchResponse"/>
+            <xsd:element name="startEnrollment" type="tns:startEnrollment"/>
+            <xsd:element name="startEnrollmentResponse" type="tns:startEnrollmentResponse"/>
+            <xsd:element name="remove" type="tns:remove"/>
+            <xsd:element name="removeResponse" type="tns:removeResponse"/>
+            <xsd:element name="move" type="tns:move"/>
+            <xsd:element name="moveResponse" type="tns:moveResponse"/>
+            <xsd:element name="removeTemplate" type="tns:removeTemplate"/>
+            <xsd:element name="removeTemplateResponse" type="tns:removeTemplateResponse"/>
+            <xsd:element name="finishSearch" type="tns:finishSearch"/>
+            <xsd:element name="finishSearchResponse" type="tns:finishSearchResponse"/>
+            <xsd:element name="finishEnrollment" type="tns:finishEnrollment"/>
+            <xsd:element name="finishEnrollmentResponse" type="tns:finishEnrollmentResponse"/>
+            <xsd:element name="deactivate" type="tns:deactivate"/>
+            <xsd:element name="deactivateResponse" type="tns:deactivateResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Biometrics_PortType_reactivateResponse">
+        <wsdl:part name="parameters" element="tns:reactivateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_finishEnrollmentResponse">
+        <wsdl:part name="parameters" element="tns:finishEnrollmentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_getDIDResponse">
+        <wsdl:part name="parameters" element="tns:getDIDResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_remove">
+        <wsdl:part name="parameters" element="tns:remove">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_reactivate">
+        <wsdl:part name="parameters" element="tns:reactivate">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_startSearchResponse">
+        <wsdl:part name="parameters" element="tns:startSearchResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_deactivateResponse">
+        <wsdl:part name="parameters" element="tns:deactivateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_startSearch">
+        <wsdl:part name="parameters" element="tns:startSearch">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_removeTemplateResponse">
+        <wsdl:part name="parameters" element="tns:removeTemplateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_removeTemplate">
+        <wsdl:part name="parameters" element="tns:removeTemplate">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_startEnrollmentResponse">
+        <wsdl:part name="parameters" element="tns:startEnrollmentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_move">
+        <wsdl:part name="parameters" element="tns:move">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_finishEnrollment">
+        <wsdl:part name="parameters" element="tns:finishEnrollment">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_removeIdentityResponse">
+        <wsdl:part name="parameters" element="tns:removeIdentityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_removeResponse">
+        <wsdl:part name="parameters" element="tns:removeResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_removeIdentity">
+        <wsdl:part name="parameters" element="tns:removeIdentity">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_finishSearchResponse">
+        <wsdl:part name="parameters" element="tns:finishSearchResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_getDID">
+        <wsdl:part name="parameters" element="tns:getDID">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_startEnrollment">
+        <wsdl:part name="parameters" element="tns:startEnrollment">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_deactivate">
+        <wsdl:part name="parameters" element="tns:deactivate">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_finishSearch">
+        <wsdl:part name="parameters" element="tns:finishSearch">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Biometrics_PortType_moveResponse">
+        <wsdl:part name="parameters" element="tns:moveResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="Biometrics_PortType">
+        <wsdl:operation name="reactivate">
+            <wsdl:input message="tns:Biometrics_PortType_reactivate">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_reactivateResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeIdentity">
+            <wsdl:input message="tns:Biometrics_PortType_removeIdentity">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_removeIdentityResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDID">
+            <wsdl:input message="tns:Biometrics_PortType_getDID">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_getDIDResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startSearch">
+            <wsdl:input message="tns:Biometrics_PortType_startSearch">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_startSearchResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startEnrollment">
+            <wsdl:input message="tns:Biometrics_PortType_startEnrollment">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_startEnrollmentResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="remove">
+            <wsdl:input message="tns:Biometrics_PortType_remove">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_removeResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="move">
+            <wsdl:input message="tns:Biometrics_PortType_move">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_moveResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeTemplate">
+            <wsdl:input message="tns:Biometrics_PortType_removeTemplate">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_removeTemplateResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishSearch">
+            <wsdl:input message="tns:Biometrics_PortType_finishSearch">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_finishSearchResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishEnrollment">
+            <wsdl:input message="tns:Biometrics_PortType_finishEnrollment">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_finishEnrollmentResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deactivate">
+            <wsdl:input message="tns:Biometrics_PortType_deactivate">
+            </wsdl:input>
+            <wsdl:output message="tns:Biometrics_PortType_deactivateResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder" type="tns:Biometrics_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="reactivate">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_reactivate" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeIdentity">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_removeIdentity" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDID">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_getDID" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startSearch">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_startSearch" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="startEnrollment">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_startEnrollment" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="remove">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_remove" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="move">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_move" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="removeTemplate">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_removeTemplate" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishSearch">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_finishSearch" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="finishEnrollment">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_finishEnrollment" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="deactivate">
+            <soap:operation soapAction="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder_deactivate" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Biometrics">
+        <wsdl:port name="ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Port" binding="tns:ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics/ICON2_Biometrics_Source_Biometrics_ws_provider_Biometrics_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

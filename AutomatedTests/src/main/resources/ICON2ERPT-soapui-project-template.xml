@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="9cb1ffa2-a5ef-4258-b4df-8b730e5d8049" activeEnvironment="Default" name="ICON2ERPT" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="0eaa8285-f5a7-43aa-b525-04b96c620a45" wsaVersion="NONE" name="ICON2_Source_EReporting_ws_provider_EReporting_Binder" type="wsdl" bindingName="{ICON2.Source.EReporting.ws.provider:EReporting}ICON2_Source_EReporting_ws_provider_EReporting_Binder" soapVersion="1_1" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/EReporting.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\EReporting.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\EReporting.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="EReporting" targetNamespace="ICON2.Source.EReporting.ws.provider:EReporting" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.EReporting.ws.provider:EReporting" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.EReporting.ws.provider:EReporting">
+      <xsd:complexType name="getMessage">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getMessageResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getLocations">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setMessageDate">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="setMessageDateResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="submitAnswers">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="submitAnswersResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppointment">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getAppointmentResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recordCompleted">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recordCompletedResponse">
+        <xsd:sequence></xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recordException">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="recordExceptionResponse">
+        <xsd:sequence></xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getQuestions">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getQuestionsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getStatus">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getStatusResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getReportingCmpltInstruction">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getReportingCmpltInstructionResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="submitAnswers" type="tns:submitAnswers"/>
+      <xsd:element name="submitAnswersResponse" type="tns:submitAnswersResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="getMessage" type="tns:getMessage"/>
+      <xsd:element name="getMessageResponse" type="tns:getMessageResponse"/>
+      <xsd:element name="getReportingCmpltInstruction" type="tns:getReportingCmpltInstruction"/>
+      <xsd:element name="getReportingCmpltInstructionResponse" type="tns:getReportingCmpltInstructionResponse"/>
+      <xsd:element name="recordCompleted" type="tns:recordCompleted"/>
+      <xsd:element name="recordCompletedResponse" type="tns:recordCompletedResponse"/>
+      <xsd:element name="getQuestions" type="tns:getQuestions"/>
+      <xsd:element name="getQuestionsResponse" type="tns:getQuestionsResponse"/>
+      <xsd:element name="getAppointment" type="tns:getAppointment"/>
+      <xsd:element name="getAppointmentResponse" type="tns:getAppointmentResponse"/>
+      <xsd:element name="setMessageDate" type="tns:setMessageDate"/>
+      <xsd:element name="setMessageDateResponse" type="tns:setMessageDateResponse"/>
+      <xsd:element name="getStatus" type="tns:getStatus"/>
+      <xsd:element name="getStatusResponse" type="tns:getStatusResponse"/>
+      <xsd:element name="recordException" type="tns:recordException"/>
+      <xsd:element name="recordExceptionResponse" type="tns:recordExceptionResponse"/>
+      <xsd:element name="getLocations" type="tns:getLocations"/>
+      <xsd:element name="getLocationsResponse" type="tns:getLocationsResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="EReporting_PortType_getLocations">
+    <wsdl:part name="parameters" element="tns:getLocations"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getAppointmentResponse">
+    <wsdl:part name="parameters" element="tns:getAppointmentResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getStatus">
+    <wsdl:part name="parameters" element="tns:getStatus"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_setMessageDateResponse">
+    <wsdl:part name="parameters" element="tns:setMessageDateResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_submitAnswers">
+    <wsdl:part name="parameters" element="tns:submitAnswers"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getLocationsResponse">
+    <wsdl:part name="parameters" element="tns:getLocationsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getStatusResponse">
+    <wsdl:part name="parameters" element="tns:getStatusResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_setMessageDate">
+    <wsdl:part name="parameters" element="tns:setMessageDate"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_submitAnswersResponse">
+    <wsdl:part name="parameters" element="tns:submitAnswersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getReportingCmpltInstruction">
+    <wsdl:part name="parameters" element="tns:getReportingCmpltInstruction"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getMessage">
+    <wsdl:part name="parameters" element="tns:getMessage"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getMessageResponse">
+    <wsdl:part name="parameters" element="tns:getMessageResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_recordCompleted">
+    <wsdl:part name="parameters" element="tns:recordCompleted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_recordCompletedResponse">
+    <wsdl:part name="parameters" element="tns:recordCompletedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_recordException">
+    <wsdl:part name="parameters" element="tns:recordException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getAppointment">
+    <wsdl:part name="parameters" element="tns:getAppointment"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getQuestionsResponse">
+    <wsdl:part name="parameters" element="tns:getQuestionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_recordExceptionResponse">
+    <wsdl:part name="parameters" element="tns:recordExceptionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getQuestions">
+    <wsdl:part name="parameters" element="tns:getQuestions"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="EReporting_PortType_getReportingCmpltInstructionResponse">
+    <wsdl:part name="parameters" element="tns:getReportingCmpltInstructionResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EReporting_PortType">
+    <wsdl:operation name="submitAnswers">
+      <wsdl:input message="tns:EReporting_PortType_submitAnswers"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_submitAnswersResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <wsdl:input message="tns:EReporting_PortType_getMessage"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getMessageResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getReportingCmpltInstruction">
+      <wsdl:input message="tns:EReporting_PortType_getReportingCmpltInstruction"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getReportingCmpltInstructionResponse"></wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recordCompleted">
+      <wsdl:input message="tns:EReporting_PortType_recordCompleted"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_recordCompletedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQuestions">
+      <wsdl:input message="tns:EReporting_PortType_getQuestions"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getQuestionsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointment">
+      <wsdl:input message="tns:EReporting_PortType_getAppointment"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getAppointmentResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setMessageDate">
+      <wsdl:input message="tns:EReporting_PortType_setMessageDate"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_setMessageDateResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdl:input message="tns:EReporting_PortType_getStatus"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getStatusResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recordException">
+      <wsdl:input message="tns:EReporting_PortType_recordException"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_recordExceptionResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <wsdl:input message="tns:EReporting_PortType_getLocations"></wsdl:input>
+      <wsdl:output message="tns:EReporting_PortType_getLocationsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_EReporting_ws_provider_EReporting_Binder" type="tns:EReporting_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="submitAnswers">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_submitAnswers" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getMessage">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getMessage" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getReportingCmpltInstruction">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getReportingCmpltInstruction" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="recordCompleted">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordCompleted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getQuestions">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getQuestions" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getAppointment">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getAppointment" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="setMessageDate">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_setMessageDate" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getStatus" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="recordException">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordException" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getLocations" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EReporting">
+    <wsdl:port name="ICON2_Source_EReporting_ws_provider_EReporting_Port" binding="tns:ICON2_Source_EReporting_ws_provider_EReporting_Binder">
+      <soap:address location="{API_HOST_1}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_1}</con:endpoint></con:endpoints><con:operation id="c5d71899-654f-4348-a487-b0543a94fe00" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getAppointment" name="getAppointment" bindingOperationName="getAppointment" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="affe3ea2-af05-4e47-b27d-7bc7c4af5912" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getAppointment>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getAppointment>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getAppointment"/></con:call></con:operation><con:operation id="4825480e-696f-4dde-9fc8-74735e15267e" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getLocations" name="getLocations" bindingOperationName="getLocations" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="deed58a1-d437-427f-81a5-f4d406f53c52" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getLocations>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getLocations>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getLocations"/></con:call></con:operation><con:operation id="e179895e-698a-415b-9325-61d3be48344a" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getMessage" name="getMessage" bindingOperationName="getMessage" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6de48d64-f156-4552-accb-f0e14598b85a" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getMessage>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getMessage>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getMessage"/></con:call></con:operation><con:operation id="44ca5bbc-d53c-45f7-bb4a-149129f653ff" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getQuestions" name="getQuestions" bindingOperationName="getQuestions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ea33b856-1fc9-4d73-9931-d71aaa7afd8c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getQuestions>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getQuestions>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getQuestions"/></con:call></con:operation><con:operation id="36899023-9aa2-4829-b926-09cbae2fcf8d" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getReportingCmpltInstruction" name="getReportingCmpltInstruction" bindingOperationName="getReportingCmpltInstruction" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fcb5f9d4-9119-44f1-b517-682e3e4c3965" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getReportingCmpltInstruction>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getReportingCmpltInstruction>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getReportingCmpltInstruction"/></con:call></con:operation><con:operation id="e87146ee-0c4d-44ba-b12c-a9b73565d956" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getStatus" name="getStatus" bindingOperationName="getStatus" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8a5a96cc-3c18-446f-ac9d-8c4e1d47dd7c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getStatus>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getStatus>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getStatus"/></con:call></con:operation><con:operation id="eb9f654d-b215-4e52-9218-32c1c876846f" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordCompleted" name="recordCompleted" bindingOperationName="recordCompleted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3b10b234-c80e-478b-81dc-7842ea63eb06" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:recordCompleted>\r
+         <XMLString>?</XMLString>\r
+      </icon:recordCompleted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordCompleted"/></con:call></con:operation><con:operation id="0d041c8e-5700-48ac-8a74-b4fd8a974f32" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordException" name="recordException" bindingOperationName="recordException" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="ff4c7042-9202-4d1a-9a4d-02b4a2740d0c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:recordException>\r
+         <XMLString>?</XMLString>\r
+      </icon:recordException>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordException"/></con:call></con:operation><con:operation id="47476bdb-4a4d-49c6-9e60-1046318df388" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_setMessageDate" name="setMessageDate" bindingOperationName="setMessageDate" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="af2de9cb-de3d-44bf-bed5-556a3bbfc457" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:setMessageDate>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:setMessageDate>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_setMessageDate"/></con:call></con:operation><con:operation id="58d78fbe-9c86-4c47-a4ec-1f87d8f9ea0f" isOneWay="false" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_submitAnswers" name="submitAnswers" bindingOperationName="submitAnswers" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1ea5deac-4733-4ea0-9059-ea4bac58dae7" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:submitAnswers>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:submitAnswers>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_EReporting_ws_provider_EReporting_Binder_submitAnswers"/></con:call></con:operation></con:interface><con:testSuite id="5c88e662-1275-4fd0-af5b-b0ee2f0eb080" name="ICON2ERPTTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="04ea2772-ed83-4781-b205-6993c3b135b3" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetLocations" searchProperties="true"><con:settings/><con:testStep type="request" name="getLocations" id="756271a3-2a91-4dcb-b174-768ce967c077"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="getLocations" id="93fefc7f-d6b3-4316-87d1-5fce23426577"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getLocations>
+         <XMLString>
+<![CDATA[
+		<Locations>
+			<csNum>05914460</csNum>
+		</Locations>
+]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>?</UserTokenString>
+      </icon:getLocations>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="480b3ec2-a007-4ebc-b6cd-a4afabb4ecc9"/><con:assertion type="Response SLA Assertion" id="5ed3fae0-4383-4c0b-8bf7-fcfddc342e97" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="bbbda4ec-192f-4a49-9113-17da08bf2a69" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="3e2f0f6e-9e3e-4797-bc5b-b2ed4744cfb5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="7e2020d8-82ac-4af0-bc43-57042eca81d3" name="Contains"><con:configuration><token>KAML</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c99ecc82-a69b-4426-98ca-2303550bf30d" name="Contains 1"><con:configuration><token>05914460</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0446bbb5-0ba9-447c-9387-605d33f3386d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SetMessageDate" searchProperties="true"><con:settings/><con:testStep type="request" name="setMessageDate" id="158444e1-47b7-4c78-a581-9ff8c47d2bc1"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="setMessageDate" id="293eb1fd-2a66-4081-880d-59c6ebdc6c90"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:setMessageDate>
+         <XMLString>
+           <![CDATA[
+             <AppointmentMessage>
+	       <csNum>05902226</csNum>
+	     </AppointmentMessage>
+           ]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>
+           <![CDATA[
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           ]]]]>><![CDATA[
+         </UserTokenString>         
+      </icon:setMessageDate>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f7ef7653-3ed6-4e59-8406-4db8fef1912b"/><con:assertion type="Invalid HTTP Status Codes" id="4ff349c2-bca8-49d4-bfe8-9a433e3ef49e" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 500, 501, 403</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="9169d0be-dda0-40e3-9bd9-62c02c7ac6f5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="b5549dd7-3e32-4175-afe8-a17c11ac25e0" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="dfc10f3c-c8d2-4407-9e16-7ad7b6d88375" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SubmitAnswers" searchProperties="true"><con:settings/><con:testStep type="request" name="submitAnswers" id="2c0c5e10-fddb-4a2f-8569-657d5b676fee"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="submitAnswers" id="c78889c6-88f1-4d7c-ac49-b74e478f097f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:submitAnswers>
+         <XMLString><![CDATA[
+           <EReport>
+	       <csNum>05902226</csNum>
+	       <eventId></eventId>
+	       <deviceNo>00002-A</deviceNo>
+           </EReport>
+         ]]]]>><![CDATA[</XMLString>
+         <UserTokenString><![CDATA[
+           
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           
+         ]]]]>><![CDATA[</UserTokenString>
+      </icon:submitAnswers>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a1519305-2ea5-483e-b361-019da3a1da50"/><con:assertion type="Invalid HTTP Status Codes" id="36811b67-4223-4f76-84c9-23b12a5beeb4" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 501, 503</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="05f1d152-4a15-45a9-800e-156c26d22f2b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="e8f906ac-a51a-4414-b325-f11d931d125d" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="12a108c3-c33f-4d24-8b8a-ffe3cb2b7227" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetMessage" searchProperties="true"><con:settings/><con:testStep type="request" name="getMessage" id="61315713-2ddd-4f91-aadb-6d170d5097ba"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="getMessage" id="254c240c-da70-4632-aaf2-1c3ae6a4869f"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getMessage>
+         <XMLString>
+           <![CDATA[
+             <AppointmentMessage>
+	       <csNum>05902226</csNum>
+	     </AppointmentMessage>
+           ]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>
+           <![CDATA[
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           ]]]]>><![CDATA[
+         </UserTokenString>         
+      </icon:getMessage>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="b1832c4b-10b7-4db4-85be-6ecab8741c86"/><con:assertion type="Valid HTTP Status Codes" id="bdc696e5-5bf6-428b-96c5-4ced1133dc36" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="00f467bc-a0fe-4e66-a77a-fbc6bb03f89e" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="1caa30cd-ff6a-44a7-81d6-e0609556383f" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0f603c02-2e53-4c2b-9dd4-81d09005bc86" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RecordCompleted" searchProperties="true"><con:settings/><con:testStep type="request" name="recordCompleted" id="e8e85676-67c8-428b-b887-517d602276eb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="recordCompleted" id="2ddbadfd-c9e7-4673-bc8f-2b3777c23540"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:recordCompleted>
+         <XMLString>
+           <![CDATA[
+          <ClientLogNotification>
+	       <csNum>05902226</csNum>
+	       <eventId>20999</eventId>
+	       <eventState>10</eventState>
+	       <deviceNo>00002-A</deviceNo>
+	       <message>soapuicall</message>
+	       <messageType>GEN</messageType>
+	       <reauthTransactionNo>XXXXX</reauthTransactionNo>
+	     </ClientLogNotification>
+           ]]]]>><![CDATA[
+         </XMLString>
+      </icon:recordCompleted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="7043cf4d-a3f0-4499-8d79-0d6bc2338ba7"/><con:assertion type="Invalid HTTP Status Codes" id="2effc127-d8ed-4227-931f-a384993ac24d" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="58ab0f6c-3c19-42a4-9927-defdf538ce69" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="7b55aee8-8af9-4bf9-ade0-a44e0ae14d7e" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="0d7e4114-fbb3-47bd-ba24-552ed6d83329" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="RecordException" searchProperties="true"><con:settings/><con:testStep type="request" name="recordException" id="7a1343f7-5891-431f-a924-5614d9491063"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="recordException" id="809b3c76-7aef-4f02-bcc8-5d2f95e10d07"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:recordException>
+         <XMLString>
+           <![CDATA[
+          <ClientLogNotification>
+	       <csNum>05902226</csNum>
+	       <eventId>20999</eventId>
+	       <eventState>10</eventState>
+	       <deviceNo>00002-A</deviceNo>
+	       <message>soapuicall</message>
+	       <messageType>GEN</messageType>
+	       <reauthTransactionNo>XXXXX</reauthTransactionNo>
+	     </ClientLogNotification>
+           ]]]]>><![CDATA[         
+         </XMLString>
+      </icon:recordException>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3266f483-d702-4c2d-9341-a0863ab72af6"/><con:assertion type="Valid HTTP Status Codes" id="2b7bd5fd-037e-45c9-95b7-224f202fd721" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="57996b3e-43ac-4cb9-8246-4ff2b931cf48" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="09a41085-7bc2-4e57-9d40-deeb1c44c5d8" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="367b4929-157d-4a15-b049-fe6481feff25" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetQuestions" searchProperties="true"><con:settings/><con:testStep type="request" name="getQuestions" id="16b16782-f2c3-4dea-9a2b-cc77b64e681c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="getQuestions" id="415c5409-65f7-4b17-befa-5c629ff18f10"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getQuestions>
+         <XMLString>
+           <![CDATA[
+             <EReport>
+	       <csNum>05902226</csNum>
+	     </EReport>
+           ]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>
+           <![CDATA[
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           ]]]]>><![CDATA[
+         </UserTokenString>
+      </icon:getQuestions>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="264e047e-89d5-41b7-b4f0-8f69ba61f30e"/><con:assertion type="Valid HTTP Status Codes" id="c33a6421-2f75-4896-86f7-64a3470b6bea" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="7e5365a0-a7ed-4da1-a74f-f7eb5a67e835" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="cfdb4099-b372-43ad-8a6c-5ddfc83242d0" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="420eefcc-3c5c-48e2-a6fc-f4979d95e398" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetStatus" searchProperties="true"><con:settings/><con:testStep type="request" name="getStatus" id="ffff0485-a23d-4b28-8b09-229c2179b111"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="getStatus" id="1bf3e7c8-7736-485d-86dd-91567e9272f3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getStatus>
+         <XMLString>
+           <![CDATA[
+             <Status>
+	       <csNum>05902226</csNum>
+	     </Status>
+           ]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>
+           <![CDATA[
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           ]]]]>><![CDATA[
+         </UserTokenString>         
+      </icon:getStatus>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a656dd51-d151-430d-a966-f6ea08499af2"/><con:assertion type="Valid HTTP Status Codes" id="af2e7878-79bd-493a-ad7c-5a6ae50c1db2" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="e0084536-40bb-4e46-804b-8c92a22ec197" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="eaa64cd0-9ad5-4c33-8776-efcf6900650d" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="c1f12906-7700-4ec2-a3a2-37e66e933af8" name="Contains"><con:configuration><token>05902226</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="ae5f5372-d3b1-48ae-a050-bb4111a302e5" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetReportingCmpltInstruction" searchProperties="true"><con:settings/><con:testStep type="request" name="getReportingCmpltInstruction" id="c3bdef70-c161-4253-afca-5a7899d8bc81"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_EReporting_ws_provider_EReporting_Binder</con:interface><con:operation>getAppointment</con:operation><con:request name="getReportingCmpltInstruction" id="47701ee2-f987-420c-aa47-b104eb3c099b"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.EReporting.ws.provider:EReporting">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getReportingCmpltInstruction>
+         <XMLString>
+           <![CDATA[
+            <ReportingCmpltInstruction>
+	       <csNum>05902226</csNum>
+            </ReportingCmpltInstruction>
+           ]]]]>><![CDATA[
+         </XMLString>
+         <UserTokenString>
+           <![CDATA[
+	     <UserToken>
+			<AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+			<BiometricsSignature>xqJ8+z9ZRn5jjZrnWhdOOWL7vCPXwXJbm6+3oprxYfH/cou/6as=</BiometricsSignature>
+			<CSNumber>05902226</CSNumber>
+	     </UserToken>		
+           ]]]]>><![CDATA[
+         </UserTokenString>         
+      </icon:getReportingCmpltInstruction>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="75674a4a-50b3-4acf-9244-fb198bd9f097"/><con:assertion type="Invalid HTTP Status Codes" id="5083043f-b61c-4a01-a161-8747346686b4" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="15008c1d-08f9-4495-9080-afd9a7544f2d" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="c010571d-806e-4cee-b38d-d03c3b09033b" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8368655b-407a-45ed-803d-6ea7aa9a5a88" name="Contains"><con:configuration><token>05902226</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

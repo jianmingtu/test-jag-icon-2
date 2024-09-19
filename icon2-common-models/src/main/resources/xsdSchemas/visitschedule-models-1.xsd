@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="ICON2.Source.VisitSchedule.ws.provider:VisitSchedule">
+
+    <xsd:element name="getVisitSchedule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getVisitScheduleDocument">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="VisitSchedule" nillable="true" type="tns:visitSchedule"/>
+                <xsd:element name="UserToken" nillable="true" type="tns:userToken"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="visitSchedule">
+        <xsd:sequence>
+            <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+            <xsd:element name="VisitScheduleDetails" nillable="true" maxOccurs="unbounded" type="tns:visitScheduleDetails"/>
+            <xsd:element name="Row" nillable="true" type="tns:row"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="row">
+        <xsd:sequence>
+            <xsd:element name="start" nillable="true" type="xsd:string"/>
+            <xsd:element name="end" nillable="true" type="xsd:string"/>
+            <xsd:element name="total" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="visitScheduleDetails">
+        <xsd:sequence>
+            <xsd:element name="weekDay" nillable="true" type="xsd:string"/>
+            <xsd:element name="date" nillable="true" type="xsd:string"/>
+            <xsd:element name="startTime" nillable="true" type="xsd:string"/>
+            <xsd:element name="endTime" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:complexType name="userToken">
+        <xsd:sequence>
+            <xsd:element name="RemoteClientBrowserType" nillable="true" type="xsd:string"/>
+            <xsd:element name="RemoteClientHostName" nillable="true" type="xsd:string"/>
+            <xsd:element name="RemoteClientIPAddress" nillable="true" type="xsd:string"/>
+            <xsd:element name="UserIdentifier" nillable="true" type="xsd:string"/>
+            <xsd:element name="AuthoritativePartyIdentifier" nillable="true" type="xsd:string"/>
+            <xsd:element name="BiometricsSignature" nillable="true" type="xsd:string"/>
+            <xsd:element name="CSNumber" nillable="true" type="xsd:string"/>
+            <xsd:element name="SiteMinderSessionID" nillable="true" type="xsd:string"/>
+            <xsd:element name="SiteMinderTransactionID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="Error">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="GetVisitScheduleResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>
+

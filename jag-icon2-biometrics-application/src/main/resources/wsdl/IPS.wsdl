@@ -1,0 +1,529 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.bceid.ca/webservices/IPS/V3/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.bceid.ca/webservices/IPS/V3/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.bceid.ca/webservices/IPS/V3/">
+            <s:element name="Marco">
+                <s:complexType/>
+            </s:element>
+            <s:element name="MarcoResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="MarcoResult" type="s:string"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="CreateIdRef">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:CreateIdRefRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="CreateIdRefRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="RequestBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="onlineServiceId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserGuid" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="BCeIDAccountTypeCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="Individual"/>
+                    <s:enumeration value="VerifiedIndividual"/>
+                    <s:enumeration value="Business"/>
+                    <s:enumeration value="Internal"/>
+                    <s:enumeration value="LDB"/>
+                    <s:enumeration value="EDS"/>
+                    <s:enumeration value="THS"/>
+                    <s:enumeration value="CORNET"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="CreateIdRefResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="CreateIdRefResult" type="tns:CreateIdRefResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="CreateIdRefResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="ResponseBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="1" name="Code" type="tns:ResponseCode"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="FailureCode" type="tns:FailureCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="Message" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="ResponseCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Success"/>
+                    <s:enumeration value="Failed"/>
+                    <s:enumeration value="UnknownError"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:simpleType name="FailureCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="NoResults"/>
+                    <s:enumeration value="ExpectedResults"/>
+                    <s:enumeration value="ArgumentException"/>
+                    <s:enumeration value="AuthenticationException"/>
+                    <s:enumeration value="ValidationException"/>
+                    <s:enumeration value="AuthorizationException"/>
+                    <s:enumeration value="Timeout"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="GetIdRef">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:GetIdRefRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetIdRefRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="GetIdRefResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="GetIdRefResult" type="tns:GetIdRefResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetIdRefResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="GetDID">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:GetDIDRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetDIDRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="GetDIDResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="GetDIDResult" type="tns:GetDIDResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="GetDIDResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="Link">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:LinkRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="LinkRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="LinkResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="LinkResult" type="tns:LinkResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="LinkResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="Unlink">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:UnlinkRequest"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="issuance" type="tns:IssuanceToken"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="UnlinkRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="IssuanceToken">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="issuanceID" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="enrollmentURL" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="expiry" type="s:dateTime"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="UnlinkResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="UnlinkResult" type="tns:UnlinkResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="UnlinkResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="Replace">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:ReplaceRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ReplaceRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="ReplaceResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="ReplaceResult" type="tns:ReplaceResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ReplaceResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="Destroy">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:DestroyRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DestroyRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="DestroyResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="DestroyResult" type="tns:DestroyResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DestroyResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="MarcoSoapOut">
+        <wsdl:part name="parameters" element="tns:MarcoResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateIdRefSoapOut">
+        <wsdl:part name="parameters" element="tns:CreateIdRefResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnlinkSoapIn">
+        <wsdl:part name="parameters" element="tns:Unlink"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DestroySoapOut">
+        <wsdl:part name="parameters" element="tns:DestroyResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDIDSoapOut">
+        <wsdl:part name="parameters" element="tns:GetDIDResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetDIDSoapIn">
+        <wsdl:part name="parameters" element="tns:GetDID"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="LinkSoapOut">
+        <wsdl:part name="parameters" element="tns:LinkResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="UnlinkSoapOut">
+        <wsdl:part name="parameters" element="tns:UnlinkResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CreateIdRefSoapIn">
+        <wsdl:part name="parameters" element="tns:CreateIdRef"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetIdRefSoapIn">
+        <wsdl:part name="parameters" element="tns:GetIdRef"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReplaceSoapIn">
+        <wsdl:part name="parameters" element="tns:Replace"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="LinkSoapIn">
+        <wsdl:part name="parameters" element="tns:Link"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="GetIdRefSoapOut">
+        <wsdl:part name="parameters" element="tns:GetIdRefResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MarcoSoapIn">
+        <wsdl:part name="parameters" element="tns:Marco"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DestroySoapIn">
+        <wsdl:part name="parameters" element="tns:Destroy"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReplaceSoapOut">
+        <wsdl:part name="parameters" element="tns:ReplaceResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="IPSServiceSoap">
+        <wsdl:operation name="Marco">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">A very simple operation to test the connectivity.</wsdl:documentation>
+            <wsdl:input message="tns:MarcoSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:MarcoSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateIdRef">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation creates a new ID Ref given a DID. If the DID was already registered with IPS, this operation will return an error. </wsdl:documentation>
+            <wsdl:input message="tns:CreateIdRefSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:CreateIdRefSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetIdRef">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation will return an Id Ref given a DID. If the DID is not found, this operation will return an error. </wsdl:documentation>
+            <wsdl:input message="tns:GetIdRefSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:GetIdRefSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDID">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation will return an DID given an Id Ref. If a Id Ref or DID is not found this operation will return an error. If a DID is being returned, the Id Ref is invalidated. </wsdl:documentation>
+            <wsdl:input message="tns:GetDIDSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:GetDIDSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Link">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation will link a given DID and an Id Ref. If the Id Ref is invalid this operation will return an error. If the DID is already linked, this opereation will return an error. </wsdl:documentation>
+            <wsdl:input message="tns:LinkSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:LinkSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Unlink">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation will unlink a given DID. If the DID is not found, this operation will return an error. </wsdl:documentation>
+            <wsdl:input message="tns:UnlinkSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:UnlinkSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Replace">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> The operation will unlink a given DID and link it with the given Id Ref. If the DID is not previously linked, this operation will return an error. If the Id Ref is invalid this operation will return an error. The Id Ref is invalidated when this operation completes successfully. </wsdl:documentation>
+            <wsdl:input message="tns:ReplaceSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:ReplaceSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Destroy">
+            <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"> This operation will invalidate the given Id Ref. If the Id Ref is not valid before the operation is called, this operation will return an error. </wsdl:documentation>
+            <wsdl:input message="tns:DestroySoapIn"> </wsdl:input>
+            <wsdl:output message="tns:DestroySoapOut"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="IPSServiceSoap12" type="tns:IPSServiceSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Marco">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Marco" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateIdRef">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/CreateIdRef" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetIdRef">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/GetIdRef" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDID">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/GetDID" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Link">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Link" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Unlink">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Unlink" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Replace">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Replace" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Destroy">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Destroy" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="IPSServiceSoap" type="tns:IPSServiceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="Marco">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Marco" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CreateIdRef">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/CreateIdRef" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetIdRef">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/GetIdRef" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="GetDID">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/GetDID" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Link">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Link" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Unlink">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Unlink" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Replace">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Replace" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Destroy">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IPS/V3/Destroy" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="IPSService">
+        <wsdl:port name="IPSServiceSoap12" binding="tns:IPSServiceSoap12">
+            <soap12:address location="http://gws1.systestv2.bceid.ca/webservices/IPS/V3/Service.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="IPSServiceSoap" binding="tns:IPSServiceSoap">
+            <soap:address location="http://gws1.systestv2.bceid.ca/webservices/IPS/V3/Service.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

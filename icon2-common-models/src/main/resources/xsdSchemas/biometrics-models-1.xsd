@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="http://brooks/ICON2_Biometrics.Source.Biometrics.ws.provider:Biometrics">
+
+    <xsd:element name="removeTemplate">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="removeTemplateResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="Error">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="finishEnrollment">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="issuanceId" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="finishEnrollmentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="deactivate">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="deactivateResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="startSearch">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                <xsd:element name="activeOnly" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="startSearchResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="search" nillable="true" type="tns:Search"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Search">
+        <xsd:sequence>
+            <xsd:element name="id" nillable="true" type="xsd:string"/>
+            <xsd:element name="url" nillable="true" type="xsd:string"/>
+            <xsd:element name="expiryDate" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="reactivate">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="reactivateResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="finishSearch">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="searchId" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="finishSearchResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="clientId" nillable="true" type="xsd:string"/>
+                <xsd:element name="activeFlag" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="removeIdentity">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="removeIdentityResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="remove">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="registrar" nillable="true" type="xsd:string"/>
+                <xsd:element name="credentialRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="removeResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="startEnrollment">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="startEnrollmentResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="issuance" nillable="true" type="tns:Issuance"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Issuance">
+        <xsd:sequence>
+            <xsd:element name="id" nillable="true" type="xsd:string"/>
+            <xsd:element name="url" nillable="true" type="xsd:string"/>
+            <xsd:element name="expiryDate" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="move">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="csNumTo" nillable="true" type="xsd:string"/>
+                <xsd:element name="credentialRefFrom" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+                <xsd:element name="csNumFrom" nillable="true" type="xsd:string"/>
+                <xsd:element name="issuanceID" nillable="true" type="xsd:string"/>
+                <xsd:element name="enrollmentURL" nillable="true" type="xsd:string"/>
+                <xsd:element name="expiry" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="moveResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getDID">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="idRef" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorType" nillable="true" type="xsd:string"/>
+                <xsd:element name="requestorUserId" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="getDIDResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="clientDID" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+</xsd:schema>
+

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="PackageInfo" targetNamespace="ICON2.Source.Version.ws.provider:PackageInfo" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Version.ws.provider:PackageInfo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.Version.ws.provider:PackageInfo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Version.ws.provider:PackageInfo">
+            <xsd:complexType name="getPackageInfo">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getPackageInfoResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getPackageInfo" type="tns:getPackageInfo"/>
+            <xsd:element name="getPackageInfoResponse" type="tns:getPackageInfoResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="PackageInfo_PortType_getPackageInfo">
+        <wsdl:part name="parameters" element="tns:getPackageInfo">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="PackageInfo_PortType_getPackageInfoResponse">
+        <wsdl:part name="parameters" element="tns:getPackageInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="PackageInfo_PortType">
+        <wsdl:operation name="getPackageInfo">
+            <wsdl:input message="tns:PackageInfo_PortType_getPackageInfo">
+            </wsdl:input>
+            <wsdl:output message="tns:PackageInfo_PortType_getPackageInfoResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_Version_ws_provider_PackageInfo_Binder" type="tns:PackageInfo_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getPackageInfo">
+            <soap:operation soapAction="ICON2_Source_Version_ws_provider_PackageInfo_Binder_getPackageInfo" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="PackageInfo">
+        <wsdl:port name="ICON2_Source_Version_ws_provider_PackageInfo_Port" binding="tns:ICON2_Source_Version_ws_provider_PackageInfo_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.Version.ws.provider:PackageInfo/ICON2_Source_Version_ws_provider_PackageInfo_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="AuthAuth" targetNamespace="ICON2.Source.Authorization.ws.provider:AuthAuth" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Authorization.ws.provider:AuthAuth" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.Authorization.ws.provider:AuthAuth" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Authorization.ws.provider:AuthAuth">
+            <xsd:complexType name="getUserInfo">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getUserInfoResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getDeviceInfo">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getDeviceInfoResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHasFunctionalAbility">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getHasFunctionalAbilityResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getPreAuthorizeClient">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getPreAuthorizeClientResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="getHasFunctionalAbility" type="tns:getHasFunctionalAbility"/>
+            <xsd:element name="getHasFunctionalAbilityResponse" type="tns:getHasFunctionalAbilityResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="getDeviceInfo" type="tns:getDeviceInfo"/>
+            <xsd:element name="getDeviceInfoResponse" type="tns:getDeviceInfoResponse"/>
+            <xsd:element name="getPreAuthorizeClient" type="tns:getPreAuthorizeClient"/>
+            <xsd:element name="getPreAuthorizeClientResponse" type="tns:getPreAuthorizeClientResponse"/>
+            <xsd:element name="getUserInfo" type="tns:getUserInfo"/>
+            <xsd:element name="getUserInfoResponse" type="tns:getUserInfoResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="AuthAuth_PortType_getUserInfo">
+        <wsdl:part name="parameters" element="tns:getUserInfo">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getPreAuthorizeClientResponse">
+        <wsdl:part name="parameters" element="tns:getPreAuthorizeClientResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getUserInfoResponse">
+        <wsdl:part name="parameters" element="tns:getUserInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getPreAuthorizeClient">
+        <wsdl:part name="parameters" element="tns:getPreAuthorizeClient">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getDeviceInfoResponse">
+        <wsdl:part name="parameters" element="tns:getDeviceInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getHasFunctionalAbilityResponse">
+        <wsdl:part name="parameters" element="tns:getHasFunctionalAbilityResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getDeviceInfo">
+        <wsdl:part name="parameters" element="tns:getDeviceInfo">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="AuthAuth_PortType_getHasFunctionalAbility">
+        <wsdl:part name="parameters" element="tns:getHasFunctionalAbility">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="AuthAuth_PortType">
+        <wsdl:operation name="getHasFunctionalAbility">
+            <wsdl:input message="tns:AuthAuth_PortType_getHasFunctionalAbility">
+            </wsdl:input>
+            <wsdl:output message="tns:AuthAuth_PortType_getHasFunctionalAbilityResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDeviceInfo">
+            <wsdl:input message="tns:AuthAuth_PortType_getDeviceInfo">
+            </wsdl:input>
+            <wsdl:output message="tns:AuthAuth_PortType_getDeviceInfoResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPreAuthorizeClient">
+            <wsdl:input message="tns:AuthAuth_PortType_getPreAuthorizeClient">
+            </wsdl:input>
+            <wsdl:output message="tns:AuthAuth_PortType_getPreAuthorizeClientResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUserInfo">
+            <wsdl:input message="tns:AuthAuth_PortType_getUserInfo">
+            </wsdl:input>
+            <wsdl:output message="tns:AuthAuth_PortType_getUserInfoResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder" type="tns:AuthAuth_PortType">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getHasFunctionalAbility">
+            <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getHasFunctionalAbility" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap12:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getDeviceInfo">
+            <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getDeviceInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap12:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getPreAuthorizeClient">
+            <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getPreAuthorizeClient" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap12:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getUserInfo">
+            <soap12:operation soapAction="ICON2_Source_Authorization_ws_provider_AuthAuth_Binder_getUserInfo" style="document"/>
+            <wsdl:input>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap12:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="AuthAuth">
+        <wsdl:port name="ICON2_Source_Authorization_ws_provider_AuthAuth_Port" binding="tns:ICON2_Source_Authorization_ws_provider_AuthAuth_Binder">
+            <soap12:address location="http://reeks.bcgov:5556/ws/ICON2.Source.Authorization.ws.provider:AuthAuth/ICON2_Source_Authorization_ws_provider_AuthAuth_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,310 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema targetNamespace="ICON2.Source.Audit.ws:Record" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns:tns="ICON2.Source.Audit.ws:Record">
+
+    <xsd:element name="HomeScreenAccessed">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="HomeScreen" nillable="true" type="tns:HomeScreen"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="HomeScreen">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Base">
+        <xsd:sequence>
+            <xsd:element name="sessionID" nillable="true" type="xsd:string"/>
+            <xsd:element name="csNumber" nillable="true" type="xsd:string"/>
+            <xsd:element name="deviceNO" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="HomeScreenAccessedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Status">
+        <xsd:sequence>
+            <xsd:element name="Success" type="xsd:boolean"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="Error">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ReauthenticationFailed">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Reauthentication">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+            <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+            <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="ReauthenticationFailedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ReauthenticationSucceeded">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="ReauthenticationSucceededResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+
+    <xsd:element name="eServiceAccessed">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="eService" nillable="true" type="tns:eService"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="eService">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="eServiceAccessedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="eReportAnswersSubmitted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="eReportAnswers" nillable="true" type="tns:eReportAnswers"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="eReportAnswers">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="eReportAnswersSubmittedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="LogoutExcecuted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Logout" nillable="true" type="tns:Logout"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Logout">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="systemGenerated" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="LogoutExcecutedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="SessionTimeoutExecuted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="SessionTimeout" nillable="true" type="tns:SessionTimeout"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="SessionTimeout">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="SessionTimeoutExecutedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="HealthServiceRequestSubmitted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="HealthServiceRequest" nillable="true" type="tns:HealthServiceRequest"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="HealthServiceRequest">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="HealthServiceRequestID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="HealthServiceRequestSubmittedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="PrimaryAuthenticationCompleted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="PrimaryAuthentication" nillable="true" type="tns:PrimaryAuthentication"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="PrimaryAuthentication">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+            <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="PrimaryAuthenticationCompletedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="IdleTimeoutExecuted">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="IdleTimeout" nillable="true" type="tns:IdleTimeout"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="IdleTimeout">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="IdleTimeoutExecutedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="eServiceFunctionAccessed">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="eServiceFunction" nillable="true" type="tns:eServiceFunction"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="eServiceFunction">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFunctionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="eServiceFunctionAccessedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="MessageAccessed">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Message" nillable="true" type="tns:Message"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:complexType name="Message">
+        <xsd:sequence>
+            <xsd:element name="Base" nillable="true" type="tns:Base"/>
+            <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+            <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+    <xsd:element name="MessageAccessedResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="Status" nillable="true" type="tns:Status"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

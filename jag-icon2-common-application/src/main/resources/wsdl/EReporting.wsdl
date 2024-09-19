@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EReporting" targetNamespace="ICON2.Source.EReporting.ws.provider:EReporting" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.EReporting.ws.provider:EReporting" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.EReporting.ws.provider:EReporting" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.EReporting.ws.provider:EReporting">
+            <xsd:complexType name="getMessage">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getMessageResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getLocations">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getLocationsResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setMessageDate">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setMessageDateResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="submitAnswers">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="submitAnswersResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getAppointment">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getAppointmentResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="recordCompleted">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="recordCompletedResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="recordException">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="recordExceptionResponse">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getQuestions">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getQuestionsResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getStatus">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getStatusResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getReportingCmpltInstruction">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                    <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getReportingCmpltInstructionResponse">
+                <xsd:sequence>
+                    <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="submitAnswers" type="tns:submitAnswers"/>
+            <xsd:element name="submitAnswersResponse" type="tns:submitAnswersResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="getMessage" type="tns:getMessage"/>
+            <xsd:element name="getMessageResponse" type="tns:getMessageResponse"/>
+            <xsd:element name="getReportingCmpltInstruction" type="tns:getReportingCmpltInstruction"/>
+            <xsd:element name="getReportingCmpltInstructionResponse" type="tns:getReportingCmpltInstructionResponse"/>
+            <xsd:element name="recordCompleted" type="tns:recordCompleted"/>
+            <xsd:element name="recordCompletedResponse" type="tns:recordCompletedResponse"/>
+            <xsd:element name="getQuestions" type="tns:getQuestions"/>
+            <xsd:element name="getQuestionsResponse" type="tns:getQuestionsResponse"/>
+            <xsd:element name="getAppointment" type="tns:getAppointment"/>
+            <xsd:element name="getAppointmentResponse" type="tns:getAppointmentResponse"/>
+            <xsd:element name="setMessageDate" type="tns:setMessageDate"/>
+            <xsd:element name="setMessageDateResponse" type="tns:setMessageDateResponse"/>
+            <xsd:element name="getStatus" type="tns:getStatus"/>
+            <xsd:element name="getStatusResponse" type="tns:getStatusResponse"/>
+            <xsd:element name="recordException" type="tns:recordException"/>
+            <xsd:element name="recordExceptionResponse" type="tns:recordExceptionResponse"/>
+            <xsd:element name="getLocations" type="tns:getLocations"/>
+            <xsd:element name="getLocationsResponse" type="tns:getLocationsResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="EReporting_PortType_getLocations">
+        <wsdl:part name="parameters" element="tns:getLocations">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getAppointmentResponse">
+        <wsdl:part name="parameters" element="tns:getAppointmentResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getStatus">
+        <wsdl:part name="parameters" element="tns:getStatus">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_setMessageDateResponse">
+        <wsdl:part name="parameters" element="tns:setMessageDateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_submitAnswers">
+        <wsdl:part name="parameters" element="tns:submitAnswers">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getLocationsResponse">
+        <wsdl:part name="parameters" element="tns:getLocationsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getStatusResponse">
+        <wsdl:part name="parameters" element="tns:getStatusResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_setMessageDate">
+        <wsdl:part name="parameters" element="tns:setMessageDate">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_submitAnswersResponse">
+        <wsdl:part name="parameters" element="tns:submitAnswersResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getReportingCmpltInstruction">
+        <wsdl:part name="parameters" element="tns:getReportingCmpltInstruction">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getMessage">
+        <wsdl:part name="parameters" element="tns:getMessage">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getMessageResponse">
+        <wsdl:part name="parameters" element="tns:getMessageResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_recordCompleted">
+        <wsdl:part name="parameters" element="tns:recordCompleted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_recordCompletedResponse">
+        <wsdl:part name="parameters" element="tns:recordCompletedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_recordException">
+        <wsdl:part name="parameters" element="tns:recordException">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getAppointment">
+        <wsdl:part name="parameters" element="tns:getAppointment">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getQuestionsResponse">
+        <wsdl:part name="parameters" element="tns:getQuestionsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_recordExceptionResponse">
+        <wsdl:part name="parameters" element="tns:recordExceptionResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getQuestions">
+        <wsdl:part name="parameters" element="tns:getQuestions">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="EReporting_PortType_getReportingCmpltInstructionResponse">
+        <wsdl:part name="parameters" element="tns:getReportingCmpltInstructionResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="EReporting_PortType">
+        <wsdl:operation name="submitAnswers">
+            <wsdl:input message="tns:EReporting_PortType_submitAnswers">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_submitAnswersResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMessage">
+            <wsdl:input message="tns:EReporting_PortType_getMessage">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getMessageResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getReportingCmpltInstruction">
+            <wsdl:input message="tns:EReporting_PortType_getReportingCmpltInstruction">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getReportingCmpltInstructionResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="recordCompleted">
+            <wsdl:input message="tns:EReporting_PortType_recordCompleted">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_recordCompletedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getQuestions">
+            <wsdl:input message="tns:EReporting_PortType_getQuestions">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getQuestionsResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAppointment">
+            <wsdl:input message="tns:EReporting_PortType_getAppointment">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getAppointmentResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageDate">
+            <wsdl:input message="tns:EReporting_PortType_setMessageDate">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_setMessageDateResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getStatus">
+            <wsdl:input message="tns:EReporting_PortType_getStatus">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getStatusResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="recordException">
+            <wsdl:input message="tns:EReporting_PortType_recordException">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_recordExceptionResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLocations">
+            <wsdl:input message="tns:EReporting_PortType_getLocations">
+            </wsdl:input>
+            <wsdl:output message="tns:EReporting_PortType_getLocationsResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_EReporting_ws_provider_EReporting_Binder" type="tns:EReporting_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submitAnswers">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_submitAnswers" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getMessage">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getMessage" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getReportingCmpltInstruction">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getReportingCmpltInstruction" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="recordCompleted">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordCompleted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getQuestions">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getQuestions" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAppointment">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getAppointment" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setMessageDate">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_setMessageDate" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getStatus">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getStatus" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="recordException">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_recordException" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getLocations">
+            <soap:operation soapAction="ICON2_Source_EReporting_ws_provider_EReporting_Binder_getLocations" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="EReporting">
+        <wsdl:port name="ICON2_Source_EReporting_ws_provider_EReporting_Port" binding="tns:ICON2_Source_EReporting_ws_provider_EReporting_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.EReporting.ws.provider:EReporting/ICON2_Source_EReporting_ws_provider_EReporting_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Audit" targetNamespace="ICON2.Source.Audit.ws:Record" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Audit.ws:Record" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema targetNamespace="ICON2.Source.Audit.ws:Record" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="ICON2.Source.Audit.ws:Record">
+            <xsd:complexType name="HomeScreenAccessed">
+                <xsd:sequence>
+                    <xsd:element name="HomeScreen" nillable="true" type="tns:HomeScreen"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HomeScreen">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Base">
+                <xsd:sequence>
+                    <xsd:element name="sessionID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNumber" nillable="true" type="xsd:string"/>
+                    <xsd:element name="deviceNO" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HomeScreenAccessedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Status">
+                <xsd:sequence>
+                    <xsd:element name="Success" type="xsd:boolean"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReauthenticationFailed">
+                <xsd:sequence>
+                    <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Reauthentication">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReauthenticationFailedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReauthenticationSucceeded">
+                <xsd:sequence>
+                    <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="ReauthenticationSucceededResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eServiceAccessed">
+                <xsd:sequence>
+                    <xsd:element name="eService" nillable="true" type="tns:eService"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eService">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eServiceAccessedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eReportAnswersSubmitted">
+                <xsd:sequence>
+                    <xsd:element name="eReportAnswers" nillable="true" type="tns:eReportAnswers"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eReportAnswers">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eReportAnswersSubmittedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="LogoutExcecuted">
+                <xsd:sequence>
+                    <xsd:element name="Logout" nillable="true" type="tns:Logout"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Logout">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="systemGenerated" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="LogoutExcecutedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SessionTimeoutExecuted">
+                <xsd:sequence>
+                    <xsd:element name="SessionTimeout" nillable="true" type="tns:SessionTimeout"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SessionTimeout">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="SessionTimeoutExecutedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HealthServiceRequestSubmitted">
+                <xsd:sequence>
+                    <xsd:element name="HealthServiceRequest" nillable="true" type="tns:HealthServiceRequest"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HealthServiceRequest">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="HealthServiceRequestID" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="HealthServiceRequestSubmittedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="PrimaryAuthenticationCompleted">
+                <xsd:sequence>
+                    <xsd:element name="PrimaryAuthentication" nillable="true" type="tns:PrimaryAuthentication"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="PrimaryAuthentication">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+                    <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="PrimaryAuthenticationCompletedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="IdleTimeoutExecuted">
+                <xsd:sequence>
+                    <xsd:element name="IdleTimeout" nillable="true" type="tns:IdleTimeout"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="IdleTimeout">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="IdleTimeoutExecutedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eServiceFunctionAccessed">
+                <xsd:sequence>
+                    <xsd:element name="eServiceFunction" nillable="true" type="tns:eServiceFunction"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eServiceFunction">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFunctionCD" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="eServiceFunctionAccessedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="MessageAccessed">
+                <xsd:sequence>
+                    <xsd:element name="Message" nillable="true" type="tns:Message"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Message">
+                <xsd:sequence>
+                    <xsd:element name="Base" nillable="true" type="tns:Base"/>
+                    <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+                    <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="MessageAccessedResponse">
+                <xsd:sequence>
+                    <xsd:element name="Status" nillable="true" type="tns:Status"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="IdleTimeoutExecuted" type="tns:IdleTimeoutExecuted"/>
+            <xsd:element name="IdleTimeoutExecutedResponse" type="tns:IdleTimeoutExecutedResponse"/>
+            <xsd:element name="Error" type="tns:Error"/>
+            <xsd:element name="eServiceAccessed" type="tns:eServiceAccessed"/>
+            <xsd:element name="eServiceAccessedResponse" type="tns:eServiceAccessedResponse"/>
+            <xsd:element name="HealthServiceRequestSubmitted" type="tns:HealthServiceRequestSubmitted"/>
+            <xsd:element name="HealthServiceRequestSubmittedResponse" type="tns:HealthServiceRequestSubmittedResponse"/>
+            <xsd:element name="eServiceFunctionAccessed" type="tns:eServiceFunctionAccessed"/>
+            <xsd:element name="eServiceFunctionAccessedResponse" type="tns:eServiceFunctionAccessedResponse"/>
+            <xsd:element name="ReauthenticationFailed" type="tns:ReauthenticationFailed"/>
+            <xsd:element name="ReauthenticationFailedResponse" type="tns:ReauthenticationFailedResponse"/>
+            <xsd:element name="HomeScreenAccessed" type="tns:HomeScreenAccessed"/>
+            <xsd:element name="HomeScreenAccessedResponse" type="tns:HomeScreenAccessedResponse"/>
+            <xsd:element name="SessionTimeoutExecuted" type="tns:SessionTimeoutExecuted"/>
+            <xsd:element name="SessionTimeoutExecutedResponse" type="tns:SessionTimeoutExecutedResponse"/>
+            <xsd:element name="MessageAccessed" type="tns:MessageAccessed"/>
+            <xsd:element name="MessageAccessedResponse" type="tns:MessageAccessedResponse"/>
+            <xsd:element name="eReportAnswersSubmitted" type="tns:eReportAnswersSubmitted"/>
+            <xsd:element name="eReportAnswersSubmittedResponse" type="tns:eReportAnswersSubmittedResponse"/>
+            <xsd:element name="ReauthenticationSucceeded" type="tns:ReauthenticationSucceeded"/>
+            <xsd:element name="ReauthenticationSucceededResponse" type="tns:ReauthenticationSucceededResponse"/>
+            <xsd:element name="PrimaryAuthenticationCompleted" type="tns:PrimaryAuthenticationCompleted"/>
+            <xsd:element name="PrimaryAuthenticationCompletedResponse" type="tns:PrimaryAuthenticationCompletedResponse"/>
+            <xsd:element name="LogoutExcecuted" type="tns:LogoutExcecuted"/>
+            <xsd:element name="LogoutExcecutedResponse" type="tns:LogoutExcecutedResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="Record_PortType_eReportAnswersSubmitted">
+        <wsdl:part name="parameters" element="tns:eReportAnswersSubmitted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_IdleTimeoutExecuted">
+        <wsdl:part name="parameters" element="tns:IdleTimeoutExecuted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_HealthServiceRequestSubmittedResponse">
+        <wsdl:part name="parameters" element="tns:HealthServiceRequestSubmittedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_SessionTimeoutExecutedResponse">
+        <wsdl:part name="parameters" element="tns:SessionTimeoutExecutedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_MessageAccessed">
+        <wsdl:part name="parameters" element="tns:MessageAccessed">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_IdleTimeoutExecutedResponse">
+        <wsdl:part name="parameters" element="tns:IdleTimeoutExecutedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_HomeScreenAccessed">
+        <wsdl:part name="parameters" element="tns:HomeScreenAccessed">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_LogoutExcecutedResponse">
+        <wsdl:part name="parameters" element="tns:LogoutExcecutedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_LogoutExcecuted">
+        <wsdl:part name="parameters" element="tns:LogoutExcecuted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_ReauthenticationFailed">
+        <wsdl:part name="parameters" element="tns:ReauthenticationFailed">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_PrimaryAuthenticationCompletedResponse">
+        <wsdl:part name="parameters" element="tns:PrimaryAuthenticationCompletedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_eReportAnswersSubmittedResponse">
+        <wsdl:part name="parameters" element="tns:eReportAnswersSubmittedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_MessageAccessedResponse">
+        <wsdl:part name="parameters" element="tns:MessageAccessedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_eServiceFunctionAccessed">
+        <wsdl:part name="parameters" element="tns:eServiceFunctionAccessed">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_HomeScreenAccessedResponse">
+        <wsdl:part name="parameters" element="tns:HomeScreenAccessedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_PrimaryAuthenticationCompleted">
+        <wsdl:part name="parameters" element="tns:PrimaryAuthenticationCompleted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_eServiceAccessedResponse">
+        <wsdl:part name="parameters" element="tns:eServiceAccessedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_eServiceAccessed">
+        <wsdl:part name="parameters" element="tns:eServiceAccessed">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_ReauthenticationFailedResponse">
+        <wsdl:part name="parameters" element="tns:ReauthenticationFailedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_ReauthenticationSucceeded">
+        <wsdl:part name="parameters" element="tns:ReauthenticationSucceeded">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_HealthServiceRequestSubmitted">
+        <wsdl:part name="parameters" element="tns:HealthServiceRequestSubmitted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_SessionTimeoutExecuted">
+        <wsdl:part name="parameters" element="tns:SessionTimeoutExecuted">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_eServiceFunctionAccessedResponse">
+        <wsdl:part name="parameters" element="tns:eServiceFunctionAccessedResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Record_PortType_ReauthenticationSucceededResponse">
+        <wsdl:part name="parameters" element="tns:ReauthenticationSucceededResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="Record_PortType">
+        <wsdl:operation name="IdleTimeoutExecuted">
+            <wsdl:input message="tns:Record_PortType_IdleTimeoutExecuted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_IdleTimeoutExecutedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eServiceAccessed">
+            <wsdl:input message="tns:Record_PortType_eServiceAccessed">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_eServiceAccessedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="HealthServiceRequestSubmitted">
+            <wsdl:input message="tns:Record_PortType_HealthServiceRequestSubmitted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_HealthServiceRequestSubmittedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eServiceFunctionAccessed">
+            <wsdl:input message="tns:Record_PortType_eServiceFunctionAccessed">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_eServiceFunctionAccessedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReauthenticationFailed">
+            <wsdl:input message="tns:Record_PortType_ReauthenticationFailed">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_ReauthenticationFailedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="HomeScreenAccessed">
+            <wsdl:input message="tns:Record_PortType_HomeScreenAccessed">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_HomeScreenAccessedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="SessionTimeoutExecuted">
+            <wsdl:input message="tns:Record_PortType_SessionTimeoutExecuted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_SessionTimeoutExecutedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="MessageAccessed">
+            <wsdl:input message="tns:Record_PortType_MessageAccessed">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_MessageAccessedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eReportAnswersSubmitted">
+            <wsdl:input message="tns:Record_PortType_eReportAnswersSubmitted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_eReportAnswersSubmittedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReauthenticationSucceeded">
+            <wsdl:input message="tns:Record_PortType_ReauthenticationSucceeded">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_ReauthenticationSucceededResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="PrimaryAuthenticationCompleted">
+            <wsdl:input message="tns:Record_PortType_PrimaryAuthenticationCompleted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_PrimaryAuthenticationCompletedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="LogoutExecuted">
+            <wsdl:input message="tns:Record_PortType_LogoutExcecuted">
+            </wsdl:input>
+            <wsdl:output message="tns:Record_PortType_LogoutExcecutedResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_Source_Audit_ws_Record_Binder" type="tns:Record_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="IdleTimeoutExecuted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_IdleTimeoutExecuted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eServiceAccessed">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eServiceAccessed" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="HealthServiceRequestSubmitted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_HealthServiceRequestSubmitted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eServiceFunctionAccessed">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eServiceFunctionAccessed" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReauthenticationFailed">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationFailed" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="HomeScreenAccessed">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_HomeScreenAccessed" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="SessionTimeoutExecuted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_SessionTimeoutExecuted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="MessageAccessed">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_MessageAccessed" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="eReportAnswersSubmitted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eReportAnswersSubmitted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="ReauthenticationSucceeded">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationSucceeded" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="PrimaryAuthenticationCompleted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_PrimaryAuthenticationCompleted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="LogoutExecuted">
+            <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_LogoutExecuted" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Audit">
+        <wsdl:port name="ICON2_Source_Audit_ws_Record_Port" binding="tns:ICON2_Source_Audit_ws_Record_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2.Source.Audit.ws.provider:Audit/ICON2_Source_Audit_ws_Record_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

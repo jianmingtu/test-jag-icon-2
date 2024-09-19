@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://reeks.bcgov/ICON2.Source.Common.ws.provider:ErrorHandling"
+            xmlns:tns="http://reeks.bcgov/ICON2.Source.Common.ws.provider:ErrorHandling"
+            xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element name="setErrorMessage">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="msgCd" nillable="true" type="xsd:string"/>
+                <xsd:element name="errorMsg" nillable="true" type="xsd:string"/>
+                <xsd:element name="certNm" nillable="true" type="xsd:string"/>
+                <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+    <xsd:element name="setErrorMessageResponse">
+        <xsd:complexType>
+            <xsd:sequence>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+
+</xsd:schema>

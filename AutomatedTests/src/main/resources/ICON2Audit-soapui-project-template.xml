@@ -1,0 +1,1331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="1fc6cc77-3a76-4422-ae65-2f91af1ece38" activeEnvironment="Default" name="ICON2Audit" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="fac87eba-54d5-4887-856c-c8bd112b859e" wsaVersion="NONE" name="ICON2_Source_Audit_ws_Record_Binder" type="wsdl" bindingName="{ICON2.Source.Audit.ws:Record}ICON2_Source_Audit_ws_Record_Binder" soapVersion="1_1" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/Audit.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\Audit.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\Audit.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="Audit" targetNamespace="ICON2.Source.Audit.ws:Record" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.Audit.ws:Record" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.Audit.ws:Record">
+      <xsd:complexType name="HomeScreenAccessed">
+        <xsd:sequence>
+          <xsd:element name="HomeScreen" nillable="true" type="tns:HomeScreen"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HomeScreen">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Base">
+        <xsd:sequence>
+          <xsd:element name="sessionID" nillable="true" type="xsd:string"/>
+          <xsd:element name="csNumber" nillable="true" type="xsd:string"/>
+          <xsd:element name="deviceNO" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HomeScreenAccessedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Status">
+        <xsd:sequence>
+          <xsd:element name="Success" type="xsd:boolean"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReauthenticationFailed">
+        <xsd:sequence>
+          <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Reauthentication">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+          <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+          <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReauthenticationFailedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReauthenticationSucceeded">
+        <xsd:sequence>
+          <xsd:element name="Reauthentication" nillable="true" type="tns:Reauthentication"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="ReauthenticationSucceededResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eServiceAccessed">
+        <xsd:sequence>
+          <xsd:element name="eService" nillable="true" type="tns:eService"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eService">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eServiceAccessedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eReportAnswersSubmitted">
+        <xsd:sequence>
+          <xsd:element name="eReportAnswers" nillable="true" type="tns:eReportAnswers"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eReportAnswers">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eReportingEventID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eReportAnswersSubmittedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogoutExcecuted">
+        <xsd:sequence>
+          <xsd:element name="Logout" nillable="true" type="tns:Logout"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Logout">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="systemGenerated" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="LogoutExcecutedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SessionTimeoutExecuted">
+        <xsd:sequence>
+          <xsd:element name="SessionTimeout" nillable="true" type="tns:SessionTimeout"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SessionTimeout">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="SessionTimeoutExecutedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HealthServiceRequestSubmitted">
+        <xsd:sequence>
+          <xsd:element name="HealthServiceRequest" nillable="true" type="tns:HealthServiceRequest"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HealthServiceRequest">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="serviceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="functionCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="HealthServiceRequestID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="HealthServiceRequestSubmittedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PrimaryAuthenticationCompleted">
+        <xsd:sequence>
+          <xsd:element name="PrimaryAuthentication" nillable="true" type="tns:PrimaryAuthentication"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PrimaryAuthentication">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="transactionID" nillable="true" type="xsd:string"/>
+          <xsd:element name="biometricID" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="PrimaryAuthenticationCompletedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IdleTimeoutExecuted">
+        <xsd:sequence>
+          <xsd:element name="IdleTimeout" nillable="true" type="tns:IdleTimeout"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IdleTimeout">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="IdleTimeoutExecutedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eServiceFunctionAccessed">
+        <xsd:sequence>
+          <xsd:element name="eServiceFunction" nillable="true" type="tns:eServiceFunction"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eServiceFunction">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFunctionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="eServiceFunctionAccessedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MessageAccessed">
+        <xsd:sequence>
+          <xsd:element name="Message" nillable="true" type="tns:Message"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Message">
+        <xsd:sequence>
+          <xsd:element name="Base" nillable="true" type="tns:Base"/>
+          <xsd:element name="eServiceCD" nillable="true" type="xsd:string"/>
+          <xsd:element name="eServiceFuntionCD" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="MessageAccessedResponse">
+        <xsd:sequence>
+          <xsd:element name="Status" nillable="true" type="tns:Status"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="IdleTimeoutExecuted" type="tns:IdleTimeoutExecuted"/>
+      <xsd:element name="IdleTimeoutExecutedResponse" type="tns:IdleTimeoutExecutedResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="eServiceAccessed" type="tns:eServiceAccessed"/>
+      <xsd:element name="eServiceAccessedResponse" type="tns:eServiceAccessedResponse"/>
+      <xsd:element name="HealthServiceRequestSubmitted" type="tns:HealthServiceRequestSubmitted"/>
+      <xsd:element name="HealthServiceRequestSubmittedResponse" type="tns:HealthServiceRequestSubmittedResponse"/>
+      <xsd:element name="eServiceFunctionAccessed" type="tns:eServiceFunctionAccessed"/>
+      <xsd:element name="eServiceFunctionAccessedResponse" type="tns:eServiceFunctionAccessedResponse"/>
+      <xsd:element name="ReauthenticationFailed" type="tns:ReauthenticationFailed"/>
+      <xsd:element name="ReauthenticationFailedResponse" type="tns:ReauthenticationFailedResponse"/>
+      <xsd:element name="HomeScreenAccessed" type="tns:HomeScreenAccessed"/>
+      <xsd:element name="HomeScreenAccessedResponse" type="tns:HomeScreenAccessedResponse"/>
+      <xsd:element name="SessionTimeoutExecuted" type="tns:SessionTimeoutExecuted"/>
+      <xsd:element name="SessionTimeoutExecutedResponse" type="tns:SessionTimeoutExecutedResponse"/>
+      <xsd:element name="MessageAccessed" type="tns:MessageAccessed"/>
+      <xsd:element name="MessageAccessedResponse" type="tns:MessageAccessedResponse"/>
+      <xsd:element name="eReportAnswersSubmitted" type="tns:eReportAnswersSubmitted"/>
+      <xsd:element name="eReportAnswersSubmittedResponse" type="tns:eReportAnswersSubmittedResponse"/>
+      <xsd:element name="ReauthenticationSucceeded" type="tns:ReauthenticationSucceeded"/>
+      <xsd:element name="ReauthenticationSucceededResponse" type="tns:ReauthenticationSucceededResponse"/>
+      <xsd:element name="PrimaryAuthenticationCompleted" type="tns:PrimaryAuthenticationCompleted"/>
+      <xsd:element name="PrimaryAuthenticationCompletedResponse" type="tns:PrimaryAuthenticationCompletedResponse"/>
+      <xsd:element name="LogoutExcecuted" type="tns:LogoutExcecuted"/>
+      <xsd:element name="LogoutExcecutedResponse" type="tns:LogoutExcecutedResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="Record_PortType_eReportAnswersSubmitted">
+    <wsdl:part name="parameters" element="tns:eReportAnswersSubmitted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_IdleTimeoutExecuted">
+    <wsdl:part name="parameters" element="tns:IdleTimeoutExecuted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_HealthServiceRequestSubmittedResponse">
+    <wsdl:part name="parameters" element="tns:HealthServiceRequestSubmittedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_SessionTimeoutExecutedResponse">
+    <wsdl:part name="parameters" element="tns:SessionTimeoutExecutedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_MessageAccessed">
+    <wsdl:part name="parameters" element="tns:MessageAccessed"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_IdleTimeoutExecutedResponse">
+    <wsdl:part name="parameters" element="tns:IdleTimeoutExecutedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_HomeScreenAccessed">
+    <wsdl:part name="parameters" element="tns:HomeScreenAccessed"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_LogoutExcecutedResponse">
+    <wsdl:part name="parameters" element="tns:LogoutExcecutedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_LogoutExcecuted">
+    <wsdl:part name="parameters" element="tns:LogoutExcecuted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_ReauthenticationFailed">
+    <wsdl:part name="parameters" element="tns:ReauthenticationFailed"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_PrimaryAuthenticationCompletedResponse">
+    <wsdl:part name="parameters" element="tns:PrimaryAuthenticationCompletedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_eReportAnswersSubmittedResponse">
+    <wsdl:part name="parameters" element="tns:eReportAnswersSubmittedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_MessageAccessedResponse">
+    <wsdl:part name="parameters" element="tns:MessageAccessedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_eServiceFunctionAccessed">
+    <wsdl:part name="parameters" element="tns:eServiceFunctionAccessed"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_HomeScreenAccessedResponse">
+    <wsdl:part name="parameters" element="tns:HomeScreenAccessedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_PrimaryAuthenticationCompleted">
+    <wsdl:part name="parameters" element="tns:PrimaryAuthenticationCompleted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_eServiceAccessedResponse">
+    <wsdl:part name="parameters" element="tns:eServiceAccessedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_eServiceAccessed">
+    <wsdl:part name="parameters" element="tns:eServiceAccessed"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_ReauthenticationFailedResponse">
+    <wsdl:part name="parameters" element="tns:ReauthenticationFailedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_ReauthenticationSucceeded">
+    <wsdl:part name="parameters" element="tns:ReauthenticationSucceeded"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_HealthServiceRequestSubmitted">
+    <wsdl:part name="parameters" element="tns:HealthServiceRequestSubmitted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_SessionTimeoutExecuted">
+    <wsdl:part name="parameters" element="tns:SessionTimeoutExecuted"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_eServiceFunctionAccessedResponse">
+    <wsdl:part name="parameters" element="tns:eServiceFunctionAccessedResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Record_PortType_ReauthenticationSucceededResponse">
+    <wsdl:part name="parameters" element="tns:ReauthenticationSucceededResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="Record_PortType">
+    <wsdl:operation name="IdleTimeoutExecuted">
+      <wsdl:input message="tns:Record_PortType_IdleTimeoutExecuted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_IdleTimeoutExecutedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eServiceAccessed">
+      <wsdl:input message="tns:Record_PortType_eServiceAccessed"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_eServiceAccessedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HealthServiceRequestSubmitted">
+      <wsdl:input message="tns:Record_PortType_HealthServiceRequestSubmitted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_HealthServiceRequestSubmittedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eServiceFunctionAccessed">
+      <wsdl:input message="tns:Record_PortType_eServiceFunctionAccessed"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_eServiceFunctionAccessedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReauthenticationFailed">
+      <wsdl:input message="tns:Record_PortType_ReauthenticationFailed"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_ReauthenticationFailedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HomeScreenAccessed">
+      <wsdl:input message="tns:Record_PortType_HomeScreenAccessed"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_HomeScreenAccessedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SessionTimeoutExecuted">
+      <wsdl:input message="tns:Record_PortType_SessionTimeoutExecuted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_SessionTimeoutExecutedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MessageAccessed">
+      <wsdl:input message="tns:Record_PortType_MessageAccessed"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_MessageAccessedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eReportAnswersSubmitted">
+      <wsdl:input message="tns:Record_PortType_eReportAnswersSubmitted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_eReportAnswersSubmittedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReauthenticationSucceeded">
+      <wsdl:input message="tns:Record_PortType_ReauthenticationSucceeded"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_ReauthenticationSucceededResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PrimaryAuthenticationCompleted">
+      <wsdl:input message="tns:Record_PortType_PrimaryAuthenticationCompleted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_PrimaryAuthenticationCompletedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LogoutExecuted">
+      <wsdl:input message="tns:Record_PortType_LogoutExcecuted"></wsdl:input>
+      <wsdl:output message="tns:Record_PortType_LogoutExcecutedResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_Audit_ws_Record_Binder" type="tns:Record_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="IdleTimeoutExecuted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_IdleTimeoutExecuted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eServiceAccessed">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eServiceAccessed" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HealthServiceRequestSubmitted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_HealthServiceRequestSubmitted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eServiceFunctionAccessed">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eServiceFunctionAccessed" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReauthenticationFailed">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationFailed" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="HomeScreenAccessed">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_HomeScreenAccessed" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="SessionTimeoutExecuted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_SessionTimeoutExecuted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="MessageAccessed">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_MessageAccessed" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="eReportAnswersSubmitted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_eReportAnswersSubmitted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="ReauthenticationSucceeded">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationSucceeded" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PrimaryAuthenticationCompleted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_PrimaryAuthenticationCompleted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="LogoutExecuted">
+      <soap:operation soapAction="ICON2_Source_Audit_ws_Record_Binder_LogoutExecuted" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Audit">
+    <wsdl:port name="ICON2_Source_Audit_ws_Record_Port" binding="tns:ICON2_Source_Audit_ws_Record_Binder">
+      <soap:address location="{API_HOST_1}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_1}</con:endpoint></con:endpoints><con:operation id="6f5098dd-7601-4b7c-9d51-c66cf87693f2" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_eReportAnswersSubmitted" name="eReportAnswersSubmitted" bindingOperationName="eReportAnswersSubmitted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="547edb65-2334-45e4-ae30-75a040124606" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:eReportAnswersSubmitted>\r
+         <eReportAnswers>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <serviceCD>?</serviceCD>\r
+            <functionCD>?</functionCD>\r
+            <eReportingEventID>?</eReportingEventID>\r
+         </eReportAnswers>\r
+      </icon:eReportAnswersSubmitted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_eReportAnswersSubmitted"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="d2ebf230-46d3-4d61-92d2-e73e42998af7" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_eServiceAccessed" name="eServiceAccessed" bindingOperationName="eServiceAccessed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="69650d4a-a878-4fb2-a829-674acece172e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:eServiceAccessed>\r
+         <eService>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+         </eService>\r
+      </icon:eServiceAccessed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_eServiceAccessed"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="aa328d14-0371-4f17-99b5-0de76bc3bbfa" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_eServiceFunctionAccessed" name="eServiceFunctionAccessed" bindingOperationName="eServiceFunctionAccessed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="3edb656a-564a-4d9f-afcc-c284351ceb6b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:eServiceFunctionAccessed>\r
+         <eServiceFunction>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFunctionCD>?</eServiceFunctionCD>\r
+         </eServiceFunction>\r
+      </icon:eServiceFunctionAccessed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_eServiceFunctionAccessed"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="28b4eaf2-8a88-4266-b762-0d41ba632f40" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_HealthServiceRequestSubmitted" name="HealthServiceRequestSubmitted" bindingOperationName="HealthServiceRequestSubmitted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="8fb29ac9-2371-4847-b374-e8138f7ffd80" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:HealthServiceRequestSubmitted>\r
+         <HealthServiceRequest>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <serviceCD>?</serviceCD>\r
+            <functionCD>?</functionCD>\r
+            <HealthServiceRequestID>?</HealthServiceRequestID>\r
+         </HealthServiceRequest>\r
+      </icon:HealthServiceRequestSubmitted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_HealthServiceRequestSubmitted"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="4a7c26c4-9b59-46a2-abea-032fb9ad894c" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_HomeScreenAccessed" name="HomeScreenAccessed" bindingOperationName="HomeScreenAccessed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="38c6f6a2-3222-49c0-ad8c-fd879cf8ea31" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:HomeScreenAccessed>\r
+         <HomeScreen>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+         </HomeScreen>\r
+      </icon:HomeScreenAccessed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_HomeScreenAccessed"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="986daa0c-6fe7-4c80-8aec-b54754efdd0d" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_IdleTimeoutExecuted" name="IdleTimeoutExecuted" bindingOperationName="IdleTimeoutExecuted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="b6f1a022-1f30-471f-b157-2b4b1da9a0fa" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:IdleTimeoutExecuted>\r
+         <IdleTimeout>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+         </IdleTimeout>\r
+      </icon:IdleTimeoutExecuted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_IdleTimeoutExecuted"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="be7f4778-9619-4be7-a062-ce9ffb6a2b0d" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_LogoutExecuted" name="LogoutExecuted" bindingOperationName="LogoutExecuted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="003d5ffb-4e4f-4d70-9abb-2feeb40ed43f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:LogoutExcecuted>\r
+         <Logout>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+            <systemGenerated>?</systemGenerated>\r
+         </Logout>\r
+      </icon:LogoutExcecuted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_LogoutExecuted"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="72738da9-9d1a-42ca-aedc-71c8c52f0848" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_MessageAccessed" name="MessageAccessed" bindingOperationName="MessageAccessed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5b656b13-d779-4b0f-adc5-52aac2595304" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:MessageAccessed>\r
+         <Message>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+         </Message>\r
+      </icon:MessageAccessed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_MessageAccessed"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="7500def5-79fd-429b-abd4-b4d10e0ff8a4" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_PrimaryAuthenticationCompleted" name="PrimaryAuthenticationCompleted" bindingOperationName="PrimaryAuthenticationCompleted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e7dc6af1-3720-4c28-aafa-27fa28e7e0ae" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:PrimaryAuthenticationCompleted>\r
+         <PrimaryAuthentication>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <transactionID>?</transactionID>\r
+            <biometricID>?</biometricID>\r
+         </PrimaryAuthentication>\r
+      </icon:PrimaryAuthenticationCompleted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_PrimaryAuthenticationCompleted"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="43536f76-790c-4611-afa9-e79429980b01" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationFailed" name="ReauthenticationFailed" bindingOperationName="ReauthenticationFailed" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="e21fe0e9-2707-4ebe-b45a-c0f1e6e59fd2" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:ReauthenticationFailed>\r
+         <Reauthentication>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+            <transactionID>?</transactionID>\r
+            <biometricID>?</biometricID>\r
+            <eReportingEventID>?</eReportingEventID>\r
+         </Reauthentication>\r
+      </icon:ReauthenticationFailed>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationFailed"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="fd933649-fe1e-4b38-957e-33d77905e584" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationSucceeded" name="ReauthenticationSucceeded" bindingOperationName="ReauthenticationSucceeded" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fd0ed467-009f-493f-b8b6-0688c7c9ccf6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:ReauthenticationSucceeded>\r
+         <Reauthentication>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+            <transactionID>?</transactionID>\r
+            <biometricID>?</biometricID>\r
+            <eReportingEventID>?</eReportingEventID>\r
+         </Reauthentication>\r
+      </icon:ReauthenticationSucceeded>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_ReauthenticationSucceeded"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6928b709-af25-48cb-a5c7-cad05a20d884" isOneWay="false" action="ICON2_Source_Audit_ws_Record_Binder_SessionTimeoutExecuted" name="SessionTimeoutExecuted" bindingOperationName="SessionTimeoutExecuted" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="5ab8db99-5f83-46fa-89bb-2ba445a7ba9b" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:SessionTimeoutExecuted>\r
+         <SessionTimeout>\r
+            <Base>\r
+               <sessionID>?</sessionID>\r
+               <csNumber>?</csNumber>\r
+               <deviceNO>?</deviceNO>\r
+            </Base>\r
+            <eServiceCD>?</eServiceCD>\r
+            <eServiceFuntionCD>?</eServiceFuntionCD>\r
+         </SessionTimeout>\r
+      </icon:SessionTimeoutExecuted>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_Audit_ws_Record_Binder_SessionTimeoutExecuted"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:testSuite id="d08e82e3-a645-4b3e-bdc7-27979f6759a4" name="ICON2Audit"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="fd41d5e1-b2d2-4f08-bb8b-5a4f7b1e9662" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EReportAnswersSubmitted" searchProperties="true"><con:settings/><con:testStep type="request" name="eReportAnswersSubmitted" id="a5166556-f04b-41e3-8026-43962d74503c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="eReportAnswersSubmitted" id="a852df25-56f8-4e0d-b017-7f1345e5b19c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eReportAnswersSubmitted>
+         <eReportAnswers>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <serviceCD>4</serviceCD>
+            <functionCD>5</functionCD>
+            <eReportingEventID>6</eReportingEventID>
+         </eReportAnswers>
+      </icon:eReportAnswersSubmitted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="052488b4-5c1f-4ac9-add9-c2e362bcb801"/><con:assertion type="Invalid HTTP Status Codes" id="3361c95d-2520-47d9-9026-83c63d7b2498" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="10a50e5c-fea1-41c2-b244-d81fd333368e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="9c396fac-bd17-4b7a-aeb4-cc05876407ce" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>serviceCD</con:name><con:value>4</con:value></con:property><con:property><con:name>functionCD</con:name><con:value>5</con:value></con:property><con:property><con:name>eReportingEventID</con:name><con:value>6</con:value></con:property></con:properties></con:testCase><con:testCase id="e40cbe11-bf2b-4219-b831-6bf0cd11456b" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EServiceAccessed" searchProperties="true"><con:settings/><con:testStep type="request" name="eServiceAccessed" id="8f30dc19-8ff4-4e7c-8da8-0f06c7a24ffc"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="eServiceAccessed" id="97818bb0-3577-4667-bc97-a0322fc33340"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eServiceAccessed>
+         <eService>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <eServiceCD/>
+         </eService>
+      </icon:eServiceAccessed>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="5685219a-467c-429b-ab39-2aa416e5f7dd"/><con:assertion type="Invalid HTTP Status Codes" id="7c12c64a-dd2f-4355-bde5-306e024fa5a3" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="099fca3a-4b2a-4621-b0a7-3abe81c4ae1d" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="4bb2d96d-6436-4602-8dca-e8feeba6bb4b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>4</con:value></con:property></con:properties></con:testCase><con:testCase id="74a3c21b-50f4-47d2-9592-845aa14677fd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="EServiceFunctionAccessed" searchProperties="true"><con:settings/><con:testStep type="request" name="eServiceFunctionAccessed" id="2f044e1b-5f3a-4d0d-a134-53c7c6d71d0d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="eServiceFunctionAccessed" id="10e16491-2eda-41e7-94cb-b59135209298"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eServiceFunctionAccessed>
+         <eServiceFunction>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <eServiceCD/>
+            <eServiceFunctionCD>5</eServiceFunctionCD>
+         </eServiceFunction>
+      </icon:eServiceFunctionAccessed>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="6b174d81-7284-4650-8384-609ec413daaa"/><con:assertion type="Invalid HTTP Status Codes" id="7fc9b6d3-f3fe-4d67-bb4c-4af327c4dc76" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="538a5db1-82e5-4f8d-9e69-eef3fcf91d26" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="8e193fbf-22db-46a1-bbdf-5bb6d6f9871c" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>4</con:value></con:property><con:property><con:name>eServiceFunctionCD</con:name><con:value>5</con:value></con:property></con:properties></con:testCase><con:testCase id="de4cecf8-938a-4d44-b511-fb6b886c6c51" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="HealthServiceRequestSubmitted" searchProperties="true"><con:settings/><con:testStep type="request" name="healthServiceRequestSubmitted" id="684b69c9-15bb-4a72-888a-bb6cfc7faa0c"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="healthServiceRequestSubmitted" id="106ae5a0-a57e-4ba4-86cb-0d6b7fc6f885"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:HealthServiceRequestSubmitted>
+         <HealthServiceRequest>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <serviceCD>4</serviceCD>
+            <functionCD>5</functionCD>
+            <HealthServiceRequestID>6</HealthServiceRequestID>
+         </HealthServiceRequest>
+      </icon:HealthServiceRequestSubmitted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="bd8a4c60-0a5f-45e4-b856-2a8bde1df64b"/><con:assertion type="Valid HTTP Status Codes" id="df3048dd-df51-415b-9bc1-7d4842e29e9a" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="7136b8ec-3e3f-4546-b3b3-3dd1ec08c35f" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="3b27b660-52b7-4d98-a015-b81d6e3f92fc" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>serviceCD</con:name><con:value>4</con:value></con:property><con:property><con:name>functionCD</con:name><con:value>5</con:value></con:property><con:property><con:name>HealthServiceRequestID</con:name><con:value>6</con:value></con:property></con:properties></con:testCase><con:testCase id="8556c61f-475f-4635-9afa-04e2f942c7bd" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="HomeScreenAccessed" searchProperties="true"><con:settings/><con:testStep type="request" name="homeScreenAccessed" id="812cbd95-a662-4230-a8f2-8751936e9b49"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="homeScreenAccessed" id="75ce99ba-d6c4-411d-ab49-b9b2d3f01617"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:HomeScreenAccessed>
+         <HomeScreen>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+         </HomeScreen>
+      </icon:HomeScreenAccessed>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="87aff795-f14f-4fc4-b697-6f6e7fda9124"/><con:assertion type="Invalid HTTP Status Codes" id="0b5757a2-565f-4b56-b35d-2b659f1f455e" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="bc7423f2-d1a2-4adc-b9d5-7a9a74fbdbe7" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="2d6de952-e29e-4e30-a3f5-131bf670ca1e" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property></con:properties></con:testCase><con:testCase id="62d3f4d6-0518-4cbf-ad43-5c6cd31d5581" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="IdleTimeoutExecuted" searchProperties="true"><con:settings/><con:testStep type="request" name="idleTimeoutExecuted" id="c5319ada-991b-47dc-9407-436cf17a41da"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="idleTimeoutExecuted" id="416e6c97-7553-47d6-874d-868fc06a4b2c"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:IdleTimeoutExecuted>
+         <IdleTimeout>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <eServiceCD/>
+            <eServiceFuntionCD/>
+         </IdleTimeout>
+      </icon:IdleTimeoutExecuted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="0dfae9d2-117b-4c0d-8f2d-d4026cbc7790"/><con:assertion type="Invalid HTTP Status Codes" id="396d1c92-ba35-4c41-af81-9dbeca08c8eb" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="0edd6e6a-409f-48de-bf51-d8868d4e8556" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="5afae6b3-4c40-491f-9bc8-5f905789a764" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>4</con:value></con:property><con:property><con:name>eServiceFuntionCD</con:name><con:value>5</con:value></con:property></con:properties></con:testCase><con:testCase id="57416f28-c8a1-40b1-8b72-00d9d4af5756" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="LogoutExcecuted" searchProperties="true"><con:settings/><con:testStep type="request" name="logoutExcecuted" id="584f21e3-4298-4649-9fd1-be6d1dfaadb6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="logoutExcecuted" id="dfa9f93f-818d-4326-a0ba-88e4a3d71ff7"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:LogoutExcecuted>
+         <Logout>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <eServiceCD>ABC</eServiceCD>
+            <eServiceFuntionCD>ABC</eServiceFuntionCD>
+            <systemGenerated>123HFR</systemGenerated>
+         </Logout>
+      </icon:LogoutExcecuted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="afc0c92f-5ba8-44f3-b84a-4ab3e59d7937"/><con:assertion type="Invalid HTTP Status Codes" id="c04b16fa-f372-4559-adc8-1816f22ad690" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="76f2fb79-0634-4a95-9b89-7513e89ca508" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="2a1cda21-853c-4f25-a10d-7346b8b48ce2" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>5</con:value></con:property><con:property><con:name>eServiceFuntionCD</con:name><con:value>ABC</con:value></con:property><con:property><con:name>systemGenerated</con:name><con:value>123HFR</con:value></con:property></con:properties></con:testCase><con:testCase id="193b4a01-59d8-4f95-93c8-3392fb65499d" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="MessageAccessed" searchProperties="true"><con:settings/><con:testStep type="request" name="messageAccessed" id="fd6e737e-1c4b-4b9f-aa6c-15bac099b772"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="messageAccessed" id="8e8f3591-56e3-476b-81ef-89f2853c5c95"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:MessageAccessed>
+         <Message>
+            <Base>
+               <sessionID>12</sessionID>
+               <csNumber>50065</csNumber>
+               <deviceNO>123</deviceNO>
+            </Base>
+            <eServiceCD>AB22</eServiceCD>
+            <eServiceFuntionCD>AB22</eServiceFuntionCD>
+         </Message>
+      </icon:MessageAccessed>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="a0e89f26-fcb4-483d-8e39-04da4a96bebc"/><con:assertion type="Invalid HTTP Status Codes" id="7a63b513-4a9d-4a7c-ab88-ada033fab557" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="9bca5c8d-6393-4529-b19d-5e86b194d9e3" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="6167bc0a-0464-454d-aee2-5fb7cf95f0ea" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>12</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>50065</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>123</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>ad45</con:value></con:property><con:property><con:name>eServiceFuntionCD</con:name><con:value>AB22</con:value></con:property></con:properties></con:testCase><con:testCase id="fe59323a-0b71-4acb-b237-2fc56c6f2365" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="PrimaryAuthenticationCompleted" searchProperties="true"><con:settings/><con:testStep type="request" name="primaryAuthenticationCompleted" id="14c3af4f-7e8b-4287-a4ea-f97b2c076c4e"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="primaryAuthenticationCompleted" id="eaa7ea07-bb45-4269-961d-11af7d895a30"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eReportAnswersSubmitted>
+         <eReportAnswers>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>a</csNumber>
+               <deviceNO>1</deviceNO>
+            </Base>
+            <serviceCD>55</serviceCD>
+            <functionCD>11aa</functionCD>
+            <eReportingEventID>aa88</eReportingEventID>
+         </eReportAnswers>
+      </icon:eReportAnswersSubmitted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="05bb55de-b3a2-4067-a63a-a54ff860d737"/><con:assertion type="Response SLA Assertion" id="c63a0643-a20c-4790-aec5-a5a44718de23" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="5d16f458-e43d-4385-9441-11b98e748c03" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="bd15df73-aac6-4df3-8f6f-401f5c122bd5" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>a</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>1</con:value></con:property><con:property><con:name>serviceCD</con:name><con:value>55</con:value></con:property><con:property><con:name>functionCD</con:name><con:value>11aa</con:value></con:property><con:property><con:name>eReportingEventID</con:name><con:value>aa88</con:value></con:property></con:properties></con:testCase><con:testCase id="1b9998be-ffda-42f5-92ee-892009e110b6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ReauthenticationFailed" searchProperties="true"><con:settings/><con:testStep type="request" name="reauthenticationFailed" id="d434d22c-6bb7-4e6e-8867-5c8be817445d"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="reauthenticationFailed" id="3e8ac9e5-dd46-422f-8b4b-8dd4db1782b9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eReportAnswersSubmitted>
+         <eReportAnswers>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <serviceCD>4</serviceCD>
+            <functionCD>5</functionCD>
+            <eReportingEventID>6</eReportingEventID>
+         </eReportAnswers>
+      </icon:eReportAnswersSubmitted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="f723e5cd-7c8d-436e-92d6-2f6518f1127b"/><con:assertion type="Response SLA Assertion" id="b0cac003-c491-47f8-af9b-cb9b3d8ece3a" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="c9af7b8d-59b8-4448-aa01-ecd2dec20cff" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="8f24727a-b891-4a17-a984-6520050043b8" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>serviceCD</con:name><con:value>4</con:value></con:property><con:property><con:name>functionCD</con:name><con:value>5</con:value></con:property><con:property><con:name>eReportingEventID</con:name><con:value>6</con:value></con:property></con:properties></con:testCase><con:testCase id="0329b40f-5735-4d65-9e0c-97f785240210" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="ReauthenticationSucceeded" searchProperties="true"><con:settings/><con:testStep type="request" name="reauthenticationSucceeded" id="ce7cc521-4e5a-4872-b1bc-3a825e0d49bf"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="reauthenticationSucceeded" id="a691f9e4-1ab2-42db-90c3-3370d8e0fc81"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:eReportAnswersSubmitted>
+         <eReportAnswers>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>3</deviceNO>
+            </Base>
+            <serviceCD>6</serviceCD>
+            <functionCD>fg</functionCD>
+            <eReportingEventID>rt</eReportingEventID>
+         </eReportAnswers>
+      </icon:eReportAnswersSubmitted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="00f5ef48-681e-46e6-bdd3-23ebc3727fe3"/><con:assertion type="Valid HTTP Status Codes" id="80e8b65d-3ed9-4b15-836d-d1603f89b257" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="35e3b68b-1b01-4e93-a1c7-a7bf94942890" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="b7b0632e-e08d-44f5-aab0-a9e1b29f1c75" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>3</con:value></con:property><con:property><con:name>serviceCD</con:name><con:value>6</con:value></con:property><con:property><con:name>functionCD</con:name><con:value>fg</con:value></con:property><con:property><con:name>eReportingEventID</con:name><con:value>rt</con:value></con:property></con:properties></con:testCase><con:testCase id="a5fb0f14-12f6-4e57-a7a6-1d1f179c0545" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="SessionTimeoutExecuted" searchProperties="true"><con:settings/><con:testStep type="request" name="sessionTimeoutExecuted" id="436fae8d-9244-4f2d-9d0e-b11ee0fb01a0"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_Audit_ws_Record_Binder</con:interface><con:operation>eReportAnswersSubmitted</con:operation><con:request name="sessionTimeoutExecuted" id="7f27a862-e1de-4d8e-80a1-9252419bf024"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8081/common-1-1</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.Audit.ws:Record">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:SessionTimeoutExecuted>
+         <SessionTimeout>
+            <Base>
+               <sessionID>1</sessionID>
+               <csNumber>2</csNumber>
+               <deviceNO>rt</deviceNO>
+            </Base>
+            <eServiceCD>ty</eServiceCD>
+            <eServiceFuntionCD>123hjk</eServiceFuntionCD>
+         </SessionTimeout>
+      </icon:SessionTimeoutExecuted>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="17faaa59-8cf7-4d15-8559-1024c243af86"/><con:assertion type="Response SLA Assertion" id="77acd5c2-57be-4d22-bee8-8e369b918b68" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Valid HTTP Status Codes" id="c2d96563-6cad-4f6d-bcd4-6249b77e758b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="78f3f7e6-b955-4e0a-aa13-35a1f44de9d9" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 403, 500, 501</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>sessionID</con:name><con:value>1</con:value></con:property><con:property><con:name>csNumber</con:name><con:value>2</con:value></con:property><con:property><con:name>deviceNO</con:name><con:value>rt</con:value></con:property><con:property><con:name>eServiceCD</con:name><con:value>ty</con:value></con:property><con:property><con:name>eServiceFuntionCD</con:name><con:value>123hjk</con:value></con:property></con:properties></con:testCase><con:testCase id="0426cf50-e74c-44ed-b36c-90c075445bd7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="AutomationTests" searchProperties="true"><con:settings/><con:testStep type="groovy" name="eReportAnswersSubmitted" id="f5e5f918-ccdc-4236-9c39-0c50aaf4c97d"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def EReportAnswersSubmitted = testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].testSteps["eReportAnswersSubmitted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("serviceCD")
+def functionCD=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("functionCD")
+def eReportingEventID=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].getPropertyValue("eReportingEventID")
+ 
+ def xmlAdd= new XmlHolder(EReportAnswersSubmitted)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/serviceCD",serviceCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/functionCD",functionCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/eReportingEventID",eReportingEventID)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].testSteps["eReportAnswersSubmitted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].testSteps["eReportAnswersSubmitted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["EReportAnswersSubmitted"].testSteps["eReportAnswersSubmitted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="eServiceAccessed" id="bcf7b179-3e39-421c-8368-e38e42f216e0"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def EServiceAccessed = testRunner.testCase.testSuite.testCases["EServiceAccessed"].testSteps["eServiceAccessed"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["EServiceAccessed"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["EServiceAccessed"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["EServiceAccessed"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["EServiceAccessed"].getPropertyValue("serviceCD")
+ 
+ def xmlAdd= new XmlHolder(EServiceAccessed)
+ xmlAdd.setNodeValue("//icon:eServiceAccessed/eService/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eServiceAccessed/eService/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eServiceAccessed/eService/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eServiceAccessed/eService/eServiceCD",serviceCD)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["EServiceAccessed"].testSteps["eServiceAccessed"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["EServiceAccessed"].testSteps["eServiceAccessed"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["EServiceAccessed"].testSteps["eServiceAccessed"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="eServiceFunctionAccessed" id="96805956-f44f-4c80-82d1-83047025db95"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def EServiceFunctionAccessed = testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].testSteps["eServiceFunctionAccessed"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].getPropertyValue("deviceNO")
+def eServiceCD=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].getPropertyValue("serviceCD")
+ 
+ def xmlAdd= new XmlHolder(EServiceFunctionAccessed)
+ xmlAdd.setNodeValue("//icon:eServiceFunctionAccessed/eServiceFunction/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eServiceFunctionAccessed/eServiceFunction/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eServiceFunctionAccessed/eServiceFunction/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eServiceFunctionAccessed/eServiceFunction/eServiceCD",eServiceCD)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].testSteps["eServiceFunctionAccessed"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].testSteps["eServiceFunctionAccessed"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["EServiceFunctionAccessed"].testSteps["eServiceFunctionAccessed"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="healthServiceRequestSubmitted" id="003880be-af16-4893-b7b8-397bf57c55b0"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def HealthServiceRequestSubmitted = testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].testSteps["healthServiceRequestSubmitted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("serviceCD")
+def functionCD=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("functionCD")
+def HealthServiceRequestID=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].getPropertyValue("HealthServiceRequestID")
+ 
+ def xmlAdd= new XmlHolder(HealthServiceRequestSubmitted)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/serviceCD",serviceCD)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/functionCD",functionCD)
+ xmlAdd.setNodeValue("//icon:HealthServiceRequestSubmitted/HealthServiceRequest/HealthServiceRequestID",HealthServiceRequestID)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].testSteps["healthServiceRequestSubmitted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].testSteps["healthServiceRequestSubmitted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["HealthServiceRequestSubmitted"].testSteps["healthServiceRequestSubmitted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="homeScreenAccessed" id="969af008-9137-43f5-b36d-92d5454390dd"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def HomeScreenAccessed = testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].testSteps["homeScreenAccessed"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].getPropertyValue("deviceNO")
+ 
+ def xmlAdd= new XmlHolder(HomeScreenAccessed)
+ xmlAdd.setNodeValue("//icon:HomeScreenAccessed/HomeScreen/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:HomeScreenAccessed/HomeScreen/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:HomeScreenAccessed/HomeScreen/Base/deviceNO",deviceNO)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].testSteps["homeScreenAccessed"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].testSteps["homeScreenAccessed"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["HomeScreenAccessed"].testSteps["homeScreenAccessed"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="idleTimeoutExecuted" id="c10cbefa-9935-4321-85cb-371869b4869d"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def IdleTimeoutExecuted = testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].testSteps["idleTimeoutExecuted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].getPropertyValue("deviceNO")
+def eServiceCD=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].getPropertyValue("eServiceCD")
+def eServiceFuntionCD=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].getPropertyValue("eServiceFuntionCD")
+ 
+ def xmlAdd= new XmlHolder(IdleTimeoutExecuted)
+ xmlAdd.setNodeValue("//icon:IdleTimeoutExecuted/IdleTimeout/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:IdleTimeoutExecuted/IdleTimeout/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:IdleTimeoutExecuted/IdleTimeout/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:IdleTimeoutExecuted/IdleTimeout/Base/eServiceCD",eServiceCD)
+ xmlAdd.setNodeValue("//icon:IdleTimeoutExecuted/IdleTimeout/Base/eServiceFuntionCD",eServiceFuntionCD)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].testSteps["idleTimeoutExecuted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].testSteps["idleTimeoutExecuted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["IdleTimeoutExecuted"].testSteps["idleTimeoutExecuted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="logoutExcecuted" id="e9e6f746-4aa8-4087-a158-2889d9ecebe5"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def LogoutExcecuted = testRunner.testCase.testSuite.testCases["LogoutExcecuted"].testSteps["logoutExcecuted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("deviceNO")
+def eServiceCD=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("eServiceCD")
+def eServiceFuntionCD=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("eServiceFuntionCD")
+def systemGenerated=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].getPropertyValue("systemGenerated")
+ 
+ def xmlAdd= new XmlHolder(LogoutExcecuted)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/eServiceCD",eServiceFuntionCD)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/eServiceFuntionCD",eServiceFuntionCD)
+ xmlAdd.setNodeValue("//icon:LogoutExcecuted/Logout/systemGenerated",systemGenerated)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["LogoutExcecuted"].testSteps["logoutExcecuted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].testSteps["logoutExcecuted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["LogoutExcecuted"].testSteps["logoutExcecuted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="0"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="messageAccessed" id="5945de26-0ccd-4f1f-afe1-c711ae02e647"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def MessageAccessed = testRunner.testCase.testSuite.testCases["MessageAccessed"].testSteps["messageAccessed"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["MessageAccessed"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["MessageAccessed"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["MessageAccessed"].getPropertyValue("deviceNO")
+def eServiceCD=testRunner.testCase.testSuite.testCases["MessageAccessed"].getPropertyValue("eServiceCD")
+def eServiceFuntionCD=testRunner.testCase.testSuite.testCases["MessageAccessed"].getPropertyValue("eServiceFuntionCD")
+ 
+ def xmlAdd= new XmlHolder(MessageAccessed)
+ xmlAdd.setNodeValue("//icon:MessageAccessed/Message/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:MessageAccessed/Message/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:MessageAccessed/Message/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:MessageAccessed/Message/eServiceCD",eServiceFuntionCD)
+ xmlAdd.setNodeValue("//icon:MessageAccessed/Message/eServiceFuntionCD",eServiceFuntionCD)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["MessageAccessed"].testSteps["messageAccessed"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["MessageAccessed"].testSteps["messageAccessed"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["MessageAccessed"].testSteps["messageAccessed"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="primaryAuthenticationCompleted" id="74711b88-e0dc-49de-9428-06cd3b6e08c1"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def PrimaryAuthenticationCompleted = testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].testSteps["primaryAuthenticationCompleted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("serviceCD")
+def functionCD=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("functionCD")
+def eReportingEventID=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].getPropertyValue("eReportingEventID")
+ 
+ def xmlAdd= new XmlHolder(PrimaryAuthenticationCompleted)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/serviceCD",serviceCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/functionCD",functionCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/eReportingEventID",eReportingEventID)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].testSteps["primaryAuthenticationCompleted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].testSteps["primaryAuthenticationCompleted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["PrimaryAuthenticationCompleted"].testSteps["primaryAuthenticationCompleted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="reauthenticationFailed" id="4626e200-2a3d-43ad-8f95-c62cb898de74"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def ReauthenticationFailed = testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].testSteps["reauthenticationFailed"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("serviceCD")
+def functionCD=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("functionCD")
+def eReportingEventID=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].getPropertyValue("eReportingEventID")
+ 
+ def xmlAdd= new XmlHolder(ReauthenticationFailed)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/serviceCD",serviceCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/functionCD",functionCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/eReportingEventID",eReportingEventID)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].testSteps["reauthenticationFailed"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].testSteps["reauthenticationFailed"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["ReauthenticationFailed"].testSteps["reauthenticationFailed"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="reauthenticationSucceeded" id="ab79457c-8291-47a9-98d0-33a9ce6e7813"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def ReauthenticationSucceeded = testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].testSteps["reauthenticationSucceeded"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("deviceNO")
+def serviceCD=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("serviceCD")
+def functionCD=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("functionCD")
+def eReportingEventID=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].getPropertyValue("eReportingEventID")
+ 
+ def xmlAdd= new XmlHolder(ReauthenticationSucceeded)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/serviceCD",serviceCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/functionCD",functionCD)
+ xmlAdd.setNodeValue("//icon:eReportAnswersSubmitted/eReportAnswers/eReportingEventID",eReportingEventID)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].testSteps["reauthenticationSucceeded"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].testSteps["reauthenticationSucceeded"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["ReauthenticationSucceeded"].testSteps["reauthenticationSucceeded"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:testStep type="groovy" name="sessionTimeoutExecuted" id="32136a96-b4b3-42aa-9e53-231f3195ea94"><con:settings/><con:config><script>import com.eviware.soapui.support.XmlHolder
+import com.eviware.soapui.impl.wsdl.testcase.WsdlTestRunContext
+
+ def SessionTimeoutExecuted = testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].testSteps["sessionTimeoutExecuted"].getPropertyValue("Request")
+ 
+def sessionID=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].getPropertyValue("sessionID")
+def csNumber=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].getPropertyValue("csNumber")
+def deviceNO=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].getPropertyValue("deviceNO")
+def eServiceCD=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].getPropertyValue("eServiceCD")
+def eServiceFuntionCD=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].getPropertyValue("eServiceFuntionCD")
+ 
+ def xmlAdd= new XmlHolder(SessionTimeoutExecuted)
+ xmlAdd.setNodeValue("//icon:SessionTimeoutExecuted/SessionTimeout/Base/sessionID",sessionID)
+ xmlAdd.setNodeValue("//icon:SessionTimeoutExecuted/SessionTimeout/Base/csNumber",csNumber)
+ xmlAdd.setNodeValue("//icon:SessionTimeoutExecuted/SessionTimeout/Base/deviceNO",deviceNO)
+ xmlAdd.setNodeValue("//icon:SessionTimeoutExecuted/SessionTimeout/eServiceCD",eServiceCD)
+ xmlAdd.setNodeValue("//icon:SessionTimeoutExecuted/SessionTimeout/eServiceFuntionCD",eServiceFuntionCD)
+
+ def newxmlGet= xmlAdd.getXml();
+ //add xml detail
+ testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].testSteps["sessionTimeoutExecuted"].setPropertyValue("Request",newxmlGet)
+
+ def getTestStep=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].testSteps["sessionTimeoutExecuted"]
+ def contextGetRolesForApplication = new WsdlTestRunContext(getTestStep);
+ getTestStep.run(testRunner,contextGetRolesForApplication)
+ //Validation -
+ def getRes=testRunner.testCase.testSuite.testCases["SessionTimeoutExecuted"].testSteps["sessionTimeoutExecuted"].getPropertyValue("Response")
+def Response= new XmlHolder(getRes)
+def GetResponse= Response.getNodeValue("//Success")
+
+log.info GetResponse
+
+assert GetResponse=="1"
+
+
+</script></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

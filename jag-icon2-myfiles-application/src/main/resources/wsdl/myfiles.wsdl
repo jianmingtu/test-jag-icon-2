@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="MyFiles" targetNamespace="http://reeks.bcgov/ICON2_MyFiles.Source.MyFiles.ws:MyFiles" xmlns:tns1="http://reeks.bcgov/ICON2_MyFiles.Source.MyFiles.ws:MyFiles" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="http://brooks.ag.gov.bc.ca/ICON2_MyFiles.Source.MyFiles.ws:MyFiles" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+    <wsdl:types>
+        <xsd:schema xmlns:tns="http://reeks.bcgov/ICON2_MyFiles.Source.MyFiles.ws:MyFiles" targetNamespace="http://reeks.bcgov/ICON2_MyFiles.Source.MyFiles.ws:MyFiles" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:complexType name="getClientClaims">
+                <xsd:sequence>
+                    <xsd:element name="directedIdentifier" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getClientClaimsResponse">
+                <xsd:sequence>
+                    <xsd:element name="Claims" nillable="true" type="tns:Claims"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Claims">
+                <xsd:sequence>
+                    <xsd:element name="businessRole" nillable="true" type="xsd:string"/>
+                    <xsd:element name="locationId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNumber" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Error">
+                <xsd:sequence>
+                    <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCsNumsByDate">
+                <xsd:sequence>
+                    <xsd:element name="startDate" nillable="true" type="xsd:string"/>
+                    <xsd:element name="endDate" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getCsNumsByDateResponse">
+                <xsd:sequence>
+                    <xsd:element name="csNums" nillable="true" type="xsd:string" maxOccurs="unbounded"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getAgencyFile">
+                <xsd:sequence>
+                    <xsd:element name="agencyIdCd" nillable="true" type="xsd:string"/>
+                    <xsd:element name="agencyFileNo" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getAgencyFileResponse">
+                <xsd:sequence>
+                    <xsd:element name="AgencyFile" nillable="true" type="tns:AgencyFile"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="AgencyFile">
+                <xsd:sequence>
+                    <xsd:element name="agencyIdCd" nillable="true" type="xsd:string"/>
+                    <xsd:element name="agencyFileNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="CourtFiles" nillable="true" type="tns:CourtFile" maxOccurs="unbounded"/>
+                    <xsd:element name="Participants" nillable="true" type="tns:Participant" maxOccurs="unbounded"/>
+                    <xsd:element name="rccDecisionDate" nillable="true" type="xsd:string"/>
+                    <xsd:element name="rccDecisionCode" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="CourtFile">
+                <xsd:sequence>
+                    <xsd:element name="Participants" nillable="true" type="tns:Participant" maxOccurs="unbounded"/>
+                    <xsd:element name="FileNumber" nillable="true" type="tns:FileNumber"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Participant">
+                <xsd:sequence>
+                    <xsd:element name="participantId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="participantSeqNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="lastName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="firstName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="youth" nillable="true" type="xsd:string"/>
+                    <xsd:element name="hro" nillable="true" type="xsd:string"/>
+                    <xsd:element name="inCustody" nillable="true" type="xsd:string"/>
+                    <xsd:element name="activeSupervision" nillable="true" type="xsd:string"/>
+                    <xsd:element name="facilityLocation" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="FileNumber">
+                <xsd:sequence>
+                    <xsd:element name="agencyCd" nillable="true" type="xsd:string"/>
+                    <xsd:element name="prefix" nillable="true" type="xsd:string"/>
+                    <xsd:element name="folderNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="sequenceNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="refType" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setMessage">
+                <xsd:sequence>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="message" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setMessageResponse">
+                <xsd:sequence>
+                    <xsd:element name="status" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setDisclosure">
+                <xsd:sequence>
+                    <xsd:element name="contentMigrator" nillable="true" type="xsd:string"/>
+                    <xsd:element name="courtFileNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="setNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="lastName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="firstName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="middleName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="participantId" nillable="true" type="xsd:string"/>
+                    <xsd:element name="csNo" nillable="true" type="xsd:string"/>
+                    <xsd:element name="sharepointError" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="setDisclosureResponse">
+                <xsd:sequence>
+                    <xsd:element name="success" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getClientInfo">
+                <xsd:sequence>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="getClientInfoResponse">
+                <xsd:sequence>
+                    <xsd:element name="Client" nillable="true" type="tns:Client"/>
+                    <xsd:element name="status" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:complexType name="Client">
+                <xsd:sequence>
+                    <xsd:element name="csNum" nillable="true" type="xsd:string"/>
+                    <xsd:element name="LastName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="FirstName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="MiddleName" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Gender" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Youth" nillable="true" type="xsd:string"/>
+                    <xsd:element name="BirthDate" nillable="true" type="xsd:string"/>
+                    <xsd:element name="InCustody" nillable="true" type="xsd:string"/>
+                    <xsd:element name="ActiveSupervision" nillable="true" type="xsd:string"/>
+                    <xsd:element name="FacilityLocation" nillable="true" type="xsd:string"/>
+                    <xsd:element name="Active" nillable="true" type="xsd:string"/>
+                    <xsd:element name="PrimaryCaseManager" nillable="true" type="xsd:string"/>
+                </xsd:sequence>
+            </xsd:complexType>
+            <xsd:element name="setMessage" type="tns1:setMessage"/>
+            <xsd:element name="setMessageResponse" type="tns1:setMessageResponse"/>
+            <xsd:element name="Error" type="tns1:Error"/>
+            <xsd:element name="getClientClaims" type="tns1:getClientClaims"/>
+            <xsd:element name="getClientClaimsResponse" type="tns1:getClientClaimsResponse"/>
+            <xsd:element name="getCsNumsByDate" type="tns1:getCsNumsByDate"/>
+            <xsd:element name="getCsNumsByDateResponse" type="tns1:getCsNumsByDateResponse"/>
+            <xsd:element name="setDisclosure" type="tns1:setDisclosure"/>
+            <xsd:element name="setDisclosureResponse" type="tns1:setDisclosureResponse"/>
+            <xsd:element name="getClientInfo" type="tns1:getClientInfo"/>
+            <xsd:element name="getClientInfoResponse" type="tns1:getClientInfoResponse"/>
+            <xsd:element name="getAgencyFile" type="tns1:getAgencyFile"/>
+            <xsd:element name="getAgencyFileResponse" type="tns1:getAgencyFileResponse"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="MyFiles_PortType_getAgencyFile">
+        <wsdl:part name="parameters" element="tns1:getAgencyFile">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getClientInfo">
+        <wsdl:part name="parameters" element="tns1:getClientInfo">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_setDisclosure">
+        <wsdl:part name="parameters" element="tns1:setDisclosure">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getClientClaimsResponse">
+        <wsdl:part name="parameters" element="tns1:getClientClaimsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getClientInfoResponse">
+        <wsdl:part name="parameters" element="tns1:getClientInfoResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getAgencyFileResponse">
+        <wsdl:part name="parameters" element="tns1:getAgencyFileResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_setMessage">
+        <wsdl:part name="parameters" element="tns1:setMessage">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_setMessageResponse">
+        <wsdl:part name="parameters" element="tns1:setMessageResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_setDisclosureResponse">
+        <wsdl:part name="parameters" element="tns1:setDisclosureResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getCsNumsByDateResponse">
+        <wsdl:part name="parameters" element="tns1:getCsNumsByDateResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+        <wsdl:part name="parameters" element="tns1:Error">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getClientClaims">
+        <wsdl:part name="parameters" element="tns1:getClientClaims">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MyFiles_PortType_getCsNumsByDate">
+        <wsdl:part name="parameters" element="tns1:getCsNumsByDate">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="MyFiles_PortType">
+        <wsdl:operation name="setMessage">
+            <wsdl:input message="tns1:MyFiles_PortType_setMessage">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_setMessageResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getClientClaims">
+            <wsdl:input message="tns1:MyFiles_PortType_getClientClaims">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_getClientClaimsResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCsNumsByDate">
+            <wsdl:input message="tns1:MyFiles_PortType_getCsNumsByDate">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_getCsNumsByDateResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setDisclosure">
+            <wsdl:input message="tns1:MyFiles_PortType_setDisclosure">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_setDisclosureResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getClientInfo">
+            <wsdl:input message="tns1:MyFiles_PortType_getClientInfo">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_getClientInfoResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAgencyFile">
+            <wsdl:input message="tns1:MyFiles_PortType_getAgencyFile">
+            </wsdl:input>
+            <wsdl:output message="tns1:MyFiles_PortType_getAgencyFileResponse">
+            </wsdl:output>
+            <wsdl:fault name="Error" message="tns1:Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder" type="tns1:MyFiles_PortType">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="setMessage">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_setMessage" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getClientClaims">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_getClientClaims" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getCsNumsByDate">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_getCsNumsByDate" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="setDisclosure">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_setDisclosure" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getClientInfo">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_getClientInfo" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+        <wsdl:operation name="getAgencyFile">
+            <soap:operation soapAction="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder_getAgencyFile" style="document"/>
+            <wsdl:input>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body parts="parameters" use="literal"/>
+            </wsdl:output>
+            <wsdl:fault name="Error">
+                <soap:fault name="Error" use="literal"/>
+            </wsdl:fault>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="MyFiles">
+        <wsdl:port name="ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Port" binding="tns1:ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Binder">
+            <soap:address location="http://reeks.bcgov:5556/ws/ICON2_MyFiles.Source.MyFiles.ws:MyFiles/ICON2_MyFiles_Source_MyFiles_ws_MyFiles_Port"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

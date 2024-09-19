@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.phis.health.com" xmlns:impl="http://ws.phis.health.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://ws.phis.health.com">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.phis.health.com">
+            <element name="synchronizeClient">
+                <complexType>
+                    <sequence>
+                        <element name="csNumber" type="xsd:string"/>
+                        <element name="surname" type="xsd:string"/>
+                        <element name="givenName1" type="xsd:string"/>
+                        <element name="givenName2" type="xsd:string"/>
+                        <element name="birthDate" type="xsd:string"/>
+                        <element name="gender" type="xsd:string"/>
+                        <element name="photoGuid" type="xsd:string"/>
+                        <element name="probableDischargeDate" type="xsd:string"/>
+                        <element name="outLocation" type="xsd:string"/>
+                        <element name="outReason" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="synchronizeClientResponse">
+                <complexType/>
+            </element>
+            <element name="debug">
+                <complexType>
+                    <sequence>
+                        <element name="csNumber" type="xsd:string"/>
+                        <element name="surname" type="xsd:string"/>
+                        <element name="givenName1" type="xsd:string"/>
+                        <element name="givenName2" type="xsd:string"/>
+                        <element name="birthDate" type="xsd:string"/>
+                        <element name="gender" type="xsd:string"/>
+                        <element name="photoGuid" type="xsd:string"/>
+                        <element name="probableDischargeDate" type="xsd:string"/>
+                        <element name="outLocation" type="xsd:string"/>
+                        <element name="outReason" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="debugResponse">
+                <complexType>
+                    <sequence>
+                        <element name="debugReturn" type="impl:ClientServiceDebug"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="ClientInfo">
+                <sequence>
+                    <element name="gender" nillable="true" type="xsd:string"/>
+                    <element name="csNumber" nillable="true" type="xsd:string"/>
+                    <element name="surname" nillable="true" type="xsd:string"/>
+                    <element name="probableDischargeDate" nillable="true" type="xsd:string"/>
+                    <element name="givenName2" nillable="true" type="xsd:string"/>
+                    <element name="outLocation" nillable="true" type="xsd:string"/>
+                    <element name="photoGuid" nillable="true" type="xsd:string"/>
+                    <element name="outReason" nillable="true" type="xsd:string"/>
+                    <element name="birthDate" nillable="true" type="xsd:string"/>
+                    <element name="givenName1" nillable="true" type="xsd:string"/>
+                </sequence>
+            </complexType>
+            <complexType name="ClientServiceDebug">
+                <sequence>
+                    <element name="inputValues" nillable="true" type="impl:ClientInfo"/>
+                    <element name="pacValues" nillable="true" type="impl:ClientInfo"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="debugResponse">
+        <wsdl:part name="parameters" element="impl:debugResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="synchronizeClientRequest">
+        <wsdl:part name="parameters" element="impl:synchronizeClient">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="synchronizeClientResponse">
+        <wsdl:part name="parameters" element="impl:synchronizeClientResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="debugRequest">
+        <wsdl:part name="parameters" element="impl:debug">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ClientService">
+        <wsdl:operation name="synchronizeClient">
+            <wsdl:input name="synchronizeClientRequest" message="impl:synchronizeClientRequest">
+            </wsdl:input>
+            <wsdl:output name="synchronizeClientResponse" message="impl:synchronizeClientResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="debug">
+            <wsdl:input name="debugRequest" message="impl:debugRequest">
+            </wsdl:input>
+            <wsdl:output name="debugResponse" message="impl:debugResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ClientServiceSoapBinding" type="impl:ClientService">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="synchronizeClient">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="synchronizeClientRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="synchronizeClientResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="debug">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="debugRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="debugResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ClientServiceService">
+        <wsdl:port name="ClientService" binding="impl:ClientServiceSoapBinding">
+            <wsdlsoap:address location="http://thetis0-z1.ag.gov.bc.ca/pac_dev/services/ClientService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

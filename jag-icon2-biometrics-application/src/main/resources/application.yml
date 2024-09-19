@@ -1,0 +1,21 @@
+security:
+  basic-auth:
+    password: ${BASIC_AUTH_PASS}
+    username: ${BASIC_AUTH_USER}
+  web-service:
+    password: ${WS_AUTH_PASS}
+    username: ${WS_AUTH_USER}
+icon:
+  host: ${ORDS_HOST}
+  username: ${ORDS_USERNAME}
+  password: ${ORDS_PASSWORD}
+  iis-host: ${IIS_HOST}
+  ips-host: ${IPS_HOST}
+  bsc-host: ${BCS_HOST}
+  online-service-id: ${ONLINE_SERVICE_ID}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,prometheus,health

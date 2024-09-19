@@ -1,0 +1,583 @@
+kind: Template
+apiVersion: v1
+metadata:
+  name: ${COMPONENT_NAME}
+  description: Deployment template for the ${COMPONENT_NAME}
+
+labels:
+  app: ${APP_NAME}
+  app.kubernetes.io/name: ${COMPONENT_NAME}
+  app.openshift.io/runtime: ${RUNTIME}
+
+parameters:
+
+  - name: APP_NAME
+    description: The application name that each component is part of
+    required: false
+    value: jag-icon2
+
+  - name: COMPONENT_NAME
+    description: The application name that each component is part of
+    required: false
+    value: nginx-jag-icon2
+
+  - name: OC_NAMESPACE
+    description: The OpenShift namespace prefix
+    required: false
+    # Below value must be changed as per gold cluster oc nameplate
+    value: af9914
+
+  - name: OC_ENV
+    description: The OpenShift environment, ie dev, test or prod
+    required: true
+
+  - name: RUNTIME
+    description: The application name that each component is part of
+    required: false
+    value: nginx
+
+  - name: ENDPOINT1
+    description: The target endpoint
+    required: false
+    value: jag-icon2-biometrics
+
+  - name: ENDPOINT2
+    description: The target endpoint
+    required: false
+    value: jag-icon2-common
+  
+  - name: ENDPOINT3
+    description: The target endpoint
+    required: false
+    value: jag-icon2-auth
+  
+  - name: ENDPOINT4
+    description: The target endpoint
+    required: false
+    value: jag-icon2-myfiles
+  
+  - name: ENDPOINT5
+    description: The target endpoint
+    required: false
+    value: jag-icon2-hsr
+
+  - name: ENDPOINT6
+    description: The target endpoint
+    required: false
+    value: nginx-jag-icon2-oldwm
+
+  - name: DNS
+    description: The nginx router url
+    required: true
+
+  - name: SSL_Certificate
+    description: SSL application certificate
+    required: false
+    value: ''
+
+  - name: SSL_PrivateKey
+    description: Private key for the SSL application certificate
+    required: false
+    value: ''
+
+  - name: CA_CertificateChain
+    description: CA certificate chain for the SSL application certificate
+    required: false
+    value: ''
+
+objects:
+
+- kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: nginx-default-conf
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    data:
+      nginx.conf: >-
+        worker_processes auto;
+
+        error_log /var/opt/rh/rh-nginx118/log/nginx/error.log;
+
+        pid /var/opt/rh/rh-nginx118/run/nginx/nginx.pid;
+
+
+        # Load dynamic modules. See
+        /opt/rh/rh-nginx118/root/usr/share/doc/README.dynamic.
+
+        include /opt/rh/rh-nginx118/root/usr/share/nginx/modules/*.conf;
+
+
+        events {
+          worker_connections  1024;
+        }
+
+
+        http {
+
+          log_format main escape=json '{ "time": "$time_iso8601", '
+          '"remote_addr": "$remote_addr", '
+          '"remote_user": "$remote_user", '
+          '"body_bytes_sent": "$body_bytes_sent", '
+          '"request_time": "$request_time", '
+          '"status": "$status", '
+          '"request": "$request", '
+          '"request_method": "$request_method", '
+          '"http_referrer": "$http_referer", '
+          '"http_x_forwarded_for": "$http_x_forwarded_for", '
+          '"host": "$host", '
+          '"server_name": "$server_name", '
+          '"upstream_address": "$upstream_addr", '
+          '"upstream_status": "$upstream_status", '
+          '"upstream_response_time": "$upstream_response_time", '
+          '"upstream_response_length": "$upstream_response_length", '
+          '"http_user_agent": "$http_user_agent", '
+          '"request_body": "$request_body" }';
+
+          access_log  /var/opt/rh/rh-nginx118/log/nginx/access.log  main;
+
+          sendfile        on;
+          tcp_nopush      on;
+          tcp_nodelay     on;
+          keepalive_timeout  65;
+          types_hash_max_size 4096;
+
+          include       /etc/opt/rh/rh-nginx118/nginx/mime.types;
+          default_type  application/octet-stream;
+
+          # Load modular configuration files from the /etc/nginx/conf.d directory.
+          include /opt/app-root/etc/nginx.d/*.conf;
+
+          server {
+            listen       8080 default_server;
+            listen       [::]:8080 default_server;
+            server_name  _;
+            root         /opt/app-root/src;
+
+            # Load configuration files for the default server block.
+            include      /opt/app-root/etc/nginx.default.d/*.conf;
+          }
+        }
+
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: ${COMPONENT_NAME}-conf
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    data:
+      nginx-proxy.conf: |-
+        location /nginx-health {
+          return 200 "Application is healthy";
+          access_log off;
+        }
+
+        location = /api {
+          return 302 /api/actuator/health;
+        }
+
+        location /healthcheck {
+          default_type application/json;
+          return 200 '{"status":"UP","groups":["liveness","readiness"]}';
+          access_log off;
+        }
+
+        location /api/common-1-1/Audit {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-audit/common/Audit;
+        }
+        location /api/common-1-1/EReporting {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-ereporting/common/EReporting;
+        }
+        location /api/common-1-1/HSR {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-hsr/common/HSR;
+        }
+        location /api/common-1-1/Message {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-message/common/Message;
+        }
+        location /api/common-1-1/MyInfo {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-myinfo/common/MyInfo;
+        }
+        location /api/common-1-1/VisitSchedule {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-visitschedule/common/VisitSchedule;
+        }
+        location /api/common-1-1/TrustAccount {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-trustaccount/common/TrustAccount;
+        }
+        location /api/common-1-1/TombStoneInfo {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-tombstoneinfo/common/TombStoneInfo;
+        }
+        location /api/common-1-1/SessionParameter {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-sessionparameter/common/SessionParameter;
+        }
+        location /api/common-1-1/ErrorHandling {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-errorhandling/common/ErrorHandling;
+        }
+        location /api/common-1-2 {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-auth/auth;
+        }
+        location /api/Biometrics {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-biometrics/Biometrics;
+        }
+        location /api/MyFiles {
+          client_max_body_size 100m;
+          proxy_read_timeout 240s;
+          proxy_send_timeout 80s;
+          proxy_redirect off;
+          port_in_redirect off;
+          proxy_http_version 1.1;
+          proxy_set_header Host $host;
+          proxy_set_header X-Forwarded-Proto $scheme;
+          proxy_set_header X-Real-IP $remote_addr;
+          proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+          proxy_set_header X-Forwarded-Host $server_name;
+          proxy_pass_request_headers on;
+          proxy_pass http://splitter-myfiles/MyFiles;
+        }
+
+
+  - kind: ConfigMap
+    apiVersion: v1
+    metadata:
+      name: ${COMPONENT_NAME}-upstream
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    data:
+      nginx-upstream.conf: |-
+        upstream splitter-audit {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-ereporting {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-hsr {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-message {
+          #server jag-icon2-common;
+          server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-myinfo {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-visitschedule {
+          #server jag-icon2-common;
+          server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-trustaccount {
+          #server jag-icon2-common;
+          server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-tombstoneinfo {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-sessionparameter {
+          #server jag-icon2-common;
+          server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-errorhandling {
+          server jag-icon2-common;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-auth {
+          #server jag-icon2-auth;
+          server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-biometrics {
+          server jag-icon2-biometrics;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+        upstream splitter-myfiles {
+          server jag-icon2-myfiles;
+          #server nginx-jag-icon2-oldwm;
+        }
+
+  - kind: DeploymentConfig
+    apiVersion: apps.openshift.io/v1
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+      annotations:
+        app.openshift.io/connects-to: ${ENDPOINT1}, ${ENDPOINT2}, ${ENDPOINT3}, ${ENDPOINT4}, ${ENDPOINT5}, ${ENDPOINT6}
+    spec:
+      strategy:
+        type: Rolling
+        rollingParams:
+          updatePeriodSeconds: 1
+          intervalSeconds: 1
+          timeoutSeconds: 600
+          maxUnavailable: 25%
+          maxSurge: 25%
+        resources: {}
+        activeDeadlineSeconds: 21600
+      triggers:
+        - type: ImageChange
+          imageChangeParams:
+            automatic: true
+            containerNames:
+              - ${COMPONENT_NAME}
+            from:
+              kind: ImageStreamTag
+              namespace: ${OC_NAMESPACE}-tools
+              name: '${COMPONENT_NAME}:latest'
+        - type: ConfigChange
+      replicas: 1
+      revisionHistoryLimit: 10
+      test: false
+      selector:
+        name: ${COMPONENT_NAME}
+        deploymentconfig: ${COMPONENT_NAME}
+      template:
+        metadata:
+          labels:
+            name: ${COMPONENT_NAME}
+            deploymentconfig: ${COMPONENT_NAME}
+        spec:
+          volumes:
+            - name: ${COMPONENT_NAME}-conf
+              configMap:
+                name: ${COMPONENT_NAME}-conf
+                defaultMode: 420
+            - name: ${COMPONENT_NAME}-upstream
+              configMap:
+                name: ${COMPONENT_NAME}-upstream
+                defaultMode: 420
+            - name: nginx-default-conf
+              configMap:
+                name: nginx-default-conf
+                defaultMode: 420
+          containers:
+            - name: ${COMPONENT_NAME}
+              # Below Immage url must be changed as per gold cluster image stream
+              image: >-
+                image-registry.openshift-image-registry.svc:5000/${OC_NAMESPACE}-tools/${COMPONENT_NAME}:latest
+              ports:
+                - containerPort: 8080
+                  protocol: TCP
+                - containerPort: 8443
+                  protocol: TCP
+               resources:
+                limits:
+                  cpu: 50m
+                  memory: 50Mi
+                requests:
+                  cpu: 40m
+                  memory: 50Mi
+              volumeMounts:
+                - name: ${COMPONENT_NAME}-conf
+                  readOnly: true
+                  mountPath: /opt/app-root/etc/nginx.default.d/
+                - name: ${COMPONENT_NAME}-upstream
+                  readOnly: true
+                  mountPath: /opt/app-root/etc/nginx.d
+                - name: nginx-default-conf
+                  readOnly: true
+                  mountPath: /etc/opt/rh/rh-nginx118/nginx/nginx.conf
+                  subPath: nginx.conf
+              terminationMessagePath: /dev/termination-log
+              terminationMessagePolicy: File
+              imagePullPolicy: Always
+          restartPolicy: Always
+          terminationGracePeriodSeconds: 30
+          dnsPolicy: ClusterFirst
+
+  - kind: Service
+    apiVersion: v1
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    spec:
+      ports:
+        - name: 8080-tcp
+          protocol: TCP
+          port: 8080
+          targetPort: 8080
+      selector:
+        name: ${COMPONENT_NAME}
+        deploymentconfig: ${COMPONENT_NAME}
+      type: ClusterIP
+      sessionAffinity: None
+
+  - kind: Route
+    apiVersion: route.openshift.io/v1
+    metadata:
+      name: ${COMPONENT_NAME}
+      namespace: ${OC_NAMESPACE}-${OC_ENV}
+    annotations:
+      # if we do not use sticky-session, disable_cookies needs to be true
+      haproxy.router.openshift.io/disable_cookies: "true"
+      # balance algorithm
+      haproxy.router.openshift.io/balance: roundrobin
+    spec:
+      # Below value must be changed as per gold cluster certificate/DNS
+      host: ${COMPONENT_NAME}-${OC_NAMESPACE}-${OC_ENV}.${DNS}
+      to:
+        kind: Service
+        name: ${COMPONENT_NAME}
+        weight: 100
+      port:
+        targetPort: 8080-tcp
+      tls:
+        termination: edge
+        certificate: '${SSL_Certificate}'
+        key: '${SSL_PrivateKey}'
+        caCertificate: '${CA_CertificateChain}'
+        insecureEdgeTerminationPolicy: None
+      wildcardPolicy: None

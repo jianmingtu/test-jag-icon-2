@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" targetNamespace="http://ws.phis.health.com" xmlns:impl="http://ws.phis.health.com" xmlns:apachesoap="http://xml.apache.org/xml-soap" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:intf="http://ws.phis.health.com">
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" targetNamespace="http://ws.phis.health.com">
+            <element name="submitHealthServiceRequest">
+                <complexType>
+                    <sequence>
+                        <element name="csNumber" type="xsd:string"/>
+                        <element name="submissionDate" type="xsd:dateTime"/>
+                        <element name="centre" type="xsd:string"/>
+                        <element name="details" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="submitHealthServiceRequestResponse">
+                <complexType>
+                    <sequence>
+                        <element name="submitHealthServiceRequestReturn" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="getHealthServiceRequestSummary">
+                <complexType>
+                    <sequence>
+                        <element name="csNumber" type="xsd:string"/>
+                        <element name="numCharacters" type="xsd:int"/>
+                        <element name="startRecord" type="xsd:int"/>
+                        <element name="endRecord" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="getHealthServiceRequestSummaryResponse">
+                <complexType>
+                    <sequence>
+                        <element name="getHealthServiceRequestSummaryReturn" type="impl:HealthServiceRequestBundle"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <complexType name="HealthServiceRequest">
+                <sequence>
+                    <element name="submittedDtm" nillable="true" type="xsd:dateTime"/>
+                    <element name="detailsTxt" nillable="true" type="xsd:string"/>
+                    <element name="id" type="xsd:int"/>
+                </sequence>
+            </complexType>
+            <complexType name="ArrayOfHealthServiceRequest">
+                <sequence>
+                    <element maxOccurs="unbounded" minOccurs="0" name="requests" type="impl:HealthServiceRequest"/>
+                </sequence>
+            </complexType>
+            <complexType name="HealthServiceRequestBundle">
+                <sequence>
+                    <element name="totalRequestCount" type="xsd:int"/>
+                    <element name="requests" nillable="true" type="impl:ArrayOfHealthServiceRequest"/>
+                </sequence>
+            </complexType>
+            <element name="getHealthServiceRequestDetails">
+                <complexType>
+                    <sequence>
+                        <element name="csNumber" type="xsd:string"/>
+                        <element name="id" type="xsd:int"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="getHealthServiceRequestDetailsResponse">
+                <complexType>
+                    <sequence>
+                        <element name="getHealthServiceRequestDetailsReturn" type="impl:HealthServiceRequest"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="pingDB">
+                <complexType/>
+            </element>
+            <element name="pingDBResponse">
+                <complexType>
+                    <sequence>
+                        <element name="pingDBReturn" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+            <element name="pingWS">
+                <complexType/>
+            </element>
+            <element name="pingWSResponse">
+                <complexType>
+                    <sequence>
+                        <element name="pingWSReturn" type="xsd:string"/>
+                    </sequence>
+                </complexType>
+            </element>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="submitHealthServiceRequestResponse">
+        <wsdl:part name="parameters" element="impl:submitHealthServiceRequestResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pingDBRequest">
+        <wsdl:part name="parameters" element="impl:pingDB">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pingDBResponse">
+        <wsdl:part name="parameters" element="impl:pingDBResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pingWSRequest">
+        <wsdl:part name="parameters" element="impl:pingWS">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthServiceRequestDetailsRequest">
+        <wsdl:part name="parameters" element="impl:getHealthServiceRequestDetails">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthServiceRequestSummaryResponse">
+        <wsdl:part name="parameters" element="impl:getHealthServiceRequestSummaryResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthServiceRequestSummaryRequest">
+        <wsdl:part name="parameters" element="impl:getHealthServiceRequestSummary">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="pingWSResponse">
+        <wsdl:part name="parameters" element="impl:pingWSResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="getHealthServiceRequestDetailsResponse">
+        <wsdl:part name="parameters" element="impl:getHealthServiceRequestDetailsResponse">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="submitHealthServiceRequestRequest">
+        <wsdl:part name="parameters" element="impl:submitHealthServiceRequest">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="HSRService">
+        <wsdl:operation name="submitHealthServiceRequest">
+            <wsdl:input name="submitHealthServiceRequestRequest" message="impl:submitHealthServiceRequestRequest">
+            </wsdl:input>
+            <wsdl:output name="submitHealthServiceRequestResponse" message="impl:submitHealthServiceRequestResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestSummary">
+            <wsdl:input name="getHealthServiceRequestSummaryRequest" message="impl:getHealthServiceRequestSummaryRequest">
+            </wsdl:input>
+            <wsdl:output name="getHealthServiceRequestSummaryResponse" message="impl:getHealthServiceRequestSummaryResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestDetails">
+            <wsdl:input name="getHealthServiceRequestDetailsRequest" message="impl:getHealthServiceRequestDetailsRequest">
+            </wsdl:input>
+            <wsdl:output name="getHealthServiceRequestDetailsResponse" message="impl:getHealthServiceRequestDetailsResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pingDB">
+            <wsdl:input name="pingDBRequest" message="impl:pingDBRequest">
+            </wsdl:input>
+            <wsdl:output name="pingDBResponse" message="impl:pingDBResponse">
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pingWS">
+            <wsdl:input name="pingWSRequest" message="impl:pingWSRequest">
+            </wsdl:input>
+            <wsdl:output name="pingWSResponse" message="impl:pingWSResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HSRServiceSoapBinding" type="impl:HSRService">
+        <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="submitHealthServiceRequest">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="submitHealthServiceRequestRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="submitHealthServiceRequestResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestSummary">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getHealthServiceRequestSummaryRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getHealthServiceRequestSummaryResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="getHealthServiceRequestDetails">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getHealthServiceRequestDetailsRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="getHealthServiceRequestDetailsResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pingDB">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="pingDBRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="pingDBResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="pingWS">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="pingWSRequest">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="pingWSResponse">
+                <wsdlsoap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HSRServiceService">
+        <wsdl:port name="HSRService" binding="impl:HSRServiceSoapBinding">
+            <wsdlsoap:address location="http://thetis0-z1.ag.gov.bc.ca/pac_dev/services/HSRService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

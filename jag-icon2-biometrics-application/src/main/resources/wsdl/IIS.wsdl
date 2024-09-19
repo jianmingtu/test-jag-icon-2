@@ -1,0 +1,381 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.bceid.ca/webservices/IIS/V3/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.bceid.ca/webservices/IIS/V3/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.bceid.ca/webservices/IIS/V3/">
+            <s:element name="RegisterIndividual">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RegisterIndividualRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RegisterIndividualRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="accountType" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="surname" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="firstGivenName" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="middleName1" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="middleName2" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="knownAs" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="birthDate" type="s:dateTime"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="telephone" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="email" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="postalAddress" type="tns:Address"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="RequestBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="onlineServiceId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserGuid" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="BCeIDAccountTypeCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="Individual"/>
+                    <s:enumeration value="VerifiedIndividual"/>
+                    <s:enumeration value="Business"/>
+                    <s:enumeration value="Internal"/>
+                    <s:enumeration value="LDB"/>
+                    <s:enumeration value="EDS"/>
+                    <s:enumeration value="THS"/>
+                    <s:enumeration value="CORNET"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:complexType name="Address">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="line1" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="line2" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="postalCode" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="city" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="province" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="country" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="RegisterIndividualResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RegisterIndividualResult" type="tns:RegisterIndividualResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RegisterIndividualResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="ResponseBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="1" name="code" type="tns:ResponseCode"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="failureCode" type="tns:FailureCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="message" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="ResponseCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Success"/>
+                    <s:enumeration value="Failed"/>
+                    <s:enumeration value="UnknownError"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:simpleType name="FailureCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="NoResults"/>
+                    <s:enumeration value="ExpectedResults"/>
+                    <s:enumeration value="ArgumentException"/>
+                    <s:enumeration value="AuthenticationException"/>
+                    <s:enumeration value="ValidationException"/>
+                    <s:enumeration value="AuthorizationException"/>
+                    <s:enumeration value="Timeout"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="RemoveIndividual">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RemoveIndividualRequest"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="issuance" type="tns:IssuanceToken"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RemoveIndividualRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="IssuanceToken">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="issuanceID" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="enrollmentURL" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="expiry" type="s:dateTime"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="RemoveIndividualResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RemoveIndividualResult" type="tns:RemoveIndividualResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RemoveIndividualResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="ChangeIndividual">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:ChangeIndividualRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ChangeIndividualRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="ChangeIndividualResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="ChangeIndividualResult" type="tns:ChangeIndividualResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ChangeIndividualResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RepairIndividual">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RepairIndividualRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RepairIndividualRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RepairIndividualResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RepairIndividualResult" type="tns:RepairIndividualResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RepairIndividualResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="MergeIndividual">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:MergeIndividualRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="MergeIndividualRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="MergeFromIdRef" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="MergeIntoIdRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="MergeIndividualResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="MergeIndividualResult" type="tns:MergeIndividualResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="MergeIndividualResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="RegisterIndividualSoapIn">
+        <wsdl:part name="parameters" element="tns:RegisterIndividual"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MergeIndividualSoapIn">
+        <wsdl:part name="parameters" element="tns:MergeIndividual"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ChangeIndividualSoapIn">
+        <wsdl:part name="parameters" element="tns:ChangeIndividual"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ChangeIndividualSoapOut">
+        <wsdl:part name="parameters" element="tns:ChangeIndividualResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="MergeIndividualSoapOut">
+        <wsdl:part name="parameters" element="tns:MergeIndividualResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RepairIndividualSoapOut">
+        <wsdl:part name="parameters" element="tns:RepairIndividualResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RemoveIndividualSoapIn">
+        <wsdl:part name="parameters" element="tns:RemoveIndividual"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RemoveIndividualSoapOut">
+        <wsdl:part name="parameters" element="tns:RemoveIndividualResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RegisterIndividualSoapOut">
+        <wsdl:part name="parameters" element="tns:RegisterIndividualResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RepairIndividualSoapIn">
+        <wsdl:part name="parameters" element="tns:RepairIndividual"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ServiceSoap">
+        <wsdl:operation name="RegisterIndividual">
+            <wsdl:input message="tns:RegisterIndividualSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RegisterIndividualSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveIndividual">
+            <wsdl:input message="tns:RemoveIndividualSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RemoveIndividualSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ChangeIndividual">
+            <wsdl:input message="tns:ChangeIndividualSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:ChangeIndividualSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RepairIndividual">
+            <wsdl:input message="tns:RepairIndividualSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RepairIndividualSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MergeIndividual">
+            <wsdl:input message="tns:MergeIndividualSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:MergeIndividualSoapOut"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegisterIndividual">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RegisterIndividual" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveIndividual">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RemoveIndividual" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ChangeIndividual">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/ChangeIndividual" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RepairIndividual">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RepairIndividual" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MergeIndividual">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/MergeIndividual" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="RegisterIndividual">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RegisterIndividual" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RemoveIndividual">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RemoveIndividual" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ChangeIndividual">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/ChangeIndividual" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RepairIndividual">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/RepairIndividual" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="MergeIndividual">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/IIS/V3/MergeIndividual" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Service">
+        <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+            <soap:address location="http://gws1.systestv2.bceid.ca/webservices/IIS/V3/Service.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+            <soap12:address location="http://gws1.systestv2.bceid.ca/webservices/IIS/V3/Service.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

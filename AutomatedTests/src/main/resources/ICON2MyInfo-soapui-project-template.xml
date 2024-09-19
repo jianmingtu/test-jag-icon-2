@@ -1,0 +1,493 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="8c1bdb63-12c9-4eac-99f9-ef87bb21b0f8" activeEnvironment="Default" name="ICON2MyInfo" resourceRoot="${projectDir}" soapui-version="5.7.0" abortOnError="false" runType="SEQUENTIAL" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="b3e6755b-964b-471f-af52-3f0f6f7a34cc" wsaVersion="NONE" name="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder" type="wsdl" bindingName="{ICON2.Source.MyInfo.ws.provider:MyInfo}ICON2_Source_MyInfo_ws_provider_MyInfo_Binder" soapVersion="1_1" anonymous="optional" definition="file:/C:/workspace2/jag-icon-2/jag-icon2-common-application/src/main/resources/wsdl/MyInfo.wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\MyInfo.wsdl"><con:part><con:url>file:\C:\workspace2\jag-icon-2\jag-icon2-common-application\src\main\resources\wsdl\MyInfo.wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="MyInfo" targetNamespace="ICON2.Source.MyInfo.ws.provider:MyInfo" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:soapjms="http://www.w3.org/2008/07/soap/bindings/JMS/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:tns="ICON2.Source.MyInfo.ws.provider:MyInfo" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="ICON2.Source.MyInfo.ws.provider:MyInfo">
+      <xsd:complexType name="getOrders">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getOrdersResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="Error">
+        <xsd:sequence>
+          <xsd:element name="Reason" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getPrograms">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getProgramsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getLocations">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getLocationsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getClientHistory">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getClientHistoryResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getConditions">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getConditionsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getOrdersConditions">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getOrdersConditionsResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getDates">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+          <xsd:element name="UserTokenString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:complexType name="getDatesResponse">
+        <xsd:sequence>
+          <xsd:element name="XMLString" nillable="true" type="xsd:string"/>
+        </xsd:sequence>
+      </xsd:complexType>
+      <xsd:element name="getPrograms" type="tns:getPrograms"/>
+      <xsd:element name="getProgramsResponse" type="tns:getProgramsResponse"/>
+      <xsd:element name="Error" type="tns:Error"/>
+      <xsd:element name="getLocations" type="tns:getLocations"/>
+      <xsd:element name="getLocationsResponse" type="tns:getLocationsResponse"/>
+      <xsd:element name="getOrders" type="tns:getOrders"/>
+      <xsd:element name="getOrdersResponse" type="tns:getOrdersResponse"/>
+      <xsd:element name="getDates" type="tns:getDates"/>
+      <xsd:element name="getDatesResponse" type="tns:getDatesResponse"/>
+      <xsd:element name="getClientHistory" type="tns:getClientHistory"/>
+      <xsd:element name="getClientHistoryResponse" type="tns:getClientHistoryResponse"/>
+      <xsd:element name="getConditions" type="tns:getConditions"/>
+      <xsd:element name="getConditionsResponse" type="tns:getConditionsResponse"/>
+      <xsd:element name="getOrdersConditions" type="tns:getOrdersConditions"/>
+      <xsd:element name="getOrdersConditionsResponse" type="tns:getOrdersConditionsResponse"/>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="MyInfo_PortType_getClientHistory">
+    <wsdl:part name="parameters" element="tns:getClientHistory"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getLocations">
+    <wsdl:part name="parameters" element="tns:getLocations"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="Error_ICON2_Source_Common_ErrorHandling_Docs_Error">
+    <wsdl:part name="parameters" element="tns:Error"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getProgramsResponse">
+    <wsdl:part name="parameters" element="tns:getProgramsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getDatesResponse">
+    <wsdl:part name="parameters" element="tns:getDatesResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getOrdersResponse">
+    <wsdl:part name="parameters" element="tns:getOrdersResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getDates">
+    <wsdl:part name="parameters" element="tns:getDates"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getPrograms">
+    <wsdl:part name="parameters" element="tns:getPrograms"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getClientHistoryResponse">
+    <wsdl:part name="parameters" element="tns:getClientHistoryResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getConditionsResponse">
+    <wsdl:part name="parameters" element="tns:getConditionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getOrdersConditions">
+    <wsdl:part name="parameters" element="tns:getOrdersConditions"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getConditions">
+    <wsdl:part name="parameters" element="tns:getConditions"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getOrders">
+    <wsdl:part name="parameters" element="tns:getOrders"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getOrdersConditionsResponse">
+    <wsdl:part name="parameters" element="tns:getOrdersConditionsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="MyInfo_PortType_getLocationsResponse">
+    <wsdl:part name="parameters" element="tns:getLocationsResponse"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MyInfo_PortType">
+    <wsdl:operation name="getPrograms">
+      <wsdl:input message="tns:MyInfo_PortType_getPrograms"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getProgramsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <wsdl:input message="tns:MyInfo_PortType_getLocations"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getLocationsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <wsdl:input message="tns:MyInfo_PortType_getOrders"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getOrdersResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDates">
+      <wsdl:input message="tns:MyInfo_PortType_getDates"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getDatesResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getClientHistory">
+      <wsdl:input message="tns:MyInfo_PortType_getClientHistory"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getClientHistoryResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getConditions">
+      <wsdl:input message="tns:MyInfo_PortType_getConditions"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getConditionsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersConditions">
+      <wsdl:input message="tns:MyInfo_PortType_getOrdersConditions"></wsdl:input>
+      <wsdl:output message="tns:MyInfo_PortType_getOrdersConditionsResponse"></wsdl:output>
+      <wsdl:fault name="Error" message="tns:Error_ICON2_Source_Common_ErrorHandling_Docs_Error"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder" type="tns:MyInfo_PortType">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getPrograms">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getPrograms" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getLocations">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getLocations" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOrders">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrders" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getDates">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getDates" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getClientHistory">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getClientHistory" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getConditions">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getConditions" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getOrdersConditions">
+      <soap:operation soapAction="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrdersConditions" style="document"/>
+      <wsdl:input>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body parts="parameters" use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="Error">
+        <soap:fault name="Error" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MyInfo">
+    <wsdl:port name="ICON2_Source_MyInfo_ws_provider_MyInfo_Port" binding="tns:ICON2_Source_MyInfo_ws_provider_MyInfo_Binder">
+      <soap:address location="{API_HOST_1}"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>{API_HOST_1}</con:endpoint></con:endpoints><con:operation id="ddb62397-623c-400e-abe7-c1ff8785dd76" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getClientHistory" name="getClientHistory" bindingOperationName="getClientHistory" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="de0d87ea-1444-4040-8add-1d13a114795c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getClientHistory>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getClientHistory>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getClientHistory"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="777905b8-60bd-40cc-ac50-e35bed54b3ba" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getConditions" name="getConditions" bindingOperationName="getConditions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="9906ccc1-7f79-443d-9811-d1ee8e94dd46" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getConditions>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getConditions>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getConditions"/></con:call></con:operation><con:operation id="42bb7883-7029-4bc3-95ce-c3e33d4b4d60" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getDates" name="getDates" bindingOperationName="getDates" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a77f1252-963f-4b7e-8968-0c304769e259" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getDates>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getDates>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getDates"/></con:call></con:operation><con:operation id="7eb44ed6-5b93-46aa-8425-4633719f6cb6" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getLocations" name="getLocations" bindingOperationName="getLocations" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="44667e51-d8ad-4c27-bb98-9fd94237081e" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getLocations>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getLocations>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getLocations"/></con:call></con:operation><con:operation id="011c2942-d921-44f4-b2f6-ae36eb1ae288" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrders" name="getOrders" bindingOperationName="getOrders" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="fd24a448-e6e2-4bf3-8236-1680269776f6" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getOrders>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getOrders>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrders"/></con:call></con:operation><con:operation id="e4f5b046-b2bb-445b-8ef9-fbfecf5fde05" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrdersConditions" name="getOrdersConditions" bindingOperationName="getOrdersConditions" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="dc2f2d5b-a5c0-4e39-957f-50f14421515c" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getOrdersConditions>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getOrdersConditions>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getOrdersConditions"/></con:call></con:operation><con:operation id="4da07087-12c9-4de6-9a43-67a2f50e40c7" isOneWay="false" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getPrograms" name="getPrograms" bindingOperationName="getPrograms" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="06bda9f1-f429-4495-8d2c-cf6e7427ac1f" name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>{API_HOST_1}</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <icon:getPrograms>\r
+         <XMLString>?</XMLString>\r
+         <UserTokenString>?</UserTokenString>\r
+      </icon:getPrograms>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="ICON2_Source_MyInfo_ws_provider_MyInfo_Binder_getPrograms"/></con:call></con:operation></con:interface><con:testSuite id="845a8f9b-cfbf-4563-b546-3e7d861fdbb3" name="ICON2MyInfoTestSuite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase id="a8a6791d-4105-4d72-837e-6cfaf40f47a7" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetClientHistory" searchProperties="true"><con:settings/><con:testStep type="request" name="getClientHistory" id="db8a296f-9707-41eb-b134-45b4aa088ab6"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getClientHistory" id="9ba5ddc2-b6c7-4480-8482-80447442dbbf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getClientHistory>
+            <XMLString>
+            
+                    &lt;ClientHistory>
+                        &lt;csNum>05919501&lt;/csNum>
+                    &lt;/ClientHistory>
+                
+            </XMLString>
+            <UserTokenString><![CDATA[
+            
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                 
+            ]]]]>><![CDATA[</UserTokenString>
+        </icon:getClientHistory>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="c645813a-a4dd-48e9-9262-78b1c37638e3"/><con:assertion type="Valid HTTP Status Codes" id="8ce089c9-2a83-441c-918e-4935f30224e1" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="436066b0-0c4a-4da8-86bc-eeda81fbba71" name="Contains"><con:configuration><token>IMMI</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="2e0197aa-129b-4f1b-9bfc-4628986f5d56" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="7d622b35-2839-4b56-adc1-756c21b9570b" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="49bfe028-435c-44d4-9bff-121c16fdfcfa" name="Contains 1"><con:configuration><token>COMM</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="845d22c5-a6c4-4340-98be-bf9df3476488" name="Contains 2"><con:configuration><token>VICT</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="180ce6ba-2a76-4c8e-b15e-dec512551d25" name="Contains 3"><con:configuration><token>Victoria Court</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="1f2c65c5-4395-465a-a764-edfae99998f6" name="Contains 4"><con:configuration><token>Robbery</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="dfbd1e94-6377-4baf-8203-7384456f4dfc" name="Contains 5"><con:configuration><token>VIRCC</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="256ee17c-18e8-4a97-8fff-f847829b3b4f" name="Contains 6"><con:configuration><token>Vancouver Island Regional Correctional Centre</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="baa8b1cf-d6be-4bf5-8e83-c61e131ecded" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetConditions" searchProperties="true"><con:settings/><con:testStep type="request" name="getConditions" id="a3a218e9-6f41-4a53-852c-3b9bf106be86"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getConditions" id="154bb6ac-c253-4b11-b76b-4d162cb389c5"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getConditions>
+            <XMLString>
+            <![CDATA[
+                    <Conditions>
+                        <csNum>05919501</csNum>
+                    </Conditions>
+                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+            <![CDATA[
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getConditions>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="4dd5f37e-0ef3-47f3-b29a-ceeb6478ba36"/><con:assertion type="Valid HTTP Status Codes" id="3e29ea8e-0fd8-4a27-98ec-b5ead9851099" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="0fa581d2-b85f-45e5-912e-f137f834eaaf" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="6d2b911b-fcdb-4a97-86c1-7ee407848047" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 402, 500, 501</codes></con:configuration></con:assertion><con:credentials><con:username>{AUTHENTICATION_USERNAME}</con:username><con:password>{AUTHENTICATION_PASSWORD}</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="43c1e847-82f3-4ae6-b036-07928675ee5e" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetDates" searchProperties="true"><con:settings/><con:testStep type="request" name="getDates" id="50d4146f-a654-47a8-88cb-5d2479360e81"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getDates" id="a9d0d066-04ea-4391-b2fe-7f36a7f3c6b3"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+   <soapenv:Header/>
+   <soapenv:Body>
+        <icon:getDates>
+            <XMLString>
+            <![CDATA[
+                <Dates><csNum>05919501</csNum></Dates>
+            ]]]]>><![CDATA[      
+            </XMLString>
+            <UserTokenString>
+                                 <![CDATA[
+   
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+           
+                </UserToken>
+                                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getDates>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="9ce7c554-1bd1-4c4a-bbda-b8156ee6bcb7"/><con:assertion type="Valid HTTP Status Codes" id="f79d7a4a-32ce-45ed-8f2f-8a0e52fa5e1b" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="9cf626da-3be1-46b4-ba7e-9a345d564a46" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="7d3e0764-1275-4299-9946-f7f827a8a86c" name="Invalid HTTP Status Codes"><con:configuration><codes>400, 401, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="8a3cd965-fdd9-410c-a3c6-283158fd54ce" name="Contains"><con:configuration><token>0</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>usr</con:username><con:password>123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="ecdf7b69-1219-47bd-aeb0-e86fc411e7c6" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetLocation" searchProperties="true"><con:settings/><con:testStep type="request" name="getLocation" id="12270bf3-1eac-41ce-9660-c7c4a9907aef"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getLocation" id="72532332-262a-46e9-83de-8f5563cc01a9"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <icon:getLocations>
+         <XMLString>
+                     <![CDATA[
+ 
+                    <Locations>
+                        <csNum>05919501</csNum>
+                    </Locations>
+
+                                ]]]]>><![CDATA[
+            </XMLString>
+            <UserTokenString>
+                                 <![CDATA[
+   
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+           
+                </UserToken>
+                                ]]]]>><![CDATA[
+            </UserTokenString>
+      </icon:getLocations>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="3e16ab88-654e-4e16-9510-43d01827acd2"/><con:assertion type="Valid HTTP Status Codes" id="afba0d59-e434-4224-94b8-04dd5722095e" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="82efc976-8cfe-4ba9-b17a-6ce8b722dc57" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="cd1a9980-ebed-44fa-8f62-8a1c07f70050" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Simple Contains" id="27a732cb-0c0a-4767-81d5-c422e5f600d7" name="Contains"><con:configuration><token>MAIL</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="f35488b0-825b-496d-9b6a-1f92a92f9502" name="Contains 1"><con:configuration><token>PO Box 9200</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="4562f6f7-4db6-4ea1-bc4c-babb18c85023" name="Contains 2"><con:configuration><token>Stn Prov Govt</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="ee116cc8-7e6b-4c81-9611-339a7a9a0a40" name="Contains 3"><con:configuration><token>VICTORIA</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="72f034ee-31a1-4ab4-acd7-b820c128da9a" name="Contains 4"><con:configuration><token>British Columbia</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="e7109ee5-fcf7-4a7b-a149-7abffbb29eb7" name="Contains 5"><con:configuration><token>Vancouver Island Regional Correctional Centre</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="b26172a7-4f06-44df-96e0-fa621c6c3a5f" name="Contains 6"><con:configuration><token>250-953-4400</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:assertion type="Simple Contains" id="330b4f48-0da4-4988-9e10-00ab571e6475" name="Contains 7"><con:configuration><token>INST</token><ignoreCase>false</ignoreCase><useRegEx>false</useRegEx></con:configuration></con:assertion><con:credentials><con:username>usr</con:username><con:password>123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties><con:property><con:name>csNum</con:name><con:value>05919501</con:value></con:property><con:property><con:name>AuthoritativePartyIdentifier</con:name><con:value>urn:ca:bc:gov:bceid</con:value></con:property><con:property><con:name>BiometricsSignature</con:name><con:value>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</con:value></con:property></con:properties></con:testCase><con:testCase id="df862422-733f-4317-8cb5-ac33a6556f78" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetOrders" searchProperties="true"><con:settings/><con:testStep type="request" name="getOrders" id="b6a02616-6d60-4b53-9696-51bf7dbfb3a5"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getOrders" id="9ff8cfde-0a70-48d3-9cb9-f827c11da832"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getOrders>
+            <XMLString>
+                                 <![CDATA[
+         
+                    <Orders>
+                        <csNum>05919501</csNum>
+                    </Orders>
+     
+                            ]]]]>><![CDATA[  
+            </XMLString>
+            <UserTokenString>
+                                 <![CDATA[
+   
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+           
+                </UserToken>
+                                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getOrders>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="fd079b94-c1f7-44da-9939-427aabf50db7"/><con:assertion type="Valid HTTP Status Codes" id="fa711a7d-b8c8-4952-9012-89a72d236ba2" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="1979932f-cd64-43a7-8a4a-0d282d81cbdb" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="5ca9dea0-df9e-4b0d-b1fd-30987497d4ef" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>usr</con:username><con:password>123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="2083c188-3c2d-45bf-876e-2a9853b0b089" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetOrdersConditions" searchProperties="true"><con:settings/><con:testStep type="request" name="getOrdersConditions" id="1e1fb327-01ce-4608-9dda-e06a691b9477"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getOrdersConditions" id="a0a0db3d-1e23-4b03-bd05-bfe1200d4ca1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getOrders>
+            <XMLString>
+                                 <![CDATA[
+         
+                    <Orders>
+                        <csNum>05919501</csNum>
+                    </Orders>
+     
+                            ]]]]>><![CDATA[  
+            </XMLString>
+            <UserTokenString>
+                                 <![CDATA[
+   
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+           
+                </UserToken>
+                                ]]]]>><![CDATA[
+            </UserTokenString>
+        </icon:getOrders>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="04f8cf4d-5703-4416-833c-5f2ee0e9f2cc"/><con:assertion type="Valid HTTP Status Codes" id="742875d9-5e24-4491-99ed-3b79a85aa017" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="e0d2cbbf-aaef-488d-9e13-19cba1d4ffd6" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="9ce7baf3-dfc8-4e66-9a0e-95cacced2646" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>usr</con:username><con:password>123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:testCase id="4c3fd6d8-06c5-4a74-8d15-7ff5b08e701c" failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="GetPrograms" searchProperties="true"><con:settings/><con:testStep type="request" name="getPrograms" id="b6af2bab-d76a-4754-937b-0e2f4fb077bb"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>ICON2_Source_MyInfo_ws_provider_MyInfo_Binder</con:interface><con:operation>getClientHistory</con:operation><con:request name="getPrograms" id="34b4a6e3-3ca3-45dd-86cd-c71a80b2f7cf"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>https://wsgw.dev.jag.gov.bc.ca/icon2/dev/MyInfo</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:icon="ICON2.Source.MyInfo.ws.provider:MyInfo">
+    <soapenv:Header/>
+    <soapenv:Body>
+        <icon:getPrograms>
+            <XMLString>
+                                 <![CDATA[
+                    <Programs>
+                        <csNum>05919501</csNum>
+                    </Programs>
+                            ]]]]>><![CDATA[ 
+            </XMLString>
+            <UserTokenString>
+                                 <![CDATA[
+                    <UserToken>
+                        <AuthoritativePartyIdentifier>urn:ca:bc:gov:bceid</AuthoritativePartyIdentifier>
+                        <BiometricsSignature>ZkKTryJrstAvIMnfBb1anrZx94Osvg493Tu5HveEJbsZFSGhRXk=</BiometricsSignature>
+                    </UserToken>
+                            ]]]]>><![CDATA[ 
+            </UserTokenString>
+        </icon:getPrograms>
+    </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:assertion type="SOAP Response" id="30f10f2b-2563-46a5-85f4-9e18e3a8c2a9"/><con:assertion type="Valid HTTP Status Codes" id="da32fa9a-7a17-4f36-ad17-03556bfbcb32" name="Valid HTTP Status Codes"><con:configuration><codes>200</codes></con:configuration></con:assertion><con:assertion type="Invalid HTTP Status Codes" id="7bf8f5e4-5721-437a-b902-1f1cea128d2a" name="Invalid HTTP Status Codes"><con:configuration><codes>401, 402, 500, 501</codes></con:configuration></con:assertion><con:assertion type="Response SLA Assertion" id="bea88ceb-0a94-4397-8cd1-02021d1286c1" name="Response SLA"><con:configuration><SLA>1500</SLA></con:configuration></con:assertion><con:credentials><con:username>usr</con:username><con:password>123</con:password><con:selectedAuthProfile>Basic</con:selectedAuthProfile><con:addedBasicAuthenticationTypes>Basic</con:addedBasicAuthenticationTypes><con:authType>Global HTTP Settings</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

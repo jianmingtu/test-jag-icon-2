@@ -1,0 +1,719 @@
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://www.bceid.ca/webservices/BCS/V3/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://www.bceid.ca/webservices/BCS/V3/">
+    <wsdl:types>
+        <s:schema elementFormDefault="qualified" targetNamespace="http://www.bceid.ca/webservices/BCS/V3/">
+            <s:element name="StartEnrollment">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:StartEnrollmentRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="StartEnrollmentRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IDRef" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="RequestBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="onlineServiceId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserId" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="requesterAccountTypeCode" type="tns:BCeIDAccountTypeCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="requesterUserGuid" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="BCeIDAccountTypeCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="Individual"/>
+                    <s:enumeration value="VerifiedIndividual"/>
+                    <s:enumeration value="Business"/>
+                    <s:enumeration value="Internal"/>
+                    <s:enumeration value="LDB"/>
+                    <s:enumeration value="EDS"/>
+                    <s:enumeration value="THS"/>
+                    <s:enumeration value="CORNET"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="StartEnrollmentResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="StartEnrollmentResult" type="tns:StartEnrollmentResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="StartEnrollmentResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="issuance" type="tns:IssuanceToken"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType abstract="true" name="ResponseBase">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="1" name="code" type="tns:ResponseCode"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="failureCode" type="tns:FailureCode"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="message" type="s:string"/>
+                </s:sequence>
+            </s:complexType>
+            <s:simpleType name="ResponseCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Success"/>
+                    <s:enumeration value="Failed"/>
+                    <s:enumeration value="UnknownError"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:simpleType name="FailureCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="Void"/>
+                    <s:enumeration value="NoResults"/>
+                    <s:enumeration value="ExpectedResults"/>
+                    <s:enumeration value="ArgumentException"/>
+                    <s:enumeration value="AuthenticationException"/>
+                    <s:enumeration value="ValidationException"/>
+                    <s:enumeration value="AuthorizationException"/>
+                    <s:enumeration value="Timeout"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:complexType name="IssuanceToken">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="issuanceID" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="enrollmentURL" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="expiry" type="s:dateTime"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="StartSearch">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:StartSearchRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="StartSearchRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="accountType" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="1" name="activeOnly" type="tns:ActiveCodeRequest"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:simpleType name="ActiveCodeRequest">
+                <s:restriction base="s:string">
+                    <s:enumeration value="N"/>
+                    <s:enumeration value="Y"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="StartSearchResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="StartSearchResult" type="tns:StartSearchResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="StartSearchResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="search" type="tns:SearchToken"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:complexType name="SearchToken">
+                <s:sequence>
+                    <s:element maxOccurs="1" minOccurs="0" name="searchID" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="0" name="searchURL" type="s:string"/>
+                    <s:element maxOccurs="1" minOccurs="1" name="expiry" type="s:dateTime"/>
+                </s:sequence>
+            </s:complexType>
+            <s:element name="FinishEnrollment">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:FinishEnrollmentRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="FinishEnrollmentRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="issuanceID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="FinishEnrollmentResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="FinishEnrollmentResult" type="tns:FinishEnrollmentResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="FinishEnrollmentResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RebindCredential">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RebindCredentialRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RebindCredentialRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="IDRefTo" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RebindCredentialResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RebindCredentialResult" type="tns:RebindCredentialResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RebindCredentialResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="DestroyCredential">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:DestroyCredentialRequest"/>
+                        <s:element maxOccurs="1" minOccurs="0" name="issuance" type="tns:IssuanceToken"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DestroyCredentialRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="DestroyCredentialResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="DestroyCredentialResult" type="tns:DestroyCredentialResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DestroyCredentialResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="ReactivateCredential">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:ReactivateCredentialRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ReactivateCredentialRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="ReactivateCredentialResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="ReactivateCredentialResult" type="tns:ReactivateCredentialResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="ReactivateCredentialResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="DeactivateCredential">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:DeactivateCredentialRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DeactivateCredentialRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="DeactivateCredentialResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="DeactivateCredentialResult" type="tns:DeactivateCredentialResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="DeactivateCredentialResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="FinishSearch">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:FinishSearchRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="FinishSearchRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="0" name="searchID" type="s:string"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="FinishSearchResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="FinishSearchResult" type="tns:FinishSearchResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="FinishSearchResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase">
+                        <s:sequence>
+                            <s:element maxOccurs="1" minOccurs="1" name="status" type="tns:SearchStatusCode"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="DID" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="0" name="credentialReference" type="s:string"/>
+                            <s:element maxOccurs="1" minOccurs="1" name="active" type="tns:ActiveCodeResponse"/>
+                        </s:sequence>
+                    </s:extension>
+                </s:complexContent>
+            </s:complexType>
+            <s:simpleType name="SearchStatusCode">
+                <s:restriction base="s:string">
+                    <s:enumeration value="NotCompleted"/>
+                    <s:enumeration value="Found"/>
+                    <s:enumeration value="NotFound"/>
+                    <s:enumeration value="Error"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:simpleType name="ActiveCodeResponse">
+                <s:restriction base="s:string">
+                    <s:enumeration value="N"/>
+                    <s:enumeration value="Y"/>
+                </s:restriction>
+            </s:simpleType>
+            <s:element name="CheckEnrollmentStatus">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:FinishSearchRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="CheckEnrollmentStatusResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="CheckEnrollmentStatusResult" type="tns:FinishSearchResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:element name="Revoke">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RevokeRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RevokeRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RevokeResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RevokeResult" type="tns:RevokeResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RevokeResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="Renew">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="request" type="tns:RenewRequest"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RenewRequest">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:RequestBase"/>
+                </s:complexContent>
+            </s:complexType>
+            <s:element name="RenewResponse">
+                <s:complexType>
+                    <s:sequence>
+                        <s:element maxOccurs="1" minOccurs="0" name="RenewResult" type="tns:RenewResponse"/>
+                    </s:sequence>
+                </s:complexType>
+            </s:element>
+            <s:complexType name="RenewResponse">
+                <s:complexContent mixed="false">
+                    <s:extension base="tns:ResponseBase"/>
+                </s:complexContent>
+            </s:complexType>
+        </s:schema>
+    </wsdl:types>
+    <wsdl:message name="RebindCredentialSoapIn">
+        <wsdl:part name="parameters" element="tns:RebindCredential"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DestroyCredentialSoapOut">
+        <wsdl:part name="parameters" element="tns:DestroyCredentialResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="StartEnrollmentSoapIn">
+        <wsdl:part name="parameters" element="tns:StartEnrollment"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="StartSearchSoapOut">
+        <wsdl:part name="parameters" element="tns:StartSearchResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RevokeSoapIn">
+        <wsdl:part name="parameters" element="tns:Revoke"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RebindCredentialSoapOut">
+        <wsdl:part name="parameters" element="tns:RebindCredentialResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="StartSearchSoapIn">
+        <wsdl:part name="parameters" element="tns:StartSearch"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReactivateCredentialSoapOut">
+        <wsdl:part name="parameters" element="tns:ReactivateCredentialResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeactivateCredentialSoapOut">
+        <wsdl:part name="parameters" element="tns:DeactivateCredentialResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="StartEnrollmentSoapOut">
+        <wsdl:part name="parameters" element="tns:StartEnrollmentResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CheckEnrollmentStatusSoapIn">
+        <wsdl:part name="parameters" element="tns:CheckEnrollmentStatus"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RenewSoapIn">
+        <wsdl:part name="parameters" element="tns:Renew"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RevokeSoapOut">
+        <wsdl:part name="parameters" element="tns:RevokeResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="RenewSoapOut">
+        <wsdl:part name="parameters" element="tns:RenewResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FinishEnrollmentSoapOut">
+        <wsdl:part name="parameters" element="tns:FinishEnrollmentResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DeactivateCredentialSoapIn">
+        <wsdl:part name="parameters" element="tns:DeactivateCredential"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="CheckEnrollmentStatusSoapOut">
+        <wsdl:part name="parameters" element="tns:CheckEnrollmentStatusResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FinishSearchSoapOut">
+        <wsdl:part name="parameters" element="tns:FinishSearchResponse"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="DestroyCredentialSoapIn">
+        <wsdl:part name="parameters" element="tns:DestroyCredential"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FinishSearchSoapIn">
+        <wsdl:part name="parameters" element="tns:FinishSearch"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="FinishEnrollmentSoapIn">
+        <wsdl:part name="parameters" element="tns:FinishEnrollment"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="ReactivateCredentialSoapIn">
+        <wsdl:part name="parameters" element="tns:ReactivateCredential"> </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="ServiceSoap">
+        <wsdl:operation name="StartEnrollment">
+            <wsdl:input message="tns:StartEnrollmentSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:StartEnrollmentSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StartSearch">
+            <wsdl:input message="tns:StartSearchSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:StartSearchSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishEnrollment">
+            <wsdl:input message="tns:FinishEnrollmentSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:FinishEnrollmentSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RebindCredential">
+            <wsdl:input message="tns:RebindCredentialSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RebindCredentialSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DestroyCredential">
+            <wsdl:input message="tns:DestroyCredentialSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:DestroyCredentialSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ReactivateCredential">
+            <wsdl:input message="tns:ReactivateCredentialSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:ReactivateCredentialSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeactivateCredential">
+            <wsdl:input message="tns:DeactivateCredentialSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:DeactivateCredentialSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishSearch">
+            <wsdl:input message="tns:FinishSearchSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:FinishSearchSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CheckEnrollmentStatus">
+            <wsdl:input message="tns:CheckEnrollmentStatusSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:CheckEnrollmentStatusSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Revoke">
+            <wsdl:input message="tns:RevokeSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RevokeSoapOut"> </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Renew">
+            <wsdl:input message="tns:RenewSoapIn"> </wsdl:input>
+            <wsdl:output message="tns:RenewSoapOut"> </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ServiceSoap12" type="tns:ServiceSoap">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="StartEnrollment">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/StartEnrollment" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StartSearch">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/StartSearch" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishEnrollment">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/FinishEnrollment" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RebindCredential">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/RebindCredential" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DestroyCredential">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/DestroyCredential" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ReactivateCredential">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/ReactivateCredential" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeactivateCredential">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/DeactivateCredential" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishSearch">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/FinishSearch" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CheckEnrollmentStatus">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/CheckEnrollmentStatus" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Revoke">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/Revoke" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Renew">
+            <soap12:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/Renew" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="ServiceSoap" type="tns:ServiceSoap">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="StartEnrollment">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/StartEnrollment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="StartSearch">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/StartSearch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishEnrollment">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/FinishEnrollment" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="RebindCredential">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/RebindCredential" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DestroyCredential">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/DestroyCredential" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="ReactivateCredential">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/ReactivateCredential" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="DeactivateCredential">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/DeactivateCredential" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="FinishSearch">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/FinishSearch" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="CheckEnrollmentStatus">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/CheckEnrollmentStatus" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Revoke">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/Revoke" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="Renew">
+            <soap:operation soapAction="http://www.bceid.ca/webservices/BCS/V3/Renew" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="Service">
+        <wsdl:port name="ServiceSoap" binding="tns:ServiceSoap">
+            <soap:address location="http://gws1.systestv2.bceid.ca/webservices/BCS/V3/Service.asmx"/>
+        </wsdl:port>
+        <wsdl:port name="ServiceSoap12" binding="tns:ServiceSoap12">
+            <soap12:address location="http://gws1.systestv2.bceid.ca/webservices/BCS/V3/Service.asmx"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
