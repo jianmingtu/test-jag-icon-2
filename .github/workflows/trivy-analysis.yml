@@ -1,0 +1,159 @@
+# This workflow is used to build & scan image using trivy vulnerability scanner and upload the results to github security tab
+
+name: Build & Vulnerability Scan using Trivy Scanner
+
+on:
+  push:
+    branches: [ main, release/*]
+  pull_request:
+    # The branches below must be a subset of the branches above
+    branches: [ main, release/*]
+  workflow_dispatch:
+    branches: [ main, release/*]
+jobs:
+  build-scan-image:
+    name: Build & Scan Image
+    runs-on: ubuntu-20.04
+    env:
+      BASIC_AUTH_USER: ${{ secrets.BASIC_AUTH_USER }}
+      BASIC_AUTH_PASS: ${{ secrets.BASIC_AUTH_PASS }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      
+      # Set up JDK build environment
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: 17
+        
+      # Runs build steps
+      - name: Maven Package
+        run: mvn -ntp clean package
+        
+      - name: Maven Verify
+        run: mvn -ntp clean verify
+
+      #Build image for scanning
+      - name: Build jag-icon2-common-application image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: ./jag-icon2-common-application
+        run: |
+          docker build -t jag-icon2-common-application:${{ github.sha }} ${CONTEXT}
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner for jag-icon2-common-application
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-icon2-common-application:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          limit-severities-for-sarif: true
+          severity: HIGH,CRITICAL
+      
+      #Build image for scanning
+      - name: Build jag-icon2-auth-application image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: ./jag-icon2-auth-application
+        run: |
+          docker build -t jag-icon2-auth-application:${{ github.sha }} ${CONTEXT}
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner for jag-icon2-auth-application
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-icon2-auth-application:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          limit-severities-for-sarif: true
+          severity: HIGH,CRITICAL
+
+      #Build image for scanning
+      - name: Build jag-icon2-biometrics-application image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: ./jag-icon2-biometrics-application
+        run: |
+          docker build -t jag-icon2-biometrics-application:${{ github.sha }} ${CONTEXT}
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner for jag-icon2-biometrics-application
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-icon2-biometrics-application:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          limit-severities-for-sarif: true
+          severity: HIGH,CRITICAL
+      
+      #Build image for scanning
+      - name: Build image jag-icon2-myfiles-application image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: ./jag-icon2-myfiles-application
+        run: |
+          docker build -t jag-icon2-myfiles-application:${{ github.sha }} ${CONTEXT}
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner for jag-icon2-myfiles-application
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-icon2-myfiles-application:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          limit-severities-for-sarif: true
+          severity: HIGH,CRITICAL
+      
+      #Build image for scanning
+      - name: Build image jag-icon2-hsr-application image from Dockerfile
+        env:
+          COMPOSE_DOCKER_CLI_BUILD: 1
+          DOCKER_BUILDKIT: 1
+          CONTEXT: ./jag-icon2-hsr-application
+        run: |
+          docker build -t jag-icon2-hsr-application:${{ github.sha }} ${CONTEXT}
+
+      #Run Vulnerability Scan usinig Trivy scanner
+      - name: Run Trivy vulnerability scanner for jag-icon2-hsr-application
+        uses: aquasecurity/trivy-action@master
+        with:
+          scan-type: image
+          image-ref: jag-icon2-hsr-application:${{ github.sha }}
+          format: template
+          template: '@/contrib/sarif.tpl'
+          output: trivy-results.sarif
+          exit-code: 1
+          ignore-unfixed: true
+          limit-severities-for-sarif: true
+          severity: HIGH,CRITICAL
+
+      #Upload results to the Github security tab.
+      - name: Upload Trivy scan results to GitHub Security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: trivy-results.sarif
+          
